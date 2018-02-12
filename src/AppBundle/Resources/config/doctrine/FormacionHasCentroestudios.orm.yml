@@ -1,0 +1,46 @@
+AppBundle\Entity\FormacionHasCentroestudios:
+    type: entity
+    table: formacion_has_centroestudios
+    indexes:
+        UNIQ_94AB1777F0798A6E:
+            columns:
+                - formacion_id
+        IDX_94AB1777A8803ABC:
+            columns:
+                - centroestudios_id
+    uniqueConstraints:
+        UNIQ_94AB1777A8803ABC:
+            columns:
+                - centroestudios_id
+                - formacion_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        centroestudios:
+            targetEntity: Centroestudios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                centroestudios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        formacion:
+            targetEntity: Formacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formacion_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

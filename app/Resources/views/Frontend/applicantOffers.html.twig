@@ -1,0 +1,33 @@
+{% for relacionOE in relacionOE %}
+  {#{ dump(loop.index) }#}
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    {% if relacionOE.ofertasid.tipo.id == 1 %}
+      <h3>
+        Prácticas: <strong>{{ relacionOE.ofertasid.title }}</strong>
+      </h3>
+    {% elseif relacionOE.ofertasid.tipo.id == 0 %}
+      <h3>
+        Empleo: <strong>{{ relacionOE.ofertasid.title }}</strong>
+      </h3>
+    {% else %}
+      <h3>
+        Oferta: <strong>{{ relacionOE.ofertasid.title }}</strong>
+      </h3>
+    {% endif %}
+      <p>
+        {{ relacionOE.ofertasid.idempresa.nombreempresa }} 
+      </p>
+      <p>
+        Inscritos: {{ relacionOE.ofertasid.inscribed }}
+      </p>
+      <p>
+        {{ relacionOE.ofertasid.categoria}}
+      </p>
+      <p>
+        {{ relacionOE.ofertasid.descripcion }}
+      </p>
+      <a href="{{ path('ver_mi_oferta', {'id':relacionOE.ofertasid.id, 'idUser':app.user.id}) }}">
+        <button type="button" class="button cta-1">Ver detalles Oferta</button>
+      </a>
+</div>
+{% endfor %}

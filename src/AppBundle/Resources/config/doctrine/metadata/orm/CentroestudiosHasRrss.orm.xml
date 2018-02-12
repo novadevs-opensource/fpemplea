@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CentroestudiosHasRrss" table="centroestudios_has_rrss">
+    <unique-constraints>
+      <unique-constraint name="UNIQ_FF53BEBFA8803ABC" columns="centroestudios_id"/>
+      <unique-constraint name="UNIQ_FF53BEBFFE893BF9" columns="rrss_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="valor" type="string" column="valor" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="rrss" target-entity="Rrss" fetch="LAZY">
+      <join-columns>
+        <join-column name="rrss_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="centroestudios" target-entity="Centroestudios" fetch="LAZY">
+      <join-columns>
+        <join-column name="centroestudios_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

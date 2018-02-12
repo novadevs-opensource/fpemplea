@@ -1,0 +1,485 @@
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea {% endblock %}
+{% block body %} 
+  <section id="slider" class="row">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="{{ url('homepage') }}../assets/img/slider/slide1.jpg"  >
+            <div class="carousel-caption">
+              <h3>
+                OBJETIVO GENERAL
+              </h3>
+              <p class="caption-desc">
+                FP Emplea es una plataforma para poner en contacto a empresas y trabajadores. Su objetivo es la inserción laboral del alumnado que se ha formado en los Centros de Formación Profesional, y dar una herramienta eficiente a las empresas para encontrar candidatos idóneos para sus ofertas de empleo.
+                Este servicio de intermediación ofrece una práctica búsqueda a ambas partes, a las que permite compartir información coordinando oferta y demanda de forma voluntaria.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="{{ url('homepage') }}../assets/img/slider/slide2.jpg" >
+            
+            <div class="carousel-caption">
+              <h3>CENTRO EDUCATIVO</h3>
+              <p class="caption-desc">Hace de intermediario entre empresa y alumnado para facilitar la contratación del mismo supervisando el proceso de principio a fin, y ofreciendo a ambos una comunicación ágil y efectiva. Al final del proceso, controla las contrataciones efectivas que se realizan. </p>
+            </div>
+            
+          </div>
+          
+          <div class="item">
+            <img src="{{ url('homepage') }}../assets/img/slider/slide3.jpg"  >
+            <div class="carousel-caption">
+              <h3>EMPRESA</h3>
+              <p class="caption-desc">Tiene la posibilidad de filtrar entre los perfiles del alumnado, para detectar las competencias personales y profesionales que mejor se adapten a las necesidades del puesto de trabajo que precisa cubrir. </p>
+            </div>
+          </div>
+          
+          
+          <div class="item">
+            <img src="{{ url('homepage') }}../assets/img/slider/slide4.jpg" >
+            
+            <div class="carousel-caption">
+              <h3>ALUMNADO</h3>
+              <p class="caption-desc"><span>Puede registrarse incorporando tanto sus capacidades profesionales como competencias personales, dentro de la ocupación que le gustaría desempeñar, a la vez que tendrán la opción de revisar y postularse a las ofertas que mejor se ajusten a sus intereses. </span> </p>
+            </div>
+          </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+  </section>
+  <!-- Termina aqui -->
+  <!-- Parallax -->
+  <section id="mod_a1" class="row">
+    <div class="center-block">
+      <div class="text-a1">
+        <h2 class="font1">FPEMPLEA</h2>
+        <p class="font1">FPEmplea es una aplicación que permite gestionar la bolsa de empleo de los centros educativos públicos de Aragón, que tienen entre su oferta formativa enseñanzas de Formación Profesional (FP) y/o Formación Para el Empleo (FPE). </p>
+        
+      </div>
+      
+    </div>
+    
+    
+  </section>
+  <!-- Termina aqui -->
+  <!-- Columnas -->
+  <section id="info-links" class="row">
+    
+    
+    <div class=" col-xs-6 col-sm-6 col-md-3 col-lg-3 show-text ">
+      
+        <img class="img-col margin-bot-10" src="{{ url('homepage') }}../assets/img/infolinks/foto1.jpg" alt="Generic placeholder image">
+        
+        
+        <h2 class="hidden-h2"></h2>
+        
+     
+    </div>
+    
+    <!-- /.col-lg-3 -->
+    <div class=" col-xs-6 col-sm-6 col-md-3 col-lg-3 show-text ">
+     
+        <img class="img-col margin-bot-10" src="{{ url('homepage') }}../assets/img/infolinks/foto2.jpg" alt="Generic placeholder image">
+        
+        <h2 class="hidden-h2"></h2>
+        
+    </div>
+    
+    <!-- /.col-lg-3 -->
+    <div class=" col-xs-6 col-sm-6 col-md-3 col-lg-3 show-text "> 
+      <img class="img-col margin-bot-10" src="{{ url('homepage') }}../assets/img/infolinks/foto3.jpg" alt="Generic placeholder image">
+      
+      
+      <h2 class="hidden-h2"></h2>
+  
+  </div>
+  
+  <!-- /.col-lg-3 -->
+  <div class=" col-xs-6 col-sm-6 col-md-3 col-lg-3 show-text ">  
+    <img class="img-col margin-bot-10" src="{{ url('homepage') }}../assets/img/infolinks/foto4.jpg" alt="Generic placeholder image">
+    
+    
+    <h2 class="hidden-h2"></h2>
+ 
+</div>
+
+<!-- /.col-lg-3 -->
+</section>
+<!-- Termina aqui -->
+<!-- Zig Zag -->
+<section id="mod_a2">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-md-12 hidden-xs">
+      <h3 class="text-center howtitle ">CÓMO USAR FPEMPLEA</h3>
+      <p>
+        Te resumimos a continuación en 5 sencillos pasos, cómo sacar el máximo rendimiento a la bolsa de trabajo de FPEmplea. El objetivo es que encuentres, si eres alumn@, una propuesta de empleo idónea para tu perfil, y, si eres empresa, al alumnado más competente a nivel técnico y personal, para tu oferta.
+      </p>
+      <ul class="timeline">
+        <li>
+          <div class="timeline-image imagen1">
+            <img class="img-circle img-responsive " src="{{ url('homepage') }}../assets/img/png/registro.png" alt="">
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>PASO 1</h4>
+              <h4 class="subheading">REGÍSTRATE</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                Sólo tienes que ser alumnado de nuestro centro o empresa colaboradora para poder acceder a FPEmplea. El registro dura apenas unos segundos. Recibirás un correo para confirmar que lo has hecho con éxito.
+              </p>
+            </div>
+          </div>
+          <div class="line"></div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-image imagen2">
+            <img class="img-circle img-responsive " src="{{ url('homepage') }}../assets/img/jpg/perfil.jpg" alt="">
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>PASO 2</h4>
+              <h4 class="subheading">PERFIL</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                Necesitamos tu perfil como alumn@ o empresa, para poder gestionar mejor las ofertas de empleo que nos lleguen. Cuanto más completo sea ese perfil, más posibilidades de que las empresas afinen en su búsqueda y que tú puedas filtrar las ofertas más interesantes.
+              </p>
+            </div>
+          </div>
+          <div class="line"></div>
+        </li>
+        <li>
+          <div class="timeline-image imagen3">
+            <img class="img-circle img-responsive " src="{{ url('homepage') }}../assets/img/png/busca.png" alt="">
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>PASO 3</h4>
+              <h4 class="subheading">BUSCA</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                Ahora que ya tienes perfil en la web, sólo tienes que empezar a buscar entre las ofertas publicadas y las empresas del sector que te interesen; por su parte, como empresa, también puedes filtrar las principales competencias técnicas y personales que estás buscando.
+              </p>
+            </div>
+          </div>
+          <div class="line"></div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-image imagen4">
+            <img class="img-circle img-responsive " src="{{ url('homepage') }}../assets/img/png/encuentra.png" alt="">
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>PASO 4</h4>
+              <h4 class="subheading">ENCUENTRA</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                FPEmplea busca que alumnado y empresas podáis encontrar ese trabajo que buscáis o a la persona idónea que necesitáis para un puesto, en el menor tiempo posible, y de la forma más eficiente. También os ofrece la opción de contactar directamente para acelerar procesos.
+              </p>
+            </div>
+          </div>
+          <div class="line"></div>
+        </li>
+        <li>
+          <div class="timeline-image  imagen5">
+            <img class="img-circle img-responsive" src="{{ url('homepage') }}../assets/img/jpg/finaliza.jpg" alt="">
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>PASO 5</h4>
+              <h4 class="subheading">FINALIZA</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">
+                Y, eso sí, una vez que concluya el proceso de selección de una oferta, te pediremos que nos confirmes (con un simple click) si tu búsqueda ha acabado con una contratación o por el contrario no has encontrado a la persona candidata que buscabas.
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="responsive-zig" class="visible-xs">
+      
+      <ul>
+        <li class="pabo2em">
+          <h3 class="text-center">Lorem ipsum</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          
+          
+        </li>
+        <li>
+          <img src="http://placehold.it/250x250" alt="" class="img-circle img-responsive">
+          <h4>Titulo</h4>
+          <h4 class="subzig">Titulo secundario</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est doloremque consequatur praesentium architecto totam doloribus! Recusandae dignissimos non maiores, dolores doloremque, ipsam cumque voluptates, odio mollitia iure, nesciunt distinctio veritatis.</p>
+        </li>
+        <li>
+          <img src="http://placehold.it/250x250" alt="" class="img-circle img-responsive">
+          <h4>Titulo</h4>
+          <h4 class="subzig">Titulo secundario</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est doloremque consequatur praesentium architecto totam doloribus! Recusandae dignissimos non maiores, dolores doloremque, ipsam cumque voluptates, odio mollitia iure, nesciunt distinctio veritatis.</p>
+        </li>
+        <li>
+          <img src="http://placehold.it/250x250" alt="" class="img-circle img-responsive">
+          <h4>Titulo</h4>
+          <h4 class="subzig">Titulo secundario</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est doloremque consequatur praesentium architecto totam doloribus! Recusandae dignissimos non maiores, dolores doloremque, ipsam cumque voluptates, odio mollitia iure, nesciunt distinctio veritatis.</p>
+        </li>
+        <li>
+          <img src="http://placehold.it/250x250" alt="" class="img-circle img-responsive">
+          <h4>Titulo</h4>
+          <h4 class="subzig">Titulo secundario</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est doloremque consequatur praesentium architecto totam doloribus! Recusandae dignissimos non maiores, dolores doloremque, ipsam cumque voluptates, odio mollitia iure, nesciunt distinctio veritatis.</p>
+        </li>
+        <li>
+          <img src="http://placehold.it/250x250" alt="" class="img-circle img-responsive">
+          <h4>Titulo</h4>
+          <h4 class="subzig">Titulo secundario</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est doloremque consequatur praesentium architecto totam doloribus! Recusandae dignissimos non maiores, dolores doloremque, ipsam cumque voluptates, odio mollitia iure, nesciunt distinctio veritatis.</p>
+        </li>
+        
+      </ul>
+      
+      
+    </div>
+    
+  </div>
+</div>
+</section>
+<!-- Termina aqui -->
+<!-- Carousel -->
+<section id="carousel">
+<div class="container">
+  <div class="col-xs-12">
+    <div class="page-header">
+      <h3>Empresas colaboradoras</h3>
+   
+    </div>
+    
+    <div class="carousel slide" id="myCarouselEmp">
+      <div class="carousel-inner">
+        <div class="item active">
+          <ul class="thumbnails">
+            <li class="col-sm-3 col-xs-6">
+              <div class="fff">
+                <div class="thumbnail">
+                  <a href="http://www.k-tuin.com/" target="_blank"><img src="{{ url('homepage') }}../assets/img/empresas/ktuin.png" alt=""></a>
+                </div>
+                <div class="caption hidden-xs">
+                  <h4>K-tuin</h4>
+                  <div class="desc-colab">
+            <!--  <p> K-tuin, con ADN Aragones,  es el distribuidor Apple Premium Reseller con mayor número de tiendas en Europa y líder en el sector desde 1994.</p>
+                  <p>
+
+K-tuin PRO se ha convertido en un referente en la implementación y comercialización de los productos de Apple en el mercado corporativo y educativo. Tenemos ya una dilatada experiencia en desarrollar proyectos de integración e implantación del iPad en el ámbito corporativo en varios sectores: Moda, Alimentación, Turimo, Transporte…
+                    </p>
+                    <p>
+Ponemos a su disposición una estructura con más de cien personas para asesorarle en cualquier necesidad relacionada con el mundo de Apple en general y con proyectos de integración de iPad/ Iphone en particular. 
+La división profesional de K-tuin orientada a la atención de empresas dispone de un completo programa de servicios de valor añadido para la integración e implantación del iPad en las corporaciones y en el sector educativo..
+</p> -->
+                    </div>
+                  <a class="btn btn-mini" target="_blank" href="http://www.k-tuin.com/">Visitar web</a>
+                </div>
+              </div>
+            </li>
+            
+            <li class="col-sm-3 col-xs-6">
+              <div class="fff">
+                <div class="thumbnail">
+                  <a href="http://www.entropystudio.net/" target="_blank" ><img src="{{ url('homepage') }}../assets/img/empresas/entropy.png" alt=""></a>
+                </div>
+                <div class="caption hidden-xs">
+                  <h4>Entropy Studio</h4>
+                  <div class="desc-colab">
+              <!--    <p>Entropy Studio reúne más de quince años de calidad e innovación que lo han posicionado como un reconocido y valorado estudio de efectos visuales, animación, VFX, mattepaints, estereoscopía, creación de motion graphics y, en general, todos los servicios relacionados con la postproducción y los efectos visuales para películas, series de televisión y publicidad.
+                    </p>
+                    
+                    <p>
+Uno de los hitos ocurre en 2008 con la realización de los efectos visuales y el tratamiento estereoscópico para la película Magic Journey to Africa, la primera cinta de ficción estereoscópica en Europa que coloca a Entropy Studio al frente de la estereoscopía y los efectos visuales producidos en este continente.
+                    </p>
+                <p> 
+Con su sede en Los Ángeles la empresa crece, realizando producciones tan importantes como ZERO o QUANTUM BREAK.</p> -->
+                    </div>
+                  <a class="btn btn-mini" target="_blank" href="http://www.entropystudio.net/">Visitar web</a>
+                </div>
+              </div>
+            </li>
+            <li class="col-sm-3 col-xs-6">
+              <div class="fff">
+                <div class="thumbnail">
+                  <a href="http://grubsolutions.es/" target="_blank"><img src="{{ url('homepage') }}../assets/img/empresas/grub.png" alt=""></a>
+                </div>
+                <div class="caption hidden-xs">
+                  <h4>Grub Solutions</h4>
+                  <div class="desc-colab">
+               <!--   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit quidem sunt provident! At quidem nam saepe sit, incidunt fugit quibusdam ratione quasi consequatur fuga quod, neque ducimus id maiores iusto.</p> -->
+                    </div>
+                  <a class="btn btn-mini" target="_blank" href="http://grubsolutions.es/" target="_blank">Visitar web</a>
+                </div>
+              </div>
+            </li>
+            <li class="col-sm-3 col-xs-6">
+              <div class="fff">
+                <div class="thumbnail">
+                  <a href="#"><img src="http://placehold.it/400x100" alt=""></a>
+                </div>
+                <div class="caption hidden-xs">
+                  <h4>Empresa 4</h4>
+                  <div class="desc-colab">
+                <!--  <p>Nullam Condimentum Nibh Etiam Sem</p> -->
+                    </div>
+                  <a class="btn btn-mini" href="#">Visitar web</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+          </div><!-- /Slide1 
+          
+          
+          <div class="item">
+            <ul class="thumbnails">
+              <li class="col-sm-3  col-xs-6">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                  </div>
+                  <div class="caption hidden-xs">
+                    <h4>Praesent commodo</h4>
+                    <p>Nullam Condimentum Nibh Etiam Sem</p>
+                    <a class="btn btn-mini" href="#">» Read More</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-sm-3 col-xs-6">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                  </div>
+                  <div class="caption hidden-xs">
+                    <h4>Praesent commodo</h4>
+                    <p>Nullam Condimentum Nibh Etiam Sem</p>
+                    <a class="btn btn-mini" href="#">» Read More</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-sm-3 col-xs-6">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                  </div>
+                  <div class="caption hidden-xs">
+                    <h4>Praesent commodo</h4>
+                    <p>Nullam Condimentum Nibh Etiam Sem</p>
+                    <a class="btn btn-mini" href="#">» Read More</a>
+                  </div>
+                </div>
+              </li>
+              <li class="col-sm-3 col-xs-6">
+                <div class="fff">
+                  <div class="thumbnail">
+                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                  </div>
+                  <div class="caption hidden-xs">
+                    <h4>Praesent commodo</h4>
+                    <p>Nullam Condimentum Nibh Etiam Sem</p>
+                    <a class="btn btn-mini" href="#">» Read More</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            </div> Slide2 -->
+            <!-- /Slide3
+            <div class="item">
+              <ul class="thumbnails">
+                <li class="col-sm-3 col-xs-6">
+                  <div class="fff">
+                    <div class="thumbnail">
+                      <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                    </div>
+                    <div class="caption hidden-xs">
+                      <h4>Praesent commodo</h4>
+                      <p>Nullam Condimentum Nibh Etiam Sem</p>
+                      <a class="btn btn-mini" href="#">» Read More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="col-sm-3 col-xs-6">
+                  <div class="fff">
+                    <div class="thumbnail">
+                      <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                    </div>
+                    <div class="caption hidden-xs">
+                      <h4>Praesent commodo</h4>
+                      <p>Nullam Condimentum Nibh Etiam Sem</p>
+                      <a class="btn btn-mini" href="#">» Read More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="col-sm-3 col-xs-6">
+                  <div class="fff">
+                    <div class="thumbnail">
+                      <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                    </div>
+                    <div class="caption hidden-xs">
+                      <h4>Praesent commodo</h4>
+                      <p>Nullam Condimentum Nibh Etiam Sem</p>
+                      <a class="btn btn-mini" href="#">» Read More</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="col-sm-3 col-xs-6">
+                  <div class="fff">
+                    <div class="thumbnail">
+                      <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                    </div>
+                    <div class="caption hidden-xs">
+                      <h4>Praesent commodo</h4>
+                      <p>Nullam Condimentum Nibh Etiam Sem</p>
+                      <a class="btn btn-mini" href="#">» Read More</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              </div> Slide3 -->
+              
+            </div>
+            
+            
+        <!--    <nav>
+              <ul class="control-box pager">
+                <li><a data-slide="prev" href="#myCarouselEmp" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+                <li><a data-slide="next" href="#myCarouselEmp" class=""><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+              </ul>
+            </nav> -->
+            
+            <!-- /.control-box -->
+            
+            </div><!-- /#myCarouselEmp -->
+            
+            </div><!-- /.col-xs-12 -->
+            </div><!-- /.container -->
+          </section>
+          <!-- Termina aqui -->
+        {% endblock %}

@@ -1,0 +1,15 @@
+{# app/Resources/views/Emails/registration.html.twig #}
+<h3>
+	Hola {{ name }},
+</h3>
+<p>
+	{{ visitor }} ha visitado tu perfil
+<p>
+
+<p>
+	Contacta iniciando sesión, ¡haz click en el enlace!: 
+	<a href="{{ url('homepage_login') }}">
+		Enlace login
+	</a>
+<p>
+<img src="{{ url('homepage') }}../assets/img/png/horizontal_cerradura_con_claim.png" width="150">

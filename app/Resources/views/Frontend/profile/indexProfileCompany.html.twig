@@ -1,0 +1,372 @@
+
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea - Mi perfil {% endblock %}
+{% block body %}
+    {% if is_granted('ROLE_COMPANY') %}
+        {% if app.user.done == 1 %}
+            {% for flashMessage in app.session.flashbag.get('pwdChanged') %}
+              <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ flashMessage }}
+              </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('profileEditSucc') %}
+              <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ flashMessage }}
+              </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('profileEditErr') %}
+              <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ flashMessage }}
+              </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('offerSucc') %}
+              <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ flashMessage }}
+              </div>
+            {% endfor %}
+            {% for info in app.session.flashbag.get('info') %}
+              <div class="alert alert-info alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ info }}
+              </div>
+            {% endfor %}
+            <section id="company" class="row">
+                <button id="profile-menu-btn">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <aside class="col-lg-3 col-md-4 col-sm-5 col-xs-10">
+                    <ul class="menu-alumn">
+                        <li class="image-user">
+                            <a href="" data-toggle="modal" data-target="#change-img">
+                            {% if empresa.imagen is not null %}
+                                <img class="img-circle" src="../../uploads/profileavatar/{{ empresa.imagen }}" alt="Avatar perfil candidato">
+                            {% else %}
+                                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png" alt="Avatar perfil candidato"> #}
+                                <img class="img-circle" src="../../assets/img/png/default-user.png" alt="Avatar perfil candidato">
+                            {% endif %}
+                            </a>
+                            <h3>
+                                <span>
+                                    {{ empresa.nombreempresa }}
+                                </span>
+                            </h3>
+                        </li>
+                        <hr>
+                        <li class="menu-user">
+                            <a data-toggle="tab" data-placement="right" title="Inicio" href="#home">
+                                <span class="glyphicon glyphicon-home icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Inicio
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-toggle="tab" data-placement="right" title="Modificar"  data-target="#edit" href="{{ path('modificar_empresa', {'id':app.user.id}) }}">
+                                <span class="glyphicon glyphicon-pencil icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Modificar
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-toggle="tab" data-placement="right" title="Alertas" data-target="#alerts">
+                                <span class="glyphicon glyphicon-envelope icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Alertas <span class="badge">{{notRead}}</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-toggle="tab" data-placement="right" title="Ver mis ofertas" data-target="#offers" href="{{ path('mis_ofertas_empresa', {'idPerf':empresa.id}) }}">
+                                <span class="glyphicon glyphicon-briefcase icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Ver mis ofertas
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-toggle="tab" data-placement="right" title="Crear oferta" data-target="#createOffer" href="{{ path('crear_oferta', {'id':app.user.id, 'idEmpresa':empresa.id}) }}">
+                                <span class="glyphicon glyphicon-plus icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Crear Oferta
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="tab-content clearfix">
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="notifications">
+                                <p class="alerts">
+                                    Tienes ({% if notRead|length > 0 %}{{notRead}}{% else %} 0 {% endif %}) alertas nuevas.
+                                </p>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+                                <h2>
+                                    Inicio
+                                </h2>
+                                <hr>
+                            </div>
+                            <section class="info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h3>
+                                           Datos empresa
+                                        </h3>
+                                        <hr>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <p>
+                                            Nombre empresa:
+                                            <span>{{ empresa.nombreempresa }}</span>
+                                        </p>
+                                        <p>
+                                            Sector de la empresa:
+                                            <span> {{ empresa.sector }} </span>
+                                        </p>
+                                        <p>
+                                            CIF/NIF:
+                                            <span> {{empresa.cif}} </span>
+                                        </p>
+                                        <p>
+                                            Dirección:
+                                            <span> {{ empresa.direccion }}, {{ empresa.cp }}, {{ empresa.localidad }}, {{ empresa.pais }} </span>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <p>
+                                            Correo electrónico:
+                                            <span>{{ empresa.emailcontacto }}</span>
+                                        </p>
+                                        <p>
+                                            Teléfono:
+                                            <span>{{ empresa.telefono }}</span>
+                                        </p>
+                                        <p>
+                                            Teléfono fijo:
+                                            <span> -- </span>
+                                        </p>
+                                        <p>
+                                            Redes Sociales:
+                                        </p>
+                                        <p>
+                                        {{ render(controller('AppBundle:Default:snList', {'idUser': app.user.id})) }}
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <hr>
+                                        <h4>Descripción de la actividad empresarial</h4>
+                                        <p>
+                                            {{empresa.description}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div id="offers" class="tab-pane fade">
+                            <section id="mod_b6" class="clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <h2>Mis ofertas</h2>
+                                    <hr>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 company-offers">
+                                        {{ render(controller(
+                                        'AppBundle:Company:listadoOfertasCompanyProfile', { 'idPerf': empresa.id }
+                                        ))
+                                        }}
+                                </div>
+                            </section>
+                        </div>
+                        <div id="edit" class="tab-pane fade">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+                                <h2>
+                                   Modificar perfil
+                                </h2>
+                                <hr>
+                            </div>
+                            <section class="edit-profile info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <h3>
+                                           Datos empresa
+                                            <hr>
+                                        </h3>
+                                        {{ render(controller(
+                                        'AppBundle:Company:modificarEmpresa', { 'id': app.user.id }
+                                        ))
+                                        }}
+                                    </div>
+                                </div>
+                            </section>
+                            <hr>
+                            <section class="edit-profile info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        {{ render(controller('AppBundle:Default:snAdd',
+                                        {'idUser': app.user.id}
+                                        ))
+                                        }}
+                                        {{ render(controller('AppBundle:Default:snList', {'idUser': app.user.id})) }}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> 
+                                        {{ render(controller('AppBundle:Default:resetPwd',
+                                        { 'idUser': app.user.id }
+                                        ))
+                                        }}
+                                    </div>
+                                </div>
+                            </section>
+                            <hr>
+                        </div>
+                        <section id="createOffer" class="tab-pane fade clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h2>Crear nueva una oferta</h2>
+                                <hr>
+                                {{ render(controller(
+                                'AppBundle:Offer:crearOferta', { 'id': app.user.id, 'idEmpresa': empresa.id, }
+                                ))
+                                }}
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <hr>
+                            </div>
+                        </section>
+                        <section id="alerts" class="tab-pane fade clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <h2>Alertas</h2>
+                                <hr>
+                                <div class="alert alert-info">
+                                    <div class="container-fluid">
+                                          <span class="alert-icon">
+                                            <i class="fa fa-info"></i>
+                                          </span>
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <i class="fa fa-close"></i>
+                                                </span>
+                                          </button>
+                                          <b>Info:</b> Recibirás los mensajes en tu correo electrónico.
+                                    </div>
+                                </div>
+                                
+                                {% if alerts|length == 0 %}
+                                <div class="alert alert-info">
+                                    <div class="container-fluid">
+                                          <span class="alert-icon">
+                                            <i class="fa fa-info"></i>
+                                          </span>
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                <i class="fa fa-close"></i>
+                                                </span>
+                                          </button>
+                                          <b>Info:</b> No tienes alertas
+                                    </div>
+                                </div>
+                                {% else %}
+                                    <hr>
+                                    {% for a in alerts if a.status == 1 %}
+                                    <div class="row disabled">
+                                        <div class="col-lg-9 col-md-8 col-sm-9 col-xs-6">
+                                            <a href="{{ path('check_alert', {'idAlert':a.id}) }}">
+                                                {{a.alertsubject}}
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-4">
+                                            <span class="alert-date">
+                                                <i class="fa fa-calendar-o"></i>
+                                                {{a.generationdate|date('Y-m-d')}} 
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-1 col-md-1 hidden-sm col-xs-2">
+                                            Leído <i class="fa fa-check color-green"></i>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    {% endfor %}
+                                    {% if notRead == 0 %}
+                                    <div class="alert alert-info">
+                                        <div class="container-fluid">
+                                              <span class="alert-icon">
+                                                <i class="fa fa-info"></i>
+                                              </span>
+                                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">
+                                                    <i class="fa fa-close"></i>
+                                                    </span>
+                                              </button>
+                                              <b>Info:</b> Has revisado todas tus alertas
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="alert alert-info">
+                                        <div class="container-fluid">
+                                              <span class="alert-icon">
+                                                <i class="fa fa-info"></i>
+                                              </span>
+                                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">
+                                                    <i class="fa fa-close"></i>
+                                                    </span>
+                                              </button>
+                                              <b>Info:</b> {{notRead}} Alertas sin leer
+                                        </div>
+                                    </div>
+                                
+                                        {% for a in alerts if a.status == 0 %}
+                                        <div class="row">
+                                            <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12">
+                                                <a href="{{ path('check_alert', {'idAlert':a.id}) }}">
+                                                    {{a.alertsubject}}
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-3 col-xs-12">
+                                                <span class="alert-date">
+                                                    <i class="fa fa-calendar-o"></i>
+                                                    {{a.generationdate|date('Y-m-d')}}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            {% else %}
+                <a href="{{ path('crear_empresa', {'id':app.user.id}) }}">Crear perfil de empresa</a>
+                <br>
+            {% endif %}
+        {% endif %}
+        {# Modal cambio de imagen #}
+      <div id="change-img" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Selecciona una imagen para tu perfil</h4>
+            </div>
+            <div class="modal-body">
+     
+              {{ render( controller( 'AppBundle:Default:AvatarEdit' ) ) }}
+
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endblock %}

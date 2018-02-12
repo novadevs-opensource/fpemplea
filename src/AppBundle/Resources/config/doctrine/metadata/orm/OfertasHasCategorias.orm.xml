@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="OfertasHasCategorias" table="ofertas_has_categorias">
+    <unique-constraints>
+      <unique-constraint name="fk_ofertas_categorias" columns="ofertasId"/>
+      <unique-constraint name="fk_categorias_ofertas" columns="categoriasId"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="ofertasid" target-entity="Ofertas" fetch="LAZY">
+      <join-columns>
+        <join-column name="ofertasId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="categoriasid" target-entity="Categorias" fetch="LAZY">
+      <join-columns>
+        <join-column name="categoriasId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,33 @@
+{% for w in work  %}
+<li class="formacionlist clearfix" id="work-delete{{w.id}}{{app.user.id}}">
+    <span>
+        {# <i class="fa fa-bookmark-o"></i>  #}
+        {% if w.company != null %} 
+            {{w.company}}
+        {% else %}
+            {{w.othercompany}}
+        {% endif %}
+    </span> 
+    - 
+    <span>
+        {{ w.start|date('m-d-Y') }}
+    </span>
+    -
+    <span>
+        {{ w.end|date('m-d-Y')}}
+    </span>
+    -
+    <span>
+        {{ w.position}}
+    </span>
+    -
+    <span>
+        {{ w.workexp}}
+    </span>
+    <button class="nobutton pull-right" onclick="applicantWorkDelete({{w.id}}, {{app.user.id}}, '{{ path('applicant_delete_workexp', {'id':w.id, 'idUser':app.user.id}) }}')">
+        <i class="fa fa-close"></i>
+    </button>
+</li>
+{% endfor %}
+
+

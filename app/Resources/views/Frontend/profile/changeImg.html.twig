@@ -1,0 +1,13 @@
+{{ form_start(form, {'attr': {'id': 'edit_img' } } ) }}
+	{{ form_row(form.imagen) }}
+    {{ form_row(form._token) }}
+	{# {{ form_errors(form) }} #}
+	<div class="text-center">
+		<img src="../../uploads/profileavatar/{{currentImg}}" alt="" class="img-circle">
+	</div>	
+	<p>
+		<button type="submit" class="button cta-2">
+			Actualizar
+		</button>
+	</p>
+{{ form_end(form,{'render_rest':false}) }}

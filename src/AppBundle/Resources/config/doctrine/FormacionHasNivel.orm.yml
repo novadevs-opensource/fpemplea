@@ -1,0 +1,41 @@
+AppBundle\Entity\FormacionHasNivel:
+    type: entity
+    table: formacion_has_nivel
+    indexes:
+        fk_formacion_idx:
+            columns:
+                - idFormacion
+        fk_nivel_idx:
+            columns:
+                - idNivel
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idformacion:
+            targetEntity: Formacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idFormacion:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idnivel:
+            targetEntity: Nivelesformativos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idNivel:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

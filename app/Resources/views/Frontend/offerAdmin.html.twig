@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% for error in app.session.flashbag.get('offerAssignError') %}
+		<div class="alert alert-danger alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			{{ error }}
+		</div>
+	{% endfor %}
+	{% for success in app.session.flashbag.get('offerAssignSuccess') %}
+		<div class="alert alert-success alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			{{ success }}
+		</div>
+	{% endfor %}
+	<main class="offer-admin container-fluid">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h2 class="clearfix">
+					Gestionar oferta<a href="{{ path('profile', {'idUser': app.user.id}) }}#offers" class="button cta-3 pull-right">Volver a ofertas</a>
+					{# <a class="button cta-3 pull-right" href="{{ path('profile', {'idUser':app.user.id}) }}"> Volver</a> #}
+				</h2>				
+				<hr>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offer">
+				<div class="offer-info">
+					<h3 class="clearfix">
+						Título: {{offer.title}}
+					</h3>
+					<hr>
+					<p>
+						Inscritos: {{offer.inscribed}}
+					</p>
+					<p>
+						Vacantes: {{offer.vacancies}}
+					</p>
+					<p>
+						Descripción: {{offer.descripcion}}
+					</p>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offer-school">
+				<div class="row school-management">
+					<div class="associated-schools col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<h3>
+							Centros asociados
+						</h3>
+						<hr>
+						<div class="row">
+						{% for s in schools %}
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">{{s.school.nombre}}</div>
+						{% endfor %}
+						</div>
+					</div>
+					<div class="school-associate col-lg-6 col-md-6 col-sm-12 col-xs-12">
+						<h3>
+							Asociar centro
+						</h3>
+						<hr>
+						{#<a href="{{ path('offerAdminAssign', {'id':offer.id}) }}">Asignar oferta a centro</a>#}
+						{{ render(controller('AppBundle:Offer:offerAdminAssign',
+							{'id': offer.id}
+							))
+						}}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offer-applicants">
+				<h3>Aspirantes</h3>
+				<hr>
+			{% if applicants|length > 0%}
+				{% for a in applicants %}
+					<div class="offer-applicant {% if a.status == 0 %}rejected disabled{% endif %} row">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-5">
+							<img class="img-circle" src="../../uploads/profileavatar/{{ a.perfilestudianteid.imagen }}" alt="Avatar perfil candidato" style="width:100%;">
+						</div>
+						<div class="col-lg-8 col-md-7 col-sm-8 col-xs-12">
+							<div class="row">
+								{% if a.status == 0 %}
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<h3 class="color-red">Aspirante descartado en fecha: {{a.modified|date('Y/m/d')}}</h3>
+									</div>
+								{% else %}
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<h3 class="color-green text-uppercase">En curso</h3>
+									</div>
+								{% endif %}
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<p>Nombre: {{a.perfilestudianteid.nombre}} {{a.perfilestudianteid.apellidos}}</p>
+									<p>Teléfono: {{a.perfilestudianteid.telefonouno}}</p>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<p>Localidad: {{a.perfilestudianteid.localidad}}</p>
+									<p>eMail: {{a.perfilestudianteid.email}}</p>
+								</div>
+							</div>
+						</div>
+							{% if a.status == 0 %}
+						<div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 pull-left">
+								<a class="button cta-1" href="{{ path('publicProfile', {'idUser':a.perfilestudianteid.idusuario.id, 'idVisitor':app.user.id}) }}">Ver Perfil</a>
+							{% else %}
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-right text-right">	
+								<a class="button cta-1" href="{{ path('publicProfile', {'idUser':a.perfilestudianteid.idusuario.id, 'idVisitor':app.user.id}) }}">Ver Perfil</a>
+								
+								<a class="button cta-3" href="{{ path('deleteApplicant', {'id':a.id} ) }}">Rechazar</a>
+								<button type="button" class="button cta-2" data-toggle="modal" data-target="#mail-modal{{a.perfilestudianteid.idusuario.id}}">
+									Contactar
+								</button>
+							{% endif %}
+						</div>
+					</div>
+					<div id="mail-modal{{a.perfilestudianteid.idusuario.id}}" class="modal fade" role="dialog">
+				        <div class="modal-dialog">
+				            <!-- Modal content-->
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+				                    <h4 class="modal-title">Envía un mensaje a {{a.perfilestudianteid.nombre}}</h4>
+				                </div>
+				                <div class="modal-body">
+				                    {{ render(controller('AppBundle:Default:contactMail',
+				                    {'idUser': a.perfilestudianteid.idusuario.id, 'senderId': app.user.id }
+				                    ))
+				                    }}
+				                </div>
+				                <div class="modal-footer">
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				{% endfor %}
+			{% else %}
+				<p>
+					<i class="disabled">Nadie ha postulado a tu oferta por ahora</i>
+				</p>
+			{% endif %}
+			</div>
+		</div>
+	</main>
+	<hr>
+{% endblock %}

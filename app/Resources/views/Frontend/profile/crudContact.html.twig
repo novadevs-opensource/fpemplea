@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_row(form.subject, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(form.body, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(form._token) }}
+    <input type="submit" class="button cta-2" value="Enviar"/>
+{{ form_end(form, {'render_rest': false}) }}
+{{form_errors(form)}}

@@ -1,0 +1,61 @@
+AppBundle\Entity\Skill:
+    type: entity
+    table: skill
+    indexes:
+        fk_skill_category_idx:
+            columns:
+                - skill_category
+        fk_category:
+            columns:
+                - category
+        skill_ibfk_2:
+            columns:
+                - parent
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        skill:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        category:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category:
+                    referencedColumnName: id
+            orphanRemoval: false
+        skillCategory:
+            targetEntity: SkillCategory
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                skill_category:
+                    referencedColumnName: id
+            orphanRemoval: false
+        parent:
+            targetEntity: Skill
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

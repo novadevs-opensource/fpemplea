@@ -1,0 +1,50 @@
+AppBundle\Entity\Alert:
+    type: entity
+    table: alert
+    indexes:
+        fk_userid_idx:
+            columns:
+                - userid
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        alertsubject:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: alertSubject
+        alertbody:
+            type: string
+            nullable: true
+            length: 400
+            options:
+                fixed: false
+            column: alertBody
+        generationdate:
+            type: date
+            nullable: true
+            column: generationDate
+        status:
+            type: boolean
+            nullable: true
+    manyToOne:
+        userid:
+            targetEntity: Usuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

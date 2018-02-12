@@ -1,0 +1,51 @@
+AppBundle\Entity\PerfilestudianteHasOfertas:
+    type: entity
+    table: perfilestudiante_has_ofertas
+    indexes:
+        fk_perfilestudiante_has_ofertas_ofertas1_idx:
+            columns:
+                - ofertasId
+        fk_perfilestudiante_has_ofertas_perfilestudiante1_idx:
+            columns:
+                - perfilestudianteId
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ID
+            generator:
+                strategy: IDENTITY
+    fields:
+        status:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        modified:
+            type: datetime
+            nullable: true
+    manyToOne:
+        ofertasid:
+            targetEntity: Ofertas
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ofertasId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        perfilestudianteid:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilestudianteId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

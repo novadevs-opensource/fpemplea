@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FormacionHasCategorias" table="formacion_has_categorias">
+    <unique-constraints>
+      <unique-constraint name="UNIQ_36F5BA335792B277" columns="categorias_id"/>
+      <unique-constraint name="UNIQ_36F5BA33F0798A6E" columns="formacion_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="formacion" target-entity="Formacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="formacion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="categorias" target-entity="Categorias" fetch="LAZY">
+      <join-columns>
+        <join-column name="categorias_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

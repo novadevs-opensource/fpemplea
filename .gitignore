@@ -1,0 +1,20 @@
+#Connection settings
+app/config/parameters.yml
+
+#VAR DATA 
+var/logs/*
+var/sessions/*
+var/cache/*
+
+#MISC
+.DS_Store
+composer.phar
+
+#BACKUP DATA
+~database.sql
+
+#USER DATA
+centros.csv
+empresas.csv
+alumnos.csv
+web/uploads/profileavatar/*

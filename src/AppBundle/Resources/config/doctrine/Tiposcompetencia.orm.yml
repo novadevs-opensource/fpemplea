@@ -1,0 +1,20 @@
+AppBundle\Entity\Tiposcompetencia:
+    type: entity
+    table: tiposcompetencia
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

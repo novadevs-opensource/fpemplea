@@ -1,0 +1,129 @@
+{% if offers != null %}
+	<h2> Ofertas asignadas</h2>
+	<hr>
+	{% for offer in offers %}
+	<div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
+		<div class="info-block block-info {% if offer.offer.finished == 1 %} border-green disabled{% endif %}{% if offer.offer.active == false %}background-red{% endif %}">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<h3>
+					{{offer.offer.title}}
+				</h3>
+				<hr>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<p> Tipo de oferta:
+						{{ offer.offer.tipo.nombre }}
+				</p>
+				<p>
+					Sector: <span>{{ offer.offer.categoria}}</span>
+				</p>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<p>
+					Descripción:<span>{{ offer.offer.descripcion }}</span>
+				</p>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			{% if (offer.offer.validated == false) and (offer.offer.active == false) %}
+				<p class="color-red">
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+					La oferta ha sido rechazada y ha sido retirada
+				</p>
+				<a href="{{ path('ver_oferta', {'id':offer.offer.id}) }}">
+					<button class="button cta-1">
+					Ver oferta
+					</button>
+				</a>
+				<a href="{{ path('publicProfile', {'idUser':offer.offer.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}">
+					<button class="button cta-1">
+					Ver empresa
+					</button>
+				</a>
+				{% elseif (offer.offer.validated == false) and (offer.offer.active == true)  %}
+					<p class="color-yellow">
+						<i class="fa fa-clock-o" aria-hidden="true"></i>
+						Pendiente de validación.
+					</p>
+					{# <a href="{{ path('validate_offer', {'id':offer.offer.id, 'idUser':app.user.id}) }}"> #}
+					<a href="{{ path('validate_offer', {'id':offer.id, 'idUser':app.user.id}) }}#offers">
+						<button class="button cta-2">
+						Validar
+						</button>
+					</a>
+					<a href="{{ path('discard_offer', {'id':offer.offer.id, 'idUser':app.user.id}) }}#offers">
+						<button class="button cta-3">
+						Rechazar
+						</button>
+					</a>
+					<a href="{{ path('ver_oferta', {'id':offer.offer.id}) }}">
+						<button class="button cta-1">
+						Ver oferta
+						</button>
+					</a>
+					<a href="{{ path('publicProfile', {'idUser':offer.offer.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}">
+						<button class="button cta-1">
+						Ver empresa
+						</button>
+					</a>
+					{% elseif (offer.offer.validated == true) and (offer.offer.active == true)  %}
+					<p class="color-green">
+							<i class="fa fa-check" aria-hidden="true"></i>
+							La oferta es válida
+					</p>
+					<a href="{{ path('discard_offer', {'id':offer.offer.id, 'idUser':app.user.id}) }}#offers">
+						<button class="button cta-3">
+						Rechazar
+						</button>
+					</a>
+					<a href="{{ path('ver_oferta', {'id':offer.offer.id}) }}">
+						<button class="button cta-1">
+						Ver oferta
+						</button>
+					</a>
+					<a href="{{ path('publicProfile', {'idUser':offer.offer.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}">
+						<button class="button cta-1">
+						Ver empresa
+						</button>
+					</a>
+					{% elseif (offer.offer.finished == 1) and (offer.offer.active == 1) %}
+						<p class="color-green disabled">
+							<i class="fa fa-check" aria-hidden="true"></i>
+							La oferta es válida
+						</p>
+						<p class="color-green">
+							<i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+							La oferta ha finalizado
+						</p>
+					<a href="{{ path('ver_oferta', {'id':offer.offer.id}) }}">
+						<button class="button cta-1">
+						Ver oferta
+						</button>
+					</a>
+					<a href="{{ path('publicProfile', {'idUser':offer.offer.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}">
+						<button class="button cta-1">
+						Ver empresa
+						</button>
+					</a>
+				 
+					{% endif %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+{% else %}
+	<h2> Ofertas asignadas</h2>
+	<hr>
+	<div class="alert alert-info">
+		<div class="container-fluid">
+			<span class="alert-icon">
+				<i class="fa fa-info"></i>
+			</span>
+				 {#  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">
+								<i class="fa fa-close"></i>
+								</span>
+					</button> #}
+			<b>Info:</b> No tienes ninguna oferta asignada
+		</div>
+	</div>
+{% endif %}

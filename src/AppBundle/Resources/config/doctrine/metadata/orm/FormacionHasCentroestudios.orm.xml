@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="FormacionHasCentroestudios" table="formacion_has_centroestudios">
+    <indexes>
+      <index name="UNIQ_94AB1777F0798A6E" columns="formacion_id"/>
+      <index name="IDX_94AB1777A8803ABC" columns="centroestudios_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="UNIQ_94AB1777A8803ABC" columns="centroestudios_id,formacion_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="centroestudios" target-entity="Centroestudios" fetch="LAZY">
+      <join-columns>
+        <join-column name="centroestudios_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="formacion" target-entity="Formacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="formacion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

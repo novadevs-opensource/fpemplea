@@ -1,0 +1,48 @@
+AppBundle\Entity\PerfilempresaHasRrss:
+    type: entity
+    table: perfilempresa_has_rrss
+    uniqueConstraints:
+        UNIQ_6C1B2097B9D252CE:
+            columns:
+                - perfilempresa_id
+        UNIQ_6C1B2097FE893BF9:
+            columns:
+                - rrss_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        perfilempresa:
+            targetEntity: Perfilempresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilempresa_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        rrss:
+            targetEntity: Rrss
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rrss_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

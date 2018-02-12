@@ -1,0 +1,133 @@
+AppBundle\Entity\Perfilestudiante:
+    type: entity
+    table: perfilestudiante
+    repositoryClass: AppBundle\Repository\ExtendedSearchRepository
+    indexes:
+        fk_perfiltrabajador_usuarios1_idx:
+            columns:
+                - idUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dni:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: DNI
+        telefonouno:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        telefonodos:
+            type: string
+            nullable: true
+            length: 150
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        cp:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        localidad:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        pais:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        diponibilidad:
+            type: date
+            nullable: false
+        intereses:
+            type: text
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        cvpdf:
+            type: blob
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: cvPDF
+        cvtxt:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: cvTXT
+        fexibilidadgeografica:
+            type: boolean
+            nullable: true
+            column: fexibilidadGeografica
+        fechanacimiento:
+            type: date
+            nullable: false
+            column: fechaNacimiento
+        nombre:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+        apellidos:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        imagen:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+        public:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+    manyToOne:
+        idusuario:
+            targetEntity: Usuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

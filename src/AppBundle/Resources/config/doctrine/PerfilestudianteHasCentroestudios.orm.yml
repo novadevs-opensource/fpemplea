@@ -1,0 +1,42 @@
+AppBundle\Entity\PerfilestudianteHasCentroestudios:
+    type: entity
+    table: perfilestudiante_has_centroestudios
+    repositoryClass: AppBundle\Repository\ExtendedSearchRepository
+    indexes:
+        fk_perfilestudiante_has_centroestudios_idx:
+            columns:
+                - centroestudios_id
+        fp_centroestudios_has_perfilestudiante_idx:
+            columns:
+                - perfilestudiante_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        centroestudios:
+            targetEntity: Centroestudios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                centroestudios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        perfilestudiante:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilestudiante_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

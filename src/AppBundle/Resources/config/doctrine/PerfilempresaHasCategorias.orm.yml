@@ -1,0 +1,41 @@
+AppBundle\Entity\PerfilempresaHasCategorias:
+    type: entity
+    table: perfilempresa_has_categorias
+    uniqueConstraints:
+        UNIQ_D81643AF5792B277:
+            columns:
+                - categorias_id
+        UNIQ_D81643AFB9D252CE:
+            columns:
+                - perfilempresa_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        categorias:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categorias_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        perfilempresa:
+            targetEntity: Perfilempresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilempresa_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

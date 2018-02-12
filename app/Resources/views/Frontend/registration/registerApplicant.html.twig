@@ -1,0 +1,19 @@
+<!-- Resources/views/registration/registerApplicant.html.view -->
+<div id="alumnosregs" class="tab-pane fade in active">
+    {{ form_start(form, {'attr': {'id': 'applicant_reg'}}) }}
+    <div class="form-group">
+        <hr>
+        {{ form_row(form.role, { 'attr': {'class': 'hidden', 'value': 'ROLE_STUDENT'} }) }}
+        {{ form_row(form.nif, { 'attr': {'class': 'form-control'} }) }}
+        {# {{ form_row(form.username, { 'attr': {'class': 'form-control'} }) }} #}
+        {{ form_row(form.email, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.fechacreacion) }}
+        {{ form_row(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.termsAccepted, { 'id': 'applicant_terms_accepted', 'attr': {'class': ''} }) }}
+        {{ form_row(form._token) }}
+        <hr>
+        <input type="submit" class="button cta-2" value="Dar de alta "/>
+    </div>
+    {{ form_end(form,{'render_rest':false}) }}
+</div>

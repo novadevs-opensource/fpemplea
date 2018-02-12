@@ -1,0 +1,77 @@
+{% if ofertas != null %}
+    {% for oferta in ofertas %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 offer {% if oferta.finished == 1 or oferta.active == 0 %}disabled{% endif %}">      
+        <p>
+          {{ oferta.title}}
+        </p>
+        <p>
+         Inscritos: {{ oferta.inscribed }}
+        </p>
+
+      {% if oferta.active == false %}
+        <p class="color-red">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          Tu oferta ha sido rechazada y ha sido retirada
+        </p>
+      {% elseif oferta.finished == 1 %}
+        <p class="color-green">
+            <i class="fa fa-calendar-o" aria-hidden="true"></i> Has cerrado tu oferta
+        </p>
+      {% else %}
+        {% if oferta.validated == false %}
+        <p class="color-yellow">
+            <i class="fa fa-clock-o" aria-hidden="true"></i> Pendiente de validación.
+        </p>
+        <div>
+            <a class="button cta-1" href="{{ path('offer_admin', {'id':oferta.id}) }}">
+                Gestionar
+            </a>
+        </div>
+        <p class="disabled">
+            <em><i class="fa fa-info"></i> Recuerda que debes asignar tus ofertas a un centro o varios para que sean verificadas</em>
+        </p>
+        {% else %}
+        <p class="color-green">
+            <i class="fa fa-check" aria-hidden="true"></i> Tu oferta está publicada
+        </p>
+        <div>
+            {# <a class="button cta-1" href="{{ path('modificar_oferta', {'id':oferta.id}) }}">
+                Modificar
+            </a> #}
+            <a class="button cta-1" href="{{ path('offer_admin', {'id':oferta.id}) }}">
+                Gestionar
+            </a>
+            <button type="button" class="button cta-3" data-toggle="modal" data-target="#closeOfferModal{{oferta.id}}">
+                Cerrar
+            </button>
+        </div>
+        {% endif %}
+      {% endif %}
+    </div>
+    {# CLOSE OFFER MODAL #}
+    <div class="modal fade" tabindex="-1" role="dialog" id="closeOfferModal{{oferta.id}}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title">
+                        Cerrar oferta
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    {{ render(controller('AppBundle:Offer:closeOffer',
+                    { 'id': oferta.id }
+                    ))
+                    }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% else %}
+<p class="empty-offers">
+  Aún no has creado ninguna oferta.
+</p>
+{% endif %}

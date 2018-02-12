@@ -1,0 +1,41 @@
+AppBundle\Entity\FormacionHasCategorias:
+    type: entity
+    table: formacion_has_categorias
+    uniqueConstraints:
+        UNIQ_36F5BA335792B277:
+            columns:
+                - categorias_id
+        UNIQ_36F5BA33F0798A6E:
+            columns:
+                - formacion_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        categorias:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categorias_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        formacion:
+            targetEntity: Formacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formacion_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

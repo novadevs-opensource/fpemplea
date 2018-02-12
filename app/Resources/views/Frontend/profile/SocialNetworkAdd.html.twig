@@ -1,0 +1,13 @@
+<h3>
+	Redes sociales
+    <hr>
+</h3>
+{{ form_start(form, {'attr': {'id': 'social_network_add'}}) }}
+    {{ form_row(form.sn, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_row(form.snurl, { 'attr': {'class': 'form-control'} }) }}
+    <input type="hidden" name="userid" value="{{app.user.id}}">
+
+    <button type="submit" class="button cta-2" id="saveSocial">
+    	Guardar
+    </button>
+{{ form_end(form)}}

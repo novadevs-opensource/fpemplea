@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SchoolHasOffer" table="school_has_offer">
+    <indexes>
+      <index name="fk_offerSchool_idx" columns="offer"/>
+      <index name="fk_school_offer" columns="school"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="offer" target-entity="Ofertas" fetch="LAZY">
+      <join-columns>
+        <join-column name="offer" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="school" target-entity="Centroestudios" fetch="LAZY">
+      <join-columns>
+        <join-column name="school" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

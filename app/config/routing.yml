@@ -1,0 +1,128 @@
+### ROUTING INDEX
+# - Login
+# - Homepage
+# - Profile creation
+# - Profile
+# - Common profile actions
+# - Listing
+# - Search
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    
+## Index
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+## Login
+homepage_login:
+    path: /login
+    defaults: {_controller: AppBundle:Login:login}
+    
+login_check:
+    path: /login_check
+    defaults: {_controller: AppBundle:Login:login_check}
+
+logout:
+    path: /logout
+    defaults: {_controller: AppBundle:Login:logout}
+
+reset_pwd:
+    path: /reset-pwd/{idUser}
+    defaults: {_controller: AppBundle:Default:resetPwd}
+    
+## Homepage
+homepage:
+    path: /
+    defaults: {_controller: AppBundle:Default:index}
+
+homepage_logged:
+    path: /home/{idUser}
+    defaults: {_controller: AppBundle:Default:userIndex}
+
+## Profile creation
+crear_estudiante:
+    path: /como-empezar-candidato/{id}
+    defaults: { _controller: AppBundle:Applicant:crearEstudiante}
+
+avatar_edit:
+    path: /editar-avatar
+    defaults: { _controller: AppBundle:Default:avatarEdit }
+
+## Profile
+profile:
+    path: /mi-perfil/{idUser}
+    defaults: {_controller: AppBundle:Default:indexProfile}
+
+publicProfile:
+    path: /perfil/{idUser}/{idVisitor}
+    defaults: {_controller: AppBundle:Default:indexPublicProfile}
+
+## Common profile actions
+sn_add:
+    path: /agregar-red-social/{idUser}
+    defaults: {_controller: AppBundle:Default:snAdd}
+
+sn_list:
+    path: /redes-sociales/{idUser}
+    defaults: {_controller: AppBundle:Default:snList}
+
+sn_del:
+    path: /eliminar-red-social/{idUser}/{usRelationId}
+    defaults: {_controller: AppBundle:Default:snDelete}
+
+
+## Listing
+listado_empresas:
+    path:  /listado-empresas/{page}/{idUser}
+    defaults: { _controller: AppBundle:Company:listadoEmpresas, page:1, idUser:app.user.id }
+
+listado_estudiantes:
+    path:  /listado-estudiantes/{page}/{idUser}
+    defaults: { _controller: AppBundle:Applicant:listadoEstudiantes, page:1, idUser:app.user.id }
+
+listado_ofertas:
+    path:  /listado-ofertas/{page}
+    defaults: { _controller: AppBundle:Offer:listadoOfertas, page:1}
+
+## Search
+applicant_search:
+    path:  /buscar-estudiante/{type}{fieldOne}/{fieldTwo}
+    defaults: { _controller: AppBundle:Applicant:applicantSearch, fieldOne:id, fieldTwo:null, entity:'Perfilestudiante', type:'%'}
+
+offer_search:
+    path:  /buscar-oferta/{type}{fieldOne}/{fieldTwo}
+    defaults: { _controller: AppBundle:Offer:offerSearch, fieldOne:categoria, fieldTwo:null, entity:'Ofertas', type:'%'}
+
+
+
+#Here will be placed the other search routes
+#
+#
+#
+
+## Applicant Actions
+modificar_estudiante:
+    path: /modificar{id}
+    defaults: {_controller:AppBundle:Applicant:modificarEstudiante}
+    
+mis_ofertas_candidato:
+    path: /mis-ofertas/candidato/{idPerf}
+    defaults: {_controller:AppBundle:Applicant:listadoOfertasProfileEstudiante}
+  
+applicant_add_work:
+    path: /editar-experiencia-candidato{idApplicant}/{id}
+    defaults: {_controller:AppBundle:Applicant:applicantWorkAdd}
+    
+    
+    ## TODO: Translate an put these method to his natural place (ApplicantController)
+modificar_formacion:
+    path: /modificar-formacion{id}/{idF}
+    defaults: {_controller:AppBundle:Default:modificarFormacion}
+
+
+
+

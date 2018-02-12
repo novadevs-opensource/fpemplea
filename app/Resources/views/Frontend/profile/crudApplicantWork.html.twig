@@ -1,0 +1,26 @@
+{{ form_start(form, {'attr': {'id': 'applicant_work_add'}}) }}
+    <div class="form-group">
+        <div>
+            {{ form_row(form.company, { 'attr': {'class': 'form-control chosen-select'} }) }}
+            {{ form_row(form.otherCompany, { 'attr': {'class': 'form-control'} }) }}
+
+        </div>
+        <div>
+            {{ form_row(form.workexp, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div>
+            {{ form_row(form.start, { 'attr': {'class': 'form-control datepicker'} }) }}
+        </div>
+        <div>
+            {{ form_row(form.end, { 'attr': {'class': 'form-control datepicker'} }) }}
+        </div>
+        <div>
+            {{ form_row(form.position, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        {#{ form_row(form.perfilestudiante) }#}
+        {{ form_row(form._token) }}
+        <button type="submit" class="button cta-2">
+            Guardar
+        </button>
+    </div>
+{{ form_end(form, {'render_rest': false}) }}

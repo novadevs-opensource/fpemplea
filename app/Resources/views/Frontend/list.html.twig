@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea {% endblock %}
+{% block body %}
+
+{#    {{ dump(res) }} ->Res
+   {{ dump(paginator) }} -> Paginator
+   {{ dump(cur) }} -> cur
+   {{ dump(total) }} -> total
+   {{ dump(key) }} -> key
+   {{ dump(type) }} -> type<br> #}
+   
+{% for a in res %}
+    {{ a.nombre }}<br>
+    
+{% endfor %}
+
+{% endblock %}
+
+

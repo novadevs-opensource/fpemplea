@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea - Resultado de la búsqueda{% endblock %}
+{% block body %}
+    {% if app.request.get('_route') == 'applicant_search'%}
+        <section id="mod_b4">
+            <div class="contenedor container">
+                <div class="row">
+                    <form action="{{ url('applicant_search') }}" method="get">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left">
+                            <p>
+                                <label for="fieldOne">Tipo de búsqueda</label>
+                                <select name="fieldOne" id="filterBy" class="form-control">
+                                    <option value="" selected>Selecciona una opción</option>
+                                    <option value="Nombre">Nombre</option>
+                                    <option value="Localidad">Localidad</option>
+                                    <option value="email">Email</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="type">Término de búsqueda</label>
+                                <input type="text" name="type" id="typeFilter" value="" class="form-control">
+                            </p>
+                            <input type="submit" class="btn btn-primary" value="Buscar">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 right">
+                            <label for="type">Filtro por formación</label>
+                            <select name="fieldTwo" id="findEducation" class="form-control">
+                                <option value="" selected>Selecciona una opción</option>
+                                {% for e in education %}
+                                    <option value="{{e.id}}">{{e.titulo}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="row">
+                    {% if res|length > 0 %}
+                        <div class="searchable-container">
+                            <h2>{{res|length}} Aspirantes coinciden con tu busqueda</h2>
+                            {% for applicant in res %}
+                                <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
+                                    <div class="info-block block-info clearfix">
+                                        <div class="square-box pull-left">
+                                            <img src="{{ url('homepage') }}../uploads/profileavatar/{{ applicant.imagen }}" width="50">
+                                        </div>
+                                        <h5>{{ applicant.nombre }}</h5>
+                                        <p>Fecha de nacimiento: 09/08/1992</p>
+                                        <p>Perfil: Informatico</p>
+                                        <span><i class="fa fa-car fa-2x i-col" aria-hidden="true">   </i>Carnet de conducir</span>
+                                        <span><i class="fa fa-plane fa-2x i-col" aria-hidden="true">  </i> Disponibilidad para viajar</span>
+                                        <a href="{{ path('publicProfile', {'idUser':applicant.idusuario.id, 'idVisitor':app.user.id}) }}">
+                                            <button type="button" class="btn btn-info btn-lg alumnsoffer">Ver perfil completo</button>
+                                        </a>
+                                        <button type="button" class="btn btn-info btn-lg alumnsoffer" data-toggle="modal" data-target="#myModal">
+                                        Contactar
+                                        </button>
+                                        <!-- Modal -->
+                                        <div id="myModal" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Contactar</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <label for="asunto_contest">Asunto</label>
+                                                                <br>
+                                                                <input type="text" id="asunto_contest" class="form-control">
+                                                                
+                                                            </div>
+                                                            <div>
+                                                                <label for="mensaje_contest">Mensaje para el estudiante</label>
+                                                                <br>
+                                                                <textarea type="text" id="mensaje_contest" class="form-control"></textarea>
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal -->
+                                        <div id="myModal" class="modal fade" role="dialog">
+                                            <div class="modal-dialog">
+                                                Modal content
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Modal Header</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Hola
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="{{ path('profile', {'idUser':applicant.id}) }}">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <h2>No existen aspirantes registrados que se ajusten a tu filtro</h2>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% elseif app.request.get('_route') == 'offer_search'%}
+        <section class="offer-list">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2>Ofertas registradas</h2>
+                    <hr>
+                </div>
+                <form action="{{ url('offer_search') }}" method="get" class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left">
+                        <p>
+                            <label for="type">Filtro por categorías</label>
+                            <select name="type" id="findCategory" class="form-control">
+                                <option value="" selected>Selecciona una opción</option>
+                                {% for e in categories %}
+                                    <option value="{{e.id}}">{{e.nombre}}</option>
+                                {% endfor %}
+                            </select>
+                        </p>
+                        <p>
+                                <button type="submit" class="button cta-2" value="Filtrar">
+                                    <span>buscar</span>
+                                    <i class="fa fa-search"></i>
+                                </button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <h2>{# {{res|length}} #} Ofertas que coinciden con tu busqueda</h2>
+            {% if res|length > 0 %}
+                {% for oferta in res if (oferta.validated == true) and (oferta.active == true) %}
+                    <article class="row">
+                        <hr>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 item">
+                            <h3>
+                                {{oferta.title}}
+                            </h3>
+                            <p>
+                                {% if oferta.idempresa %}
+                                    Empresa: {{oferta.idempresa}}
+                                {% endif %}
+                            </p>
+                            <p>
+                                Sector: <span>{{oferta.categoria.nombre}}</span>
+                            </p>
+                            <p>
+                                {% if oferta.tipo.id == 1 %}
+                                    <span>Prácticas</span>
+                                {% elseif oferta.tipo.id == 0 %}
+                                    <span>Empleo</span>
+                                {% endif %}
+                            </p>
+                            <p>
+                                {{ oferta.descripcion }}
+                            </p>
+                            {% if is_granted('ROLE_STUDENT') %}
+                                <a href="{{ path('ver_mi_oferta', {'id':oferta.id, 'idUser':app.user.id}) }}">
+                                    <button type="button" class="button cta-1"> Ver oferta</button>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('ver_oferta', {'id':oferta.id}) }}">
+                                    <button type="button" class="button cta-1"> Ver oferta</button>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </article>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <h2>0 Ofertas coinciden con tu criterio de búsqueda</h2>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}

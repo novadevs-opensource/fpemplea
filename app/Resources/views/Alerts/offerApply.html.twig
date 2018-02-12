@@ -1,0 +1,8 @@
+{# app/Resources/views/Alerts/offerApply.html.twig #}
+{% if alert is defined and alert.userid.securityToken == app.user.securityToken %}
+<h3>Hola {{ company.nombreempresa }},</h3>
+<p>{{ applicant.nombre }} ha aplicado a tu oferta {{offer.title}}<p>
+<p>Para visitar su perfil, haz click en el siguiente enlace: <a href="{{ path('publicProfile', {'idUser':applicant.idusuario.id, 'idVisitor':company.idusuario.id}) }}">Enlace</a>
+
+<p><a href="{{ path('profile', {'idUser':company.idusuario.id}) }}#alerts">Volver</a><p>
+{% endif %}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="PerfilestudianteHasCompetencias" table="perfilestudiante_has_competencias">
+    <indexes>
+      <index name="fk_estudiante_idx" columns="applicant"/>
+      <index name="fk_competencia_idx" columns="skill"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="applicant" target-entity="Perfilestudiante" fetch="LAZY">
+      <join-columns>
+        <join-column name="applicant" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="skill" target-entity="Competencias" fetch="LAZY">
+      <join-columns>
+        <join-column name="skill" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

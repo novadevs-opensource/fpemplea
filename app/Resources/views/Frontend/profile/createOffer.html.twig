@@ -1,0 +1,26 @@
+<div class="row">
+    {{ form_start(form, {'attr': {'id': 'create_offer'}}) }}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3>
+            Crear oferta
+        </h3>
+        <hr>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_row(form.title, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.tipo, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.categoria, { 'attr': {'class': 'form-control chosen-select'} }) }}
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_row(form.fechainicio, { 'attr': {'class': 'form-control datepicker'} }) }}
+        {{ form_row(form.fechafin, { 'attr': {'class': 'form-control datepicker'} }) }}
+        {{ form_row(form.vacancies, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        {{ form_row(form.descripcion, { 'attr': {'class': 'form-control'} }) }}
+        {#{ form_row(form.idempresa, { 'attr': {'class': ''} }) }#}
+        {{ form_row(form._token) }}
+        <input type="submit" class="button cta-2" value="Crear"/>
+        <a href="{{ path('homepage') }}" class="button cta-3">Cancelar</a>
+    {{ form_end(form, {'render_rest': false}) }}
+</div>

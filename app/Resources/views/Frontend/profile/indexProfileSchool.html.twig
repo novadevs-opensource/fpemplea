@@ -1,0 +1,368 @@
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea - Mi perfil {% endblock %}
+{% block body %}
+    {% if is_granted('ROLE_SCHOOL') %}
+        {% for error in app.session.flashbag.get('offerAssignError') %}
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ error }}
+            </div>
+        {% endfor %}
+        {% for success in app.session.flashbag.get('offerAssignSuccess') %}
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ success }}
+            </div>
+        {% endfor %}
+        
+        {% for flashMessage in app.session.flashbag.get('pwdChanged') %}
+          <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+          </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('profileEditSucc') %}
+          <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+          </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('profileEditErr') %}
+          <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ flashMessage }}
+          </div>
+        {% endfor %}
+        <section id="school" class="row">
+            <button id="profile-menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+            <aside class="col-lg-3 col-md-4 col-sm-5 col-xs-10">
+                <ul class="menu-alumn">
+                    <li class="image-user">
+                        <a href="" data-toggle="modal" data-target="#change-img">
+                            {% if centro.imagen is not null %}
+                                <img class="img-circle" src="../../uploads/profileavatar/{{ centro.imagen }}" alt="Avatar perfil candidato">
+                            {% else %}
+                                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png" alt="Avatar perfil candidato"> #}
+                                <img class="img-circle" src="../../assets/img/png/default-user.png" alt="Avatar perfil candidato">
+                            {% endif %}
+                        </a>
+                        <h3>
+                            <span>
+                                {{centro.nombre}}
+                            </span>
+                        </h3>
+                    </li>
+                    <hr>
+                    <li class="menu-user">
+                        <a data-toggle="tab" data-placement="right" title="Inicio" href="#home">
+                            <span class="glyphicon glyphicon-home icon-menu" aria-hidden="true">
+                            </span>
+                            <span class="txt">
+                                Inicio
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-user">
+                        <a data-toggle="tab" data-placement="right" title="Modificar" href="#edit">
+                            <span class="glyphicon glyphicon-pencil icon-menu" aria-hidden="true">
+                            </span>
+                            <span class="txt">
+                                Modificar
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-user">
+                        <a data-toggle="tab" data-placement="right" title="Alertas" href="#alerts">
+                            <span class="glyphicon glyphicon-envelope icon-menu" aria-hidden="true">
+                            </span>
+                            <span class="txt">
+                                Alertas <span class="badge">{{notRead}}</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-user">
+                        <a data-toggle="tab" data-placement="right" title="Alumnos del centro" href="#applicants">
+                            <span class="glyphicon glyphicon-user icon-menu" aria-hidden="true">
+                            </span>
+                            <span class="txt">
+                                Mis alumnos
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-user">
+                        <a data-toggle="tab" data-placement="right" title="Alumnos del centro" href="#offers">
+                            <span class="glyphicon glyphicon-eye-open icon-menu" aria-hidden="true">
+                            </span>
+                            <span class="txt">
+                                Ver ofertas asignadas
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <div class="tab-content">
+                    
+                    <div id="home" class="tab-pane fade in active clearfix">
+                        <div class="notifications">
+                            <p class="alerts">
+                                Tienes ({% if notRead|length > 0 %}{{notRead}}{% else %} 0 {% endif %}) alertas nuevas.
+                            </p>
+                        </div>
+                        {# <h1>Inicio</h1> #}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+                            <h2>
+                                Inicio
+                            </h2>
+                            <hr>
+                        </div>
+                        <section class="info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h3>
+                                        Datos del centro
+                                    </h3>
+                                    <hr>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    
+                                    <p>
+                                        Nombre centro:
+                                        <span>{{ centro.nombre }}</span>
+                                    </p>
+                                    <p>
+                                        CIF/NIF:
+                                        <span>{{ centro.cif }}</span>
+                                    </p>
+                                    <p>
+                                        Dirección:
+                                        <span>{{ centro.direccion }}</span>
+                                    </p>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <p>
+                                        Correo electrónico:
+                                        <span>{{ centro.email }}</span>
+                                    </p>
+                                    <p>
+                                        Teléfono:
+                                        <span>{{ centro.telefono }}</span>
+                                    </p>
+                                    <p>
+                                        Teléfono fijo:
+                                        <span>{{ centro.telefono }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="courses col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h3>
+                                        Cursos del centro
+                                    </h3>
+                                    <hr>
+                                    <p>
+                                        {{ render(controller('AppBundle:Education:schoolEducationList',
+                                        {'idSchool': centro.id}
+                                        ))
+                                        }}
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div id="edit" class="tab-pane fade clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Editar perfil</h2>
+                            <hr>
+                        </div>
+                        <section class="info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row">
+                                {{ render(controller('AppBundle:School:schoolModify',
+                                        {'id': app.user.id}
+                                        ))
+                                }}
+                            </div>
+                        </section>
+                        <hr>
+                        <section class="info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row">
+                                {{ render(controller('AppBundle:Education:educationAdd',
+                                {'idSchool': centro.id, 'id': app.user.id}
+                                ))
+                                }}
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <h3>Lista de cursos del centro</h3>
+                                    <hr>
+                                    <ul class="schoolEducationList">
+                                        {{ render(controller('AppBundle:Education:schoolEducationList',
+                                        {'idSchool': centro.id}
+                                        ))
+                                        }}
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <hr>
+                        <section class="info col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    {{ render(controller('AppBundle:Default:resetPwd',
+                                        { 'idUser': app.user.id }
+                                        ))
+                                    }}
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div id="applicants" class="tab-pane fade clearfix">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <h2>Alumnos del centro</h2>
+                                <hr>
+                                {% for a in applicantSchool %}
+                                <div class="row school-applicants text-center">
+                                    <div class="col-lg-4 col-md-3 col-sm-7 col-xs-6">
+                                        <i class="fa fa-user-o"></i>
+                                        <span class="nameal">{{a.perfilestudiante.nombre}} {{a.perfilestudiante.apellidos}}</span>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6 hidden-sm hidden-xs">
+                                        <i class="fa fa-book"></i>
+                                        <span class="formal">{{a.formacion.titulo}}</span>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6">
+                                        <a class="button cta-1" href="{{ path('publicProfile', {'idUser':a.perfilestudiante.idusuario.id, 'idVisitor':app.user.id} ) }}">Ver Perfil</a>
+                                    </div>
+                                </div>
+                                <hr>
+                                    
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="alerts" class="tab-pane fade clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h2>Alertas</h2>
+                            <hr>
+                            <div class="alert alert-info">
+                                <div class="container-fluid">
+                                      <span class="alert-icon">
+                                        <i class="fa fa-info"></i>
+                                      </span>
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">
+                                            <i class="fa fa-close"></i>
+                                            </span>
+                                      </button>
+                                      <b>Info:</b> Recibiras los mensajes en tu correo electronico.
+                                </div>
+                            </div>
+                            
+                            {% if alerts|length == 0 %}
+                            <div class="alert alert-info">
+                                <div class="container-fluid">
+                                      <span class="alert-icon">
+                                        <i class="fa fa-info"></i>
+                                      </span>
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">
+                                            <i class="fa fa-close"></i>
+                                            </span>
+                                      </button>
+                                      <b>Info:</b> No tienes alertas
+                                </div>
+                            </div>
+                            {% else %}
+                                <hr>
+                                {% for a in alerts if a.status == 1 %}
+                                <p class="disabled">
+                                    <a href="{{ path('check_alert', {'idAlert':a.id}) }}">
+                                        {{a.alertsubject}}
+                                    </a>
+                                    <span class="alert-date">
+                                        <i class="fa fa-calendar-o"></i>
+                                        {{a.generationdate|date('Y-m-d')}} 
+                                    </span>
+                                    Leído <i class="fa fa-check color-green"></i>
+                                </p>
+                                <hr>
+                                {% endfor %}
+                                {% if notRead == 0 %}
+                                <div class="alert alert-info">
+                                    <div class="container-fluid">
+                                          <span class="alert-icon">
+                                            <i class="fa fa-info"></i>
+                                          </span>
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                <i class="fa fa-close"></i>
+                                                </span>
+                                          </button>
+                                          <b>Info:</b> Has revisado todas tus alertas
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="alert alert-info">
+                                    <div class="container-fluid">
+                                          <span class="alert-icon">
+                                            <i class="fa fa-info"></i>
+                                          </span>
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                <i class="fa fa-close"></i>
+                                                </span>
+                                          </button>
+                                          <b>Info:</b> {{notRead}} Alertas sin leer
+                                    </div>
+                                </div>
+                            
+                                    {% for a in alerts if a.status == 0 %}
+                                    <p>
+                                        <a href="{{ path('check_alert', {'idAlert':a.id}) }}">
+                                            {{a.alertsubject}}
+                                        </a>
+                                        - {{a.generationdate|date('Y-m-d')}}
+                                    </p>
+                                    <hr>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div id="offers" class="tab-pane fade clearfix">
+                        {{ render(controller(
+                        'AppBundle:Offer:schoolOfferList', { 'idProf': centro.id }
+                        ))
+                        }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {# Modal cambio de imagen #}
+      <div id="change-img" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Selecciona una imagen para tu perfil</h4>
+            </div>
+            <div class="modal-body">
+     
+              {{ render( controller( 'AppBundle:Default:AvatarEdit' ) ) }}
+
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

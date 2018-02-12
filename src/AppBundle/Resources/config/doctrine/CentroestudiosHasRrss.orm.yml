@@ -1,0 +1,48 @@
+AppBundle\Entity\CentroestudiosHasRrss:
+    type: entity
+    table: centroestudios_has_rrss
+    uniqueConstraints:
+        UNIQ_FF53BEBFA8803ABC:
+            columns:
+                - centroestudios_id
+        UNIQ_FF53BEBFFE893BF9:
+            columns:
+                - rrss_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        centroestudios:
+            targetEntity: Centroestudios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                centroestudios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        rrss:
+            targetEntity: Rrss
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rrss_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

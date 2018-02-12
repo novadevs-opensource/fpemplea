@@ -1,0 +1,20 @@
+{# app/Resources/views/default/new.html.twig #}
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% if errorPass is defined and errorPass %}
+		{% for flashMessage in app.session.flashbag.get('error') %}
+	      <div class="alert alert-danger alert-dismissable">
+	        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	        {{ errorPass }}
+	      </div>
+	    {% endfor %}
+	    <h2 class="text-center">
+	    	<p><strong>{{ errorPass }}</strong>. Ponte en contacto con el administrador.</p>
+	    </h2>
+	{% else %}
+	<h2 class="text-center">
+		<p>Se ha mandado un mensaje de correo electrónico a </p>
+		<p><strong>{{email}}</strong> con tus datos de acceso.</p>
+	</h2>
+	{% endif %}
+{% endblock %}

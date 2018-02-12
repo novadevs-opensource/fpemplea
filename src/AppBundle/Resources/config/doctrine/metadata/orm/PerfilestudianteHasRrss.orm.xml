@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="PerfilestudianteHasRrss" table="perfilestudiante_has_rrss">
+    <unique-constraints>
+      <unique-constraint name="UNIQ_DE37D7A45B5FA51B" columns="perfilestudianteId"/>
+      <unique-constraint name="UNIQ_DE37D7A4306336B0" columns="rrssId"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="valor" type="string" column="valor" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="rrssid" target-entity="Rrss" fetch="LAZY">
+      <join-columns>
+        <join-column name="rrssId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="perfilestudianteid" target-entity="Perfilestudiante" fetch="LAZY">
+      <join-columns>
+        <join-column name="perfilestudianteId" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

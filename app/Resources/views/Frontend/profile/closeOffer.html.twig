@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+<div class="form-group">
+	{{ form_row(form.closureReason, { 'attr': {'class': 'form-control'} }) }}
+	{{ form_row(form.closureExplanation, { 'attr': {'class': 'form-control'} }) }}
+	{{ form_row(form.engagement, { 'attr': {'class': 'form-control'} }) }}
+	{{ form_row(form._token) }}
+	<button type="submit" class="button cta-1">
+		Cerrar oferta
+	</button>
+	<button type="button" class="button cta-2" data-dismiss="modal" aria-label="Close">
+		Cancelar cierre
+	</button>
+</div>
+{{ form_end(form, {'render_rest': false}) }}

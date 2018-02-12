@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 {# col-lg-offset-3 col-md-offset-3 #}">
+{{ form_start(form, {'attr': {'id': 'applicant_education_add'}}) }}
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {{ form_row(form.formacion, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {{ form_row(form.school, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    {{ form_row(form.start, { 'attr': {'class': 'form-control datepicker'} }) }}
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    {{ form_row(form.end, { 'attr': {'class': 'form-control datepicker'} }) }}
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {{ form_row(form.finished, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                {#{ form_row(form.perfilestudiante) }#}
+                {{ form_row(form._token) }}
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr>
+                    <button type="submit" class="button cta-2">
+                        Guardar
+                    </button>
+                    <hr>
+                </div>
+            </div>
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+</div>

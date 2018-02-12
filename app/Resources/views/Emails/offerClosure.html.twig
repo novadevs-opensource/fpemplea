@@ -1,0 +1,21 @@
+{# app/Resources/views/Emails/offerClosure.html.twig #}
+<h3>
+	Hola {{ school.nombre }},
+</h3>
+<p>
+	La empresa <a href="{{ path('publicProfile', {'idUser':company.idusuario.id, 'idVisitor':school.idusuario.id}) }}">{{ company.nombreempresa }}</a> ha cerrado su oferta <a href="{{ path('ver_oferta', {'id':offer.id}) }}">{{offer.title}}</a> el día {{ offer.fechaborrado|date('Y-m-d') }} {% if offer.engagement == true %} con contratación {% else %} sin contratación {% endif %}
+<p>
+<p>
+	<ul>
+		<li>
+			Motivo: {{ offer.closurereason }}
+		</li>
+		<li>
+			Comentario: {{ offer.closureexplanation }}			
+		</li>
+	</ul>
+</p>
+	<a href="{{ path('profile', {'idUser':school.idusuario.id}) }}">
+		Volver a FP Emplea
+	</a>
+<p>

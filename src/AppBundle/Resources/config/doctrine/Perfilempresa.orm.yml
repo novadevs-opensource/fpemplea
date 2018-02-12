@@ -1,0 +1,148 @@
+AppBundle\Entity\Perfilempresa:
+    type: entity
+    table: perfilempresa
+    repositoryClass: AppBundle\Repository\ExtendedSearchRepository
+    indexes:
+        fk_perfilempresa_usuarios_idx:
+            columns:
+                - idUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombreempresa:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+            column: nombreEmpresa
+        cif:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        fechacreacion:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+            column: fechaCreacion
+        sector:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+        trabajadores:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        telefono:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        cp:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        localidad:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        pais:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        emailcontacto:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: eMailContacto
+        personacontacto:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+            column: personaContacto
+        horariocontacto:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: horarioContacto
+        fechaborrado:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaBorrado
+        activo:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+        fechamodificacion:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaModificacion
+        web:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+        imagen:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+    manyToOne:
+        idusuario:
+            targetEntity: Usuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

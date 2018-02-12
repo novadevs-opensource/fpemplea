@@ -1,0 +1,20 @@
+AppBundle\Entity\Nivelesformativos:
+    type: entity
+    table: nivelesformativos
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
