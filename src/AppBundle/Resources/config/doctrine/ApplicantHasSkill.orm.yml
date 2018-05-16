@@ -8,6 +8,11 @@ AppBundle\Entity\ApplicantHasSkill:
         fk_skill_idx:
             columns:
                 - skill
+    uniqueConstraints:
+        applicant_skill:
+            columns:
+                - applicant
+                - skill
     id:
         id:
             type: integer

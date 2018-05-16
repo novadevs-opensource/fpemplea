@@ -5,13 +5,14 @@ applicant.name: Tu nombre debe tener mas de 3 letras y menos de 21.
 applicant.lastname: Tu apellido debe tener mas de 3 letras y menos de 21.
 applicant.nif: Tu NIF/NIE parece ser incorrecto.
 applicant.zipcode: Tu código postal parece incorrecto, necesita tener 5 números.
-applicant.hobbies: Tus aficiones necesitan tener una longitud entre 250 y 500 letras.
+applicant.hobbies: Tus intereses necesitan tener una longitud mínima de 10 letras.
 applicant.cvtxt: Tu CV en texto plano necesita tener una longitud mínima de 1 letras y máxima de 1500.
 applicant.birthdate: Debes ser mayor de edad.
 applicant.mainphone: Tu teléfono fijo parece incorrecto.
 applicant.mobilephone: Tu número de teléfoino móvil parece incorrecto
 applicant.email: La dirección de email que has introducido no es válida.
 applicant.pais: Tu país parece erroneo. Debe contener entre 3 y 21 letras.
+applicant.availability: Tu disponibilidad no puede ser anterior al día de hoy.
 
 # School validation messages
 school.name: El nombre del centro debe tener mas de 3 letras y menos de 40.

@@ -83,7 +83,7 @@ class PerfilestudianteType extends AbstractType
             ))
             ->add('fexibilidadgeografica', CheckboxType::class, array(
                 'required' => false,
-                'label' => 'Movilidad Si/No',
+                'label' => 'Movilidad',
             ));
             //->add('idusuario');
     }

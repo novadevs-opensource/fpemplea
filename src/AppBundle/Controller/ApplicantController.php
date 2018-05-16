@@ -292,10 +292,11 @@ class ApplicantController extends Controller{
                 $applicant,
                 $offer
             );
-        $success = "Has postulado a la oferta con éxito";
-        $this->get('session')->getFlashBag()->add("offerValidatedSuccess",$success);
+
+        $message = "Has postulado correctamente a la oferta";
+        $this->get('session')->getFlashBag()->add("register",$message);
         // return $this->render('Frontend/indexFront.html.twig');
-        return $this -> redirectToRoute('listado_ofertas');
+        return $this -> redirectToRoute('ver_mi_oferta', array('id'=>$offer->getId(),'idUser'=>$idUser));
     }
     
 //    TODO - COLOCAR EN EL LUGAR ADECUADO

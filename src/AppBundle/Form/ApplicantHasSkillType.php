@@ -61,6 +61,7 @@ class ApplicantHasSkillType extends AbstractType
             // ));
     }
     
+    
     /**
      * {@inheritdoc}
      */

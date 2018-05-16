@@ -468,7 +468,7 @@ class DefaultController extends Controller
         $em -> flush();
         //Sending email
         $mailNotification = $this->get('MailNotificationGenerator');
-        $mailNotification->registerMailAlertAction($user->getPlainPassword(), $user->getEmail());
+        $mailNotification->registerMailAlertAction($user->getPlainPassword(), $user->getEmail(), $user->getNif());
 
         // return $this -> render('Frontend/forgot.html.twig', array(
         //         'email' => $email
@@ -662,10 +662,10 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/contactar/{idUser}/{senderId}", name="contact_mail")
+     * @Route("/contactar/{idUser}/{senderId}/{senderMail}", name="contact_mail")
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT') or has_role('ROLE_COMPANY') or has_role('ROLE_SCHOOL')")
      */
-    public function ContactMailAction(Request $request, $idUser, $senderId)
+    public function ContactMailAction(Request $request, $idUser, $senderId, $senderMail)
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -703,7 +703,7 @@ class DefaultController extends Controller
         }
 
         $form = $this -> createForm(MessageType::class, $message, array(
-            'action' => $this->generateUrl('contact_mail', array('idUser' => $idUser, 'senderId' => $senderId))
+            'action' => $this->generateUrl('contact_mail', array('idUser' => $idUser, 'senderId' => $user->getEmail(), 'senderMail' => $senderMail))
         ));
 
         $form -> handleRequest($request);
@@ -716,7 +716,7 @@ class DefaultController extends Controller
                 $mail->setCreatedat(new \DateTime($date));
 
                 $ContactMail = $this->get('ContactMailGenerator');
-                $ContactMail->ContactMailAction($userMail, $user, $mail->getBody(), $mail->getSubject());
+                $ContactMail->ContactMailAction($userMail, $user, $mail->getBody(), $mail->getSubject(), $senderMail);
 
                 $em -> persist($mail);
                 $em -> flush();
@@ -822,6 +822,13 @@ class DefaultController extends Controller
 
         return $this->render('Frontend/profile/crudFormacion.html.twig', array(
             'form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/terminos", name="terms")
+     */
+    public function termsAction() {
+        return $this -> render('Frontend/terms.html.twig', array());
     }
 }
 

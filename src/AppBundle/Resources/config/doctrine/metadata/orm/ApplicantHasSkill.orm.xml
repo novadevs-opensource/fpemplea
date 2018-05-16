@@ -5,6 +5,9 @@
       <index name="fk_applicant_idx" columns="applicant"/>
       <index name="fk_skill_idx" columns="skill"/>
     </indexes>
+    <unique-constraints>
+      <unique-constraint name="applicant_skill" columns="applicant,skill"/>
+    </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>

@@ -25,16 +25,6 @@ AppBundle\Entity\PerfilestudianteHasRrss:
             options:
                 fixed: false
     manyToOne:
-        perfilestudianteid:
-            targetEntity: Perfilestudiante
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                perfilestudianteId:
-                    referencedColumnName: id
-            orphanRemoval: false
         rrssid:
             targetEntity: Rrss
             cascade: {  }
@@ -43,6 +33,16 @@ AppBundle\Entity\PerfilestudianteHasRrss:
             inversedBy: null
             joinColumns:
                 rrssId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        perfilestudianteid:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilestudianteId:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

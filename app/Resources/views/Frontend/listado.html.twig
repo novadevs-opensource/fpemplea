@@ -31,7 +31,7 @@
                                 <a href="{{ path('publicProfile', {'idUser':empresa.idusuario.id, 'idVisitor':app.user.id}) }}">
                                     <button type="button" class="button cta-1">Ver perfil completo</button>
                                 </a>
-                                <button type="button" class="button cta-2" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="button cta-2" data-toggle="modal" data-target="#companyContactModal{{empresa.id}}">
                                 Contactar
                                 </button>
                             </div>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
+                    <div id="companyContactModal{{empresa.id}}" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->
                             <div class="modal-content">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="modal-body">
                                     {{ render(controller('AppBundle:Default:contactMail',
-                                                {'idUser': empresa.idusuario.id, 'senderId': app.user.id }
+                                                {'idUser': empresa.idusuario.id, 'senderId': app.user.id, 'senderMail': app.user.email }
                                             ))
                                     }}
                                 </div>
@@ -177,7 +177,7 @@
                                     <a href="{{ path('publicProfile', {'idUser':estudiante.idusuario.id, 'idVisitor':app.user.id}) }}">
                                         <button type="button" class="button cta-1">Visitar perfil</button>
                                     </a>
-                                    <button type="button" class="button cta-2" data-toggle="modal" data-target="#myModal">
+                                    <button type="button" class="button cta-2" data-toggle="modal" data-target="#applicantModal{{estudiante.idusuario.id}}">
                                     Contactar
                                     </button>
                                 </div>
@@ -192,7 +192,7 @@
                                 {% endif %}
                             </div>
                             <!-- Modal -->
-                            <div id="myModal" class="modal fade" role="dialog">
+                            <div id="applicantModal{{estudiante.idusuario.id}}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -201,8 +201,9 @@
                                             <h4 class="modal-title">Envía un mensaje a {{estudiante.nombre}}</h4>
                                         </div>
                                         <div class="modal-body">
+                                        {{app.user.email}}
                                             {{ render(controller('AppBundle:Default:contactMail',
-                                            {'idUser': estudiante.idusuario.id, 'senderId': app.user.id }
+                                            {'idUser': estudiante.idusuario.id, 'senderId': app.user.id, 'senderMail': app.user.email }
                                             ))
                                             }}
                                         </div>
@@ -212,7 +213,7 @@
                                 </div>
                             </div>
                             <!-- Modal -->
-                            <div id="myModal" class="modal fade" role="dialog">
+                            <div id="" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     Modal content
                                     <div class="modal-content">
@@ -290,7 +291,7 @@
                     </div>
                 </form>
             </div>
-            {% for oferta in res  if (oferta.validated == true) and (oferta.active == true) %}
+            {% for oferta in res  if (oferta.validated == true) and (oferta.active == true) and (oferta.finished == false) %}
             <article class="row">
                 <hr>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 item">

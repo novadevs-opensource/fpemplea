@@ -17,6 +17,7 @@ class Centroestudios
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^[A-Za-z\.]([\.a-zA-ZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ\. ]){3,40}$)",
      *      message="school.name"
@@ -26,6 +27,7 @@ class Centroestudios
     private $nombre;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^([ABCDEFGHJKLMNPQRSUVWabcdefghijklmnpqrsuvw])(\d{7})([0-9A-J-a-j])$)",    
      *      message="school.cif"
@@ -40,6 +42,7 @@ class Centroestudios
     private $tipo;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^(\+34|0034|34)?[6|7|9][0-9]{8}$)",
      *      message="school.phone"
@@ -49,6 +52,7 @@ class Centroestudios
     private $telefono;
 
     /**
+     * @Assert\NotBlank()
      * @var string
      */
     private $direccion;
@@ -63,16 +67,19 @@ class Centroestudios
     private $cp;
 
     /**
+     * @Assert\Type("string")
      * @var string
      */
     private $localidad;
 
     /**
+     * @Assert\Type("string")
      * @var string
      */
     private $pais;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Email(
      *     message = "school.email",
      *     checkMX = true
@@ -107,6 +114,7 @@ class Centroestudios
     private $subfamiliaprof;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$)",  
      *      message="school.web"

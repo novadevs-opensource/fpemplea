@@ -76,17 +76,13 @@ class Perfilestudiante
 
     /**
      * @Assert\NotBlank()
-     * @Assert\Range(
-     *      min="now",
-     *      minMessage="Tu disponibilidad no puede ser anterior al día de hoy",
-     * )
      * @var \Date
      */
     private $diponibilidad;
 
     /**
      * @Assert\Regex(
-     *      pattern="(^[a-zA-Z0-9áéíóúÁÉÍÓÚ ]{1,500}$)",
+     *      pattern="([^.]{1,})",
      *      message="applicant.hobbies"
      * )
      * @var string
@@ -100,7 +96,7 @@ class Perfilestudiante
 
     /**
      * @Assert\Regex(
-     *      pattern="(^[a-zA-Z0-9áéíóúÁÉÍÓÚ ]{1,1500}$)",
+     *      pattern="([^.]{1,})",
      *      message="applicant.cvtxt"
      * )
      * @var string

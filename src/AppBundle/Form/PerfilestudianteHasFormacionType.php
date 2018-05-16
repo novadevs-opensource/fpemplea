@@ -27,7 +27,7 @@ class PerfilestudianteHasFormacionType extends AbstractType
     {
         $builder
             ->add('finished', CheckboxType::class, array(
-                'label' => 'Finalizado Si/No',
+                'label' => 'Finalizado',
                 'required' => false
             ))
             ->add('start', DateType::class, array(

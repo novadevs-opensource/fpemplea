@@ -19,7 +19,7 @@ class Centroestudios
     /**
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *      pattern="(^[A-Za-z\.]([\.a-zA-ZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ\. ]){3,40}$)",
+     *      pattern="([^.]{3,40})",
      *      message="school.name"
      * )
      * @var string
@@ -29,7 +29,7 @@ class Centroestudios
     /**
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *      pattern="(^([ABCDEFGHJKLMNPQRSUVWabcdefghijklmnpqrsuvw])(\d{7})([0-9A-J-a-j])$)",    
+     *      pattern="(^(X(-|\.)?0?\d{7}(-|\.)?[A-Z]|[A-Z](-|\.)?\d{7}(-|\.)?[0-9A-Z]|\d{8}(-|\.)?[A-Z])$)",    
      *      message="school.cif"
      * )
      * @var string
@@ -74,6 +74,10 @@ class Centroestudios
 
     /**
      * @Assert\Type("string")
+     * @Assert\Regex(
+     *      pattern="([^.]{3,40})",  
+     *      message="school.cif"
+     * )
      * @var string
      */
     private $pais;

@@ -30,7 +30,7 @@ AppBundle\Entity\Centroestudios:
             column: CIF
         familiaprof:
             type: string
-            nullable: false
+            nullable: true
             length: 120
             options:
                 fixed: false
@@ -99,7 +99,7 @@ AppBundle\Entity\Centroestudios:
                 fixed: false
         imagen:
             type: string
-            nullable: false
+            nullable: true
             length: 250
             options:
                 fixed: false

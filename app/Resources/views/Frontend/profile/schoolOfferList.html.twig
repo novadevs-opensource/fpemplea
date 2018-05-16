@@ -1,7 +1,8 @@
 {% if offers != null %}
 	<h2> Ofertas asignadas</h2>
 	<hr>
-	{% for offer in offers %}
+	{# FIX LAST OFFER CHECK #}
+	{% for offer in offers if offer.offer.active == true and offer.offer.validated == false %}
 	<div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
 		<div class="info-block block-info {% if offer.offer.finished == 1 %} border-green disabled{% endif %}{% if offer.offer.active == false %}background-red{% endif %}">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -65,7 +66,7 @@
 						Ver empresa
 						</button>
 					</a>
-					{% elseif (offer.offer.validated == true) and (offer.offer.active == true)  %}
+					{% elseif (offer.offer.validated == true) and (offer.offer.active == true) and (offer.offer.finished == 0) %}
 					<p class="color-green">
 							<i class="fa fa-check" aria-hidden="true"></i>
 							La oferta es válida

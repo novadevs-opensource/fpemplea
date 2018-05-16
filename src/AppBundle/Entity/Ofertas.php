@@ -51,10 +51,6 @@ class Ofertas
     private $vacantes;
 
     /**
-     * @Assert\Regex(
-     *      pattern="(^[\.a-zA-ZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ1-9\. ]{20,200}$)",
-     *      message="offer.description"
-     * )
      * @var string
      */
     private $descripcion;
@@ -75,10 +71,6 @@ class Ofertas
     private $categoria;
 
     /**
-     * @Assert\Regex(
-     *      pattern="(^[\.a-zA-ZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ1-9\. ]{3,21}$)",
-     *      message="offer.title"
-     * )
      * @var string
      */
     private $title;

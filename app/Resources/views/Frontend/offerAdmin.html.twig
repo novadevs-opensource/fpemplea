@@ -40,18 +40,25 @@
 			</div>
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offer-school">
 				<div class="row school-management">
-					<div class="associated-schools col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="associated-schools col-lg-7 col-md-7 col-sm-12 col-xs-12">
 						<h3>
 							Centros asociados
 						</h3>
 						<hr>
-						<div class="row">
+						<div class="associated-schools clearfix skill-list">
 						{% for s in schools %}
-							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">{{s.school.nombre}}</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								{{s.school.nombre}} 
+								<span>
+									<a class="nobutton pull-right" href="{{ path('offerAdminDelAssign', {'idRel':s.id, 'id':s.offer.id} ) }}">
+										<i class="fa fa-close"></i>
+									</a>
+								</span>
+							</div>
 						{% endfor %}
 						</div>
 					</div>
-					<div class="school-associate col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="school-associate col-lg-5 col-md-5 col-sm-12 col-xs-12">
 						<h3>
 							Asociar centro
 						</h3>
@@ -118,7 +125,7 @@
 				                </div>
 				                <div class="modal-body">
 				                    {{ render(controller('AppBundle:Default:contactMail',
-				                    {'idUser': a.perfilestudianteid.idusuario.id, 'senderId': app.user.id }
+				                    {'idUser': a.perfilestudianteid.idusuario.id, 'senderId': app.user.id, 'senderMail': app.user.email }
 				                    ))
 				                    }}
 				                </div>

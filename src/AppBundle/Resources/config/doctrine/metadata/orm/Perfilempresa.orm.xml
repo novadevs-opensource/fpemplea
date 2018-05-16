@@ -92,7 +92,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="imagen" type="string" column="imagen" length="250" nullable="false">
+    <field name="imagen" type="string" column="imagen" length="250" nullable="true">
       <options>
         <option name="fixed"/>
       </options>

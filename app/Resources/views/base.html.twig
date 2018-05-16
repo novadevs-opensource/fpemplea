@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
     <title>{% block title %}{% endblock %}</title>
     {% block stylesheets %}
-      <!-- Latest compiled and minified CSS -->
-      <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
-      <!-- Optional theme -->
-      <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css') }}">
-      
-      <!-- Estilos propios -->
-      <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('assets/js/chosen_v1.8.2/chosen.min.css') }}">
-      
+      {% stylesheets
+        'assets/vendor/bootstrap-3.3.7-dist/css/*'
+        'assets/vendor/font-awesome-4.7.0/css/*'
+        'assets/vendor/chosen_v1.8.2/*.css'
+        'assets/css/*'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+      {% endstylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
   </head>
@@ -26,6 +24,7 @@
         </p>
       </div>
     </div>
+    <p>Application Environment: {{ app.environment }}</p>
     <header>
       <div class="navigation-header visible-xs">
           {% if alerts is defined and (notRead is null) %}
@@ -357,9 +356,7 @@
           <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
             <h2>Enlaces de interés</h2>
             <ul>
-              <li><a href="#">Privacidad</a></li>
-              <li><a href="#">Politica de cookies</a></li>
-              <li><a href="#">Sobre FP Emplea</a></li>
+              <li><a href="{{ path('terms') }}">Privacidad</a></li>
               <li><a href="http://todofp.es/inicio.html">Todo FP</a></li>
               <li><a href="#" data-toggle="modal" data-target="#centros-register">Registro centros</a></li>
             </ul>
@@ -456,14 +453,18 @@
       </div>
       
       {% block javascripts %}
-        <script src="{{ asset('assets/js/jquery-3.2.1.min.js') }}"></script>
-        <script src="{{ asset('assets/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
-        <script src="{{ asset('assets/js/chosen_v1.8.2/chosen.jquery.min.js') }}"></script>
-        <script src="{{ asset('assets/js/main.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery-validation-1.17.0/dist/jquery.validate.js') }}"></script>
-        <script src="{{ asset('assets/js/jquery-validation-1.17.0/dist/additional-methods.js') }}"></script>
-        <script src="{{ asset('assets/js/ajax-methods.js') }}"></script>
+        {% javascripts
+            'assets/vendor/jquery-3.2.1.min.js'
+            'assets/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js'
+            'assets/vendor/bootstrap-datepicker.min.js'
+            'assets/vendor/chosen_v1.8.2/chosen.jquery.min.js'
+            'assets/js/main.js'
+            'assets/js/ajax-methods.js'
+            'assets/vendor/jquery-validation-1.17.0/dist/jquery.validate.js'
+            'assets/vendor/jquery-validation-1.17.0/dist/additional-methods.js'
+            output='js/compiled/app.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
       {% endblock %}
     </body>
   </html>

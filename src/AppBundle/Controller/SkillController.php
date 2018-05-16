@@ -11,9 +11,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use AppBundle\Entity\Skill;
 use AppBundle\Entity\Perfilestudiante;
 use AppBundle\Entity\ApplicantHasSkill;
+use AppBundle\Controller\EntityRepository;
 
 use AppBundle\Form\ApplicantHasSkillType;
 use AppBundle\Form\OfertasType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -62,19 +64,29 @@ class SkillController extends Controller
 
             $applicant_rep = $em->getRepository("AppBundle:Perfilestudiante");
             $applicant = $applicant_rep->findOneById($idApplicant);
+            try {
+                $asRelation = $form->getData();
+                $asRelation->setApplicant($applicant);
+                $em->persist($asRelation);
+                $em->flush();
 
-            $asRelation = $form->getData();
-            $asRelation->setApplicant($applicant);
-            $em->persist($asRelation);
-            $em->flush();
+                $res['code'] = "OK";
+                $res['category'] = $asRelation->getSkill()->getSkillCategory()->getId();
+                $res['id'] = $asRelation->getId();
+                $res['userId'] = $asRelation->getApplicant()->getIdusuario()->getId();
+                $res['delPath'] = $this->generateUrl('applicant_delete_skill', array(
+                        'id' => $asRelation->getId(), 
+                        'idUser' => $asRelation->getApplicant()->getIdusuario()->getId()
+                    )
+                );
+            } catch( \Doctrine\DBAL\Exception\UniqueConstraintViolationException $e){
+                $res['code'] = "Duplicated skill";
+                $res['error'] = $e->getMessage();
+            }
 
-            // $flashMessage = "Tus cambios se han guardado satisfactoriamente";
-            // $this->session->getFlashBag()->set('profileEditSucc', $flashMessage);
-
-            // return $this->redirectToRoute('profile', array('idUser' => $id));
             $response = new Response();
             $response->setContent(json_encode(array(
-                'data' => $asRelation,
+                'data' => $res,
             )));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
@@ -102,6 +114,176 @@ class SkillController extends Controller
         }
 
         return $this->render('Frontend/profile/crudApplicantSkill.html.twig', array(
+            'form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/editar-competencias-personales-candidato/{idApplicant}/{id}", name="applicant_add_personal_skill")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT')")
+     */
+    public function applicantPersonalSkillAddAction(Request $request, $idApplicant, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $asRelation = new ApplicantHasSkill();
+
+        $form = $this->createFormBuilder($asRelation)
+            ->setAction($this->generateUrl('applicant_add_personal_skill', array('idApplicant' => $idApplicant, 'id' => $id)))
+            ->add('skill', EntityType::class, array(
+                'class'         => 'AppBundle:Skill',
+                'label'         => 'Competencia Personal',
+                'query_builder' => function ($em) {
+                                        return $em->createQueryBuilder('u')->where('u.skillCategory = 2');
+                                    },
+                'choice_label'  => 'skill',
+                'choice_value'  => 'id',
+                'expanded'      => false,
+                'multiple'      => false,
+                'attr'          =>array('class' => '')
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $applicant_rep = $em->getRepository("AppBundle:Perfilestudiante");
+            $applicant = $applicant_rep->findOneById($idApplicant);
+            try {
+                $asRelation = $form->getData();
+                $asRelation->setApplicant($applicant);
+                $em->persist($asRelation);
+                $em->flush();
+
+                $res['code'] = "OK";
+                $res['category'] = $asRelation->getSkill()->getSkillCategory()->getId();
+                $res['id'] = $asRelation->getId();
+                $res['userId'] = $asRelation->getApplicant()->getIdusuario()->getId();
+                $res['delPath'] = $this->generateUrl('applicant_delete_skill', array(
+                        'id' => $asRelation->getId(), 
+                        'idUser' => $asRelation->getApplicant()->getIdusuario()->getId()
+                    )
+                );
+            } catch( \Doctrine\DBAL\Exception\UniqueConstraintViolationException $e){
+                $res['code'] = "Duplicated skill";
+                $res['error'] = $e->getMessage();
+            }
+
+            $response = new Response();
+            $response->setContent(json_encode(array(
+                'data' => $res,
+            )));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+        }
+        elseif ($form->isSubmitted() == true && $form -> isValid() == false)
+        {   
+            $validator = $this->get('validator');
+            $errors = $validator->validate($asRelation);
+            if (count($errors) > 0) {
+                /*
+                 * Uses a __toString method on the $errors variable which is a
+                 * ConstraintViolationList object. This gives us a nice string
+                 * for debugging.
+                 */
+                for ($i=0; $i < count($errors) ; $i++) { 
+                    $errorsString[$i] = (string) $errors[$i];
+                }
+                $response = new Response();
+                $response->setContent(json_encode(array(
+                    'data' => json_encode($errorsString),
+                )));
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+        }
+
+        return $this->render('Frontend/profile/crudApplicantPersonalSkill.html.twig', array(
+            'form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/editar-competencias-comunes-candidato/{idApplicant}/{id}", name="applicant_add_common_skill")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT')")
+     */
+    public function applicantCommonSkillAddAction(Request $request, $idApplicant, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $asRelation = new ApplicantHasSkill();
+
+        $form = $this->createFormBuilder($asRelation)
+            ->setAction($this->generateUrl('applicant_add_common_skill', array('idApplicant' => $idApplicant, 'id' => $id)))
+            ->add('skill', EntityType::class, array(
+                'class'         => 'AppBundle:Skill',
+                'label'         => 'Competencia Común',
+                'query_builder' => function ($em) {
+                                        return $em->createQueryBuilder('u')->where('u.skillCategory = 3');
+                                    },
+                'choice_label'  => 'skill',
+                'choice_value'  => 'id',
+                'expanded'      => false,
+                'multiple'      => false,
+                'attr'          =>array('class' => '')
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $applicant_rep = $em->getRepository("AppBundle:Perfilestudiante");
+            $applicant = $applicant_rep->findOneById($idApplicant);
+            try {
+                $asRelation = $form->getData();
+                $asRelation->setApplicant($applicant);
+                $em->persist($asRelation);
+                $em->flush();
+
+                $res['code'] = "OK";
+                $res['category'] = $asRelation->getSkill()->getSkillCategory()->getId();
+                $res['id'] = $asRelation->getId();
+                $res['userId'] = $asRelation->getApplicant()->getIdusuario()->getId();
+                $res['delPath'] = $this->generateUrl('applicant_delete_skill', array(
+                        'id' => $asRelation->getId(), 
+                        'idUser' => $asRelation->getApplicant()->getIdusuario()->getId()
+                    )
+                );
+            } catch( \Doctrine\DBAL\Exception\UniqueConstraintViolationException $e){
+                $res['code'] = "Duplicated skill";
+                $res['error'] = $e->getMessage();
+            }
+
+            $response = new Response();
+            $response->setContent(json_encode(array(
+                'data' => $res,
+            )));
+            $response->headers->set('Content-Type', 'application/json');
+            return $response;
+        }
+        elseif ($form->isSubmitted() == true && $form -> isValid() == false)
+        {   
+            $validator = $this->get('validator');
+            $errors = $validator->validate($asRelation);
+            if (count($errors) > 0) {
+                /*
+                 * Uses a __toString method on the $errors variable which is a
+                 * ConstraintViolationList object. This gives us a nice string
+                 * for debugging.
+                 */
+                for ($i=0; $i < count($errors) ; $i++) { 
+                    $errorsString[$i] = (string) $errors[$i];
+                }
+                $response = new Response();
+                $response->setContent(json_encode(array(
+                    'data' => json_encode($errorsString),
+                )));
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+        }
+
+        return $this->render('Frontend/profile/crudApplicantCommonSkill.html.twig', array(
             'form' => $form->createView()));
     }
 

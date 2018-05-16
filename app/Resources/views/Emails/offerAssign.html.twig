@@ -1,0 +1,23 @@
+{# app/Resources/views/Alerts/offerClosure.html.twig #}
+{% if alert is defined and alert.userid.securityToken == app.user.securityToken %}
+<h3>
+	Hola {{ school.nombre }},
+</h3>
+<p>
+	La empresa <a href="{{ path('publicProfile', {'idUser':company.idusuario.id, 'idVisitor':school.idusuario.id}) }}">{{ company.nombreempresa }}</a> te ha asignado su oferta <a href="{{ path('ver_oferta', {'id':offer.id}) }}">{{offer.title}}</a> el día {{ offer.fechaborrado|date('Y-m-d') }}
+<p>
+<p>
+	<ul>
+		<li>
+			Título: {{ offer.title }}
+		</li>
+		<li>
+			Comentario: {{ offer.descriptions }}			
+		</li>
+	</ul>
+</p>
+	<a href="{{ path('profile', {'idUser':school.idusuario.id}) }}#alerts">
+		Volver a FP Emplea
+	</a>
+<p>
+{% endif %}

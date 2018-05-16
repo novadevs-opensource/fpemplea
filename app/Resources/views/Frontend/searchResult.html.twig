@@ -146,7 +146,7 @@
             </div>
             <h2>{# {{res|length}} #} Ofertas que coinciden con tu busqueda</h2>
             {% if res|length > 0 %}
-                {% for oferta in res if (oferta.validated == true) and (oferta.active == true) %}
+                {% for oferta in res if (oferta.validated == true) and (oferta.active == true) and (oferta.finished == false) %}
                     <article class="row">
                         <hr>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 item">

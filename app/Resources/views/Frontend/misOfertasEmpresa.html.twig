@@ -1,5 +1,5 @@
 {% if ofertas != null %}
-    {% for oferta in ofertas %}
+    {% for oferta in ofertas if oferta.finished != 1 %}
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 offer {% if oferta.finished == 1 or oferta.active == 0 %}disabled{% endif %}">      
         <p>
           {{ oferta.title}}
@@ -13,6 +13,12 @@
           <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
           Tu oferta ha sido rechazada y ha sido retirada
         </p>
+        <a class="button cta-1" href="{{ path('modificar_oferta', {'id':oferta.id}) }}">
+            Modificar
+        </a>
+        <a class="button cta-1" href="{{ path('offer_admin', {'id':oferta.id}) }}">
+            Gestionar
+        </a>
       {% elseif oferta.finished == 1 %}
         <p class="color-green">
             <i class="fa fa-calendar-o" aria-hidden="true"></i> Has cerrado tu oferta
@@ -25,6 +31,9 @@
         <div>
             <a class="button cta-1" href="{{ path('offer_admin', {'id':oferta.id}) }}">
                 Gestionar
+            </a>
+            <a class="button cta-1" href="{{ path('modificar_oferta', {'id':oferta.id}) }}">
+                Modificar
             </a>
         </div>
         <p class="disabled">

@@ -14,7 +14,7 @@
                     <div class="row">
                         {{ form_start(form, {'attr': {'id': 'school_create'}}) }}
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            {{ form_row(form.cif, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_row(form.cif, { 'attr': {'class': 'form-control disabled', 'readonly':''} }) }}
                             {{ form_row(form.nombre, { 'attr': {'class': 'form-control'} }) }}
                             {# {{ form_row(form.imagen, { 'attr': {'class': 'form-control-file', 'required': 'required'} }) }} #}
                             {# {{ form_row(form.familiaprof, { 'attr': {'class': 'form-control chosen-select'} }) }} #}

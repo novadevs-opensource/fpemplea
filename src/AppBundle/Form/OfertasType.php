@@ -99,7 +99,7 @@ class OfertasType extends AbstractType
                         return $er->createQueryBuilder('u')
                             ->where('u.idpadre is NULL');
                     },
-                'label' => 'Categoría',
+                'label' => 'Formación Profesional',
                 'choice_label' => 'nombre',
                 'choice_value' => 'id',
                 'expanded' => false,

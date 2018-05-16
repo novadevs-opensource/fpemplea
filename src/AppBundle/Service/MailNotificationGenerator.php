@@ -60,7 +60,7 @@ class MailNotificationGenerator
     // This method is called when a jobb offer aplicant is rejected
     public function offerRejectedApplicantMailAlertAction($email, $user, $offerTitle, $offerDescription, $company)
     {
-        $systemName = "[FP Emplea][La próxima vez será]";
+        $systemName = "[FP Emplea][La siguiente vez tiene que ser mejor]";
         $message = \Swift_Message::newInstance()
         ->setSubject($systemName.'!Hola '.$user.'!')
         ->setFrom('sistema@fpemplea.com')
@@ -81,7 +81,7 @@ class MailNotificationGenerator
     }
 
     // This method is called when a user have a successful register
-    public function registerMailAlertAction($plainPassword, $mail){
+    public function registerMailAlertAction($plainPassword, $mail, $nif){
         
         $systemName = "[FP Emplea]";
         $message = \Swift_Message::newInstance()
@@ -92,6 +92,7 @@ class MailNotificationGenerator
             $this->templating->render(
                 'Emails/registration.html.twig',
                 array('name' => $mail,
+                      'nif' => $nif,
                       'password' => $plainPassword
                      )
             ),
@@ -107,7 +108,7 @@ class MailNotificationGenerator
     {
         $systemName = "[FP Emplea]";
         $message = \Swift_Message::newInstance()
-        ->setSubject($systemName.'!Hola '.$company->getNombreempresa().'!')
+        ->setSubject($systemName.'Hola '.$company->getNombreempresa().'!')
         ->setFrom('sistema@fpemplea.com')
         ->setTo($email)
         ->setBody(
@@ -136,6 +137,29 @@ class MailNotificationGenerator
         ->setBody(
             $this->templating->render(
                 'Emails/offerClosure.html.twig',
+                array('company' => $companyProf,
+                      'offer' => $offer,
+                      'school' => $schoolProf
+                     )
+            ),
+            'text/html'
+        );
+        
+        $this->mailer->send($message);
+        return true;
+    }
+
+    // This method is called when some offer is finished
+    public function offerAssignMailAlertAction($schoolMail, $schoolProf, $companyProf, $offer)
+    {
+    	$systemName = "[FP Emplea]";
+        $message = \Swift_Message::newInstance()
+        ->setSubject($systemName.'La empresa '. $companyProf->getNombreempresa() .' te ha asignado una oferta')
+        ->setFrom('sistema@fpemplea.com')
+        ->setTo($schoolMail)
+        ->setBody(
+            $this->templating->render(
+                'Emails/offerAssign.html.twig',
                 array('company' => $companyProf,
                       'offer' => $offer,
                       'school' => $schoolProf

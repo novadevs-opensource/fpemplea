@@ -30,7 +30,7 @@ class Perfilempresa
 
     /**
      * @Assert\Regex(
-     *      pattern="(^([ABCDEFGHJKLMNPQRSUVWabcdefghijklmnpqrsuvw])(\d{7})([0-9A-J-a-j])$)",  
+     *      pattern="([^.]{3,40})",  
      *      message="school.cif"
      * )
      * @var string
@@ -88,6 +88,10 @@ class Perfilempresa
     private $localidad;
 
     /**
+     * @Assert\Regex(
+     *      pattern="([^.]{3,40})",  
+     *      message="school.cif"
+     * )
      * @var string
      */
     private $pais;

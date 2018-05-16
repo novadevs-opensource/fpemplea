@@ -1,0 +1,33 @@
+AppBundle\Entity\ValidatedUserIds:
+    type: entity
+    table: validated_user_ids
+    uniqueConstraints:
+        id_role:
+            columns:
+                - user_id
+                - app_role
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userId:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: user_id
+        appRole:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: app_role
+    lifecycleCallbacks: {  }

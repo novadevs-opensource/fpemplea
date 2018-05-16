@@ -20,10 +20,6 @@
     <span>
         {{ w.position}}
     </span>
-    -
-    <span>
-        {{ w.workexp}}
-    </span>
     <button class="nobutton pull-right" onclick="applicantWorkDelete({{w.id}}, {{app.user.id}}, '{{ path('applicant_delete_workexp', {'id':w.id, 'idUser':app.user.id}) }}')">
         <i class="fa fa-close"></i>
     </button>

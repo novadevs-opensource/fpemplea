@@ -18,16 +18,6 @@ AppBundle\Entity\EducationHasLevel:
             generator:
                 strategy: IDENTITY
     manyToOne:
-        education:
-            targetEntity: Formacion
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                education:
-                    referencedColumnName: id
-            orphanRemoval: false
         level:
             targetEntity: EducationLevel
             cascade: {  }
@@ -36,6 +26,16 @@ AppBundle\Entity\EducationHasLevel:
             inversedBy: null
             joinColumns:
                 level:
+                    referencedColumnName: id
+            orphanRemoval: false
+        education:
+            targetEntity: Formacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                education:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

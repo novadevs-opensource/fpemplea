@@ -280,6 +280,7 @@ class OfferController extends Controller{
 
         $offer_rep = $em->getRepository("AppBundle:Ofertas");
         $offer = $offer_rep->findOneById($id);
+        $companyProf = $offer->getIdempresa();
 
         $soRelation = new SchoolHasOffer();
 
@@ -300,6 +301,7 @@ class OfferController extends Controller{
 
           $checkIfExists_rep = $em->getRepository("AppBundle:SchoolHasOffer");
           $checkIfExists = $checkIfExists_rep->findBySchool($soRelation->getSchool());
+          $school = $soRelation->getSchool();
 
           foreach ($checkIfExists as $check) 
           {
@@ -318,6 +320,14 @@ class OfferController extends Controller{
           $this->get('session')->getFlashBag()->add("offerAssignSuccess",$message);
           $em->persist($soRelation);
           $em->flush();
+        //   AQUÍ LA MENSAJERÍA
+          $alertNotification = $this->get('AlertNotificationGenerator');
+          $alertNotification->offerAssignAlertAction($school, $companyProf, $offer);
+              
+          $mailNotification = $this->get('MailNotificationGenerator');          
+          if( $school->getId() !== null ) {
+            $mailNotification->offerAssignMailAlertAction($school->getEmail(), $school, $companyProf, $offer);
+          }
 
           return $this->redirectToRoute('offer_admin', array(
             'id' => $id,
@@ -325,6 +335,28 @@ class OfferController extends Controller{
         }
         return $this->render('Frontend/profile/assignOffer.html.twig', array(
             'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/borrar-asignar-oferta/{idRel}/{id}", name="offerAdminDelAssign")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_COMPANY')")
+     */
+    public function offerAdminDelAssignAction($idRel, $id)
+    {
+        $em = $this->getDoctrine()->getManager(); 
+
+        $soRelation_rep = $em->getRepository("AppBundle:SchoolHasOffer");
+        $soRelation = $soRelation_rep->findOneById($idRel);  
+
+        $em->remove($soRelation);
+        $em->flush();
+
+        $message = "Asignación borrada correctamente";
+        $this->get('session')->getFlashBag()->add("offerAssignSuccess",$message);
+
+        return $this->redirectToRoute('offer_admin', array(
+            'id' => $id,
         ));
     }
 
@@ -393,7 +425,6 @@ class OfferController extends Controller{
                 $mailNotification->offerClosureMailAlertAction($schoolMail, $schoolProf, $companyProf, $offer);
               }
             }
-            var_dump($offer);
             
             return $this->redirectToRoute('profile', array(
               'idUser' => $company->getId()
@@ -503,6 +534,9 @@ class OfferController extends Controller{
           $em->persist($offer);
           $em->flush();
 
+          $em->remove($soRelation);
+          $em->flush();
+          
           $success = "Oferta descartada con éxito";
           //$this->get('session')->getFlashBag()->add("offerValidatedSuccess",$success);
 

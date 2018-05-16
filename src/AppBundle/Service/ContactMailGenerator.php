@@ -12,11 +12,11 @@ class ContactMailGenerator
     }
 
     // This method is called when a profile is visited by some user
-	public function ContactMailAction($email, $user, $body, $subject)
+	public function ContactMailAction($email, $user, $body, $subject, $senderMail)
     {
         $systemName = "[FP Emplea]";
         $message = \Swift_Message::newInstance()
-        ->setSubject($systemName.' '.$subject)
+        ->setSubject($systemName . '['. $senderMail .' Ha contactado contigo!] ' . $subject)
         ->setFrom('sistema@fpemplea.com')
         ->setTo($email)
         ->setBody($body);

@@ -38,6 +38,7 @@ class Perfilempresa
     private $cif;
 
     /**
+     * @Assert\NotBlank()
      * @var string
      */
     private $description;
@@ -48,6 +49,7 @@ class Perfilempresa
     private $fechacreacion;
 
     /**
+     * @Assert\NotBlank()
      * @var string
      */
     private $sector;
@@ -91,6 +93,7 @@ class Perfilempresa
     private $pais;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Email(
      *     message = "school.email",
      *     checkMX = true
@@ -114,6 +117,7 @@ class Perfilempresa
     private $personaIdpersona;
 
     /**
+     * @Assert\NotBlank()
      * @var string
      */
     private $horariocontacto;
@@ -137,6 +141,11 @@ class Perfilempresa
      * @var \AppBundle\Entity\Usuarios
      */
     private $idusuario;
+
+    /**
+     * @var string
+     */
+    private $imagen;
 
 
     /**
@@ -628,6 +637,7 @@ class Perfilempresa
         return $this->nombre;
     }
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^[A-Za-z\.]([\.a-zA-ZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ\. ]){3,40}$)",
      *      message="school.name"
@@ -660,11 +670,6 @@ class Perfilempresa
     {
         return $this->nombreempresa;
     }
-
-    /**
-     * @var string
-     */
-    private $imagen;
 
     /**
      * Set imagen

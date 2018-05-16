@@ -178,4 +178,33 @@ class AlertNotificationGenerator
         $em->persist($alert);
         $em->flush();
     }
+
+     // This method is called when some company assigns offers to school profiles
+     public function offerAssignAlertAction($schoolProf, $companyProf, $offer)
+     {
+         $em = $this->em;
+         $alert = new Alert();
+ 
+         $subject = '[FP Emplea] La empresa '.$companyProf->getNombreempresa().' te ha asignado su oferta';
+         $date = date("Y-m-d h:m:s");
+ 
+         $alert->setUserid($schoolProf->getIdusuario());
+         $alert->setAlertsubject($subject);
+         $alert->setAlertbody(
+             $this->templating->render(
+                 'Alerts/offerAssign.html.twig',
+                 array('company' => $companyProf,
+                       'offer' => $offer,
+                       'school' => $schoolProf
+                      )
+             ),
+             'text/html'
+         );
+ 
+         $alert->setGenerationdate(new \DateTime($date));
+         $alert->setStatus(0);
+ 
+         $em->persist($alert);
+         $em->flush();
+     }
 }

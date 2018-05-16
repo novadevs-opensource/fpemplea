@@ -90,6 +90,7 @@ easy_admin:
               icon: 'database'
               children:
                 - { label: 'Usuarios', entity: 'Usuarios', icon: 'users' }
+                - { label: 'NIF Permitidos', entity: 'ValidatedUserIds', icon: 'user' }
 
             - label: 'Perfiles'
               icon: 'user'
@@ -125,6 +126,7 @@ easy_admin:
         - AppBundle\Entity\Skill
         - AppBundle\Entity\Formacion
         - AppBundle\Entity\EducationLevel
+        - AppBundle\Entity\ValidatedUserIds
 
     site_name: 'FP Emplea'
 

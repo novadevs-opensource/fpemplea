@@ -4,12 +4,12 @@
         <hr>
     </h3>
     {% if skills|length == 0 %}
-    <p>
+    <p class="technical-skill-empty>
         <i class="disabled">Aún no has añadido ninguna ciompetencia profesional</i>
     </p>
     <div class="clearfix skill-list"></div>
     {% else %}
-        <div class="clearfix skill-list">
+        <div class="clearfix technical-skill-list skill-list">
         {% for s in skills  %}
             {% if s.skill is not null %}
                 {% if s.skill.skillcategory.id == 1 %}
@@ -33,18 +33,17 @@
         <hr>
     </h3>
     {% if skills|length == 0 %}
-    <p>
+    <p class="personal-skill-empty">
         <i class="disabled">Aún no has añadido ninguna ciompetencia personal</i>
     </p>
-    <div class="clearfix skill-list"></div>
     {% else %}
-    <div class="clearfix skill-list">
+    <div class="clearfix personal-skill-list skill-list">
         {% for s in skills  %}
             {% if s.skill is not null %}
-                {% if s.skill.category == "Personal" %}
+                {% if s.skill.skillcategory.id == 2 %}
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 skill{{s.id}}{{app.user.id}}">
                     <span>
-                        <i class="fa fa-star i-col" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
                         {{s.skill.skill}} 
                     </span>
                     <button class="nobutton pull-right" onclick="applicantSkillDelete({{s.id}}, {{app.user.id}}, '{{ path('applicant_delete_skill', {'id':s.id, 'idUser':app.user.id}) }}')">
@@ -63,15 +62,14 @@
         <hr>
     </h3>
     {% if skills|length == 0 %}
-    <p>
+    <p class="common-skill-empty">
         <i class="disabled">Aún no has añadido ninguna ciompetencia personal</i>
     </p>
-    <div class="clearfix skill-list"></div>
     {% else %}
-    <div class="clearfix skill-list">
+    <div class="clearfix common-skill-list skill-list">
     {% for s in skills  %}
             {% if s.skill is not null %}
-                {% if s.skill.category == "Comunes" %}
+                {% if s.skill.skillcategory.id == 3 %}
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 skill{{s.id}}{{app.user.id}}">
                     <span>
                         <i class="fa fa-star i-col" aria-hidden="true"></i>

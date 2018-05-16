@@ -17,6 +17,7 @@ class Perfilestudiante
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^[A-Za-z ]([ A-Za-zZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ]){3,21}$)",
      *      message="applicant.name"
@@ -26,6 +27,7 @@ class Perfilestudiante
     private $nombre;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^[A-Za-z ]([ A-Za-zZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ]){3,21}$)",
      *      message="applicant.lastname"
@@ -35,6 +37,7 @@ class Perfilestudiante
     private $apellidos;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *      pattern="(^[0-9A-Za-z][0-9]{7}[A-Za-z])",  
      *      message="applicant.nif"
@@ -72,13 +75,14 @@ class Perfilestudiante
     private $pais;
 
     /**
+     * @Assert\NotBlank()
      * @var \Date
      */
     private $diponibilidad;
 
     /**
      * @Assert\Regex(
-     *      pattern="(^[a-zA-Z0-9]{250,500}$)",
+     *      pattern="([^.]{1,})",
      *      message="applicant.hobbies"
      * )
      * @var string
@@ -92,7 +96,7 @@ class Perfilestudiante
 
     /**
      * @Assert\Regex(
-     *      pattern="(^[a-zA-Z0-9]{250,1500}$)",
+     *      pattern="([^.]{1,})",
      *      message="applicant.cvtxt"
      * )
      * @var string
@@ -110,7 +114,10 @@ class Perfilestudiante
     private $fexibilidadgeografica = false;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Range(
+     *      min="-50 years",
+     *      minMessage="¿Tu edad es correcta?",
      *      max="-18 years",
      *      maxMessage="applicant.birthdate"
      * )
@@ -142,6 +149,7 @@ class Perfilestudiante
     private $telefonodos;
 
     /**
+     * @Assert\NotBlank()
      * @Assert\Email(
      *     message = "applicant.email",
      *     checkMX = true
@@ -151,12 +159,7 @@ class Perfilestudiante
     private $email;
 
     /**
-     * @Assert\File(
-     *     maxSize = "1024k",
-     *     mimeTypes = {"image/gif", "image/png", "image/jpeg"},
-     *     mimeTypesMessage = "Please upload a valid (gif, png or jpeg) with a max filezize of 1MB"
-     * )
-     * @var file
+     * @var string
      */
     private $imagen;
 

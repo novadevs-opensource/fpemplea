@@ -124,7 +124,7 @@ AppBundle\Entity\Perfilempresa:
                 fixed: false
         imagen:
             type: string
-            nullable: false
+            nullable: true
             length: 250
             options:
                 fixed: false
