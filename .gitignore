@@ -1,5 +1,5 @@
 #Connection settings
-#app/config/parameters.yml Just for master
+app/config/parameters.yml
 
 #VAR DATA 
 var/logs/*
