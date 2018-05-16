@@ -14,7 +14,4 @@ composer.phar
 ~database.sql
 
 #USER DATA
-centros.csv
-empresas.csv
-alumnos.csv
 web/uploads/profileavatar/*
