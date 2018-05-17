@@ -12,8 +12,8 @@
             {% if applicant.imagen is not null %}
                 <img class="img-circle" src="{{ url('homepage') }}../uploads/profileavatar/{{ applicant.imagen }}" alt="Avatar perfil candidato">
             {% else %}
-                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png" alt="Avatar perfil candidato"> #}
-                <img class="img-circle" src="{{ url('homepage') }}../assets/img/png/default-user.png" alt="Avatar perfil candidato">
+                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
+                <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
             {% endif %}
           </div>
           <h3>Datos personales:</h3>
@@ -131,8 +131,8 @@
             {% if empresa.imagen is not null %}
                 <img class="img-circle" src="{{ url('homepage') }}../uploads/profileavatar/{{ empresa.imagen }}" alt="Avatar perfil candidato">
             {% else %}
-                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png" alt="Avatar perfil candidato"> #}
-                <img class="img-circle" src="{{ url('homepage') }}../assets/img/png/default-user.png" alt="Avatar perfil candidato">
+                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
+                <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
             {% endif %}
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 section1">

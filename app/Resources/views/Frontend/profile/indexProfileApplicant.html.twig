@@ -32,8 +32,8 @@
                                 {% if estudiante.imagen is not null %}
                                     <img class="img-circle" src="../../uploads/profileavatar/{{ estudiante.imagen }}" alt="Avatar perfil candidato">
                                 {% else %}
-                                    {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png" alt="Avatar perfil candidato"> #}
-                                    <img class="img-circle" src="../../assets/img/png/default-user.png" alt="Avatar perfil candidato">
+                                    {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
+                                    <img class="img-circle" src="../../assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
                                 {% endif %}
                             </a>
                             <h3>
@@ -639,7 +639,7 @@
 <!--
                                             <h3 class="text-center">¡Completado!</h3>
                                             <p class="text-center">Tus datos estan actualizados. </p>
-                                            <img class="doneimg" src="{{ url('homepage') }}../assets/img/jpg/hecho.jpg" alt="">
+                                            <img class="doneimg" src="{{ absolute_url(asset('assets/img/jpg/hecho.jpg')) }}" alt="">
 -->
                                             <p class="text-center" style="margin-top:50px;">Para crear tu curriculum con Europass, accede al siguiente enlace ! </p>
                                             <p class="text-center"><a href="https://europass.cedefop.europa.eu/editors/es/cv/compose" target="_blank" class="button cta-2">Crear Europass</a></p>
