@@ -42,10 +42,10 @@
                     <li class="image-user">
                         <a href="" data-toggle="modal" data-target="#change-img">
                             {% if centro.imagen is not null %}
-                                <img class="img-circle" src="../../uploads/profileavatar/{{ centro.imagen }}" alt="Avatar perfil candidato">
+                                <img class="img-circle" src="{{ absolute_url(asset('uploads/profileavatar/' ~  centro.imagen)) }}" alt="Avatar perfil candidato">
                             {% else %}
                                 {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
-                                <img class="img-circle" src="../../assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
+                                <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="Avatar perfil candidato">
                             {% endif %}
                         </a>
                         <h3>

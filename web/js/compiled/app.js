@@ -82,6 +82,25 @@ $(document).ready(function (){
             $('#home').removeClass('active');
             $('#alerts').addClass('in');
             $('#alerts').addClass('active');
+        //APPLICANT PROFILE
+        case '#cv': 
+            $('#home').removeClass('in');
+            $('#home').removeClass('active');
+            $('#cv').addClass('in');
+            $('#cv').addClass('active');
+        case '#edit': 
+            $('#home').removeClass('in');
+            $('#home').removeClass('active');
+            $('#edit').addClass('in');
+            $('#edit').addClass('active');
+        case '#alerts': 
+            $('#home').removeClass('in');
+            $('#home').removeClass('active');
+            //NOOB WORKAROUND, idk whi #edit is activated
+            $('#edit').removeClass('in');
+            $('#edit').removeClass('active');
+            $('#alerts').addClass('in');
+            $('#alerts').addClass('active');
         default:
             break
     }

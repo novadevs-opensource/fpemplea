@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use AppBundle\Entity\Categorias;
 use AppBundle\Entity\Ofertas;
@@ -35,6 +36,50 @@ class ApplicantController extends Controller{
 
     public function __construct() {
         $this->session=new Session();
+    }
+
+    /**
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT') or has_role('ROLE_SCHOOL')")
+     * @Route("/modificar-cv/{idUser}", name="cv-edit")
+     */
+    public function getApplicantCVAction($idUser)
+    {
+        $em = $this->getDoctrine() -> getManager();
+        $user_rep = $em -> getRepository("AppBundle:Usuarios");
+
+        try {
+            $user = $user_rep->findOneById($idUser);
+        } catch (Exception $e) {
+            $user = false;
+        }finally{
+            if ($user != false){
+                $role = $user->getRole();
+                $usertoken = $user->getSecurityToken();
+            }else{
+                throw $this->createAccessDeniedException();
+            }
+        }
+
+        $current = $this->session->get('securityToken');     
+        if ( ($user == false) || $current != $usertoken) 
+        {
+            throw $this->createAccessDeniedException();
+        }
+
+        $alert_rep = $em->getRepository("AppBundle:Alert");
+        $alerts = $alert_rep->findByUserid($idUser);
+        $notRead = null;        
+
+        $applicant_rep = $em -> getRepository("AppBundle:Perfilestudiante");
+        $applicant = $applicant_rep -> findOneByIdusuario($idUser);
+
+        $sn =  $em->getRepository('AppBundle:UserHasSn')->findByUser($idUser);
+
+        return $this -> render('Frontend/profile/indexProfileApplicantCV.html.twig', array(
+            'estudiante' => $applicant, 
+            'alerts' => $alerts, 
+            'notRead' => $notRead,
+        ));
     }
 
     /**

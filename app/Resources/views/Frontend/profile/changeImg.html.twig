@@ -3,7 +3,7 @@
     {{ form_row(form._token) }}
 	{# {{ form_errors(form) }} #}
 	<div class="text-center">
-		<img src="../../uploads/profileavatar/{{currentImg}}" alt="" class="img-circle">
+		<img ssrc="{{ absolute_url(asset('uploads/profileavatar/' ~  currentImg)) }}" alt="Avatar" class="img-circle">
 	</div>	
 	<p>
 		<button type="submit" class="button cta-2">

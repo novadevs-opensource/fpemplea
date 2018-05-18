@@ -30,10 +30,9 @@
                         <li class="image-user">
                             <a href="" data-toggle="modal" data-target="#change-img">
                                 {% if estudiante.imagen is not null %}
-                                    <img class="img-circle" src="../../uploads/profileavatar/{{ estudiante.imagen }}" alt="Avatar perfil candidato">
+                                    <img class="img-circle" src="{{ absolute_url(asset('uploads/profileavatar/' ~  estudiante.imagen)) }}" alt="Avatar perfil candidato">
                                 {% else %}
-                                    {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
-                                    <img class="img-circle" src="../../assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
+                                    <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="Avatar perfil candidato">
                                 {% endif %}
                             </a>
                             <h3>
@@ -82,7 +81,7 @@
                             </a>
                         </li>
                         <li class="menu-user">
-                            <a data-toggle="tab" data-placement="right" title="Actualiza tu curriculum" href="#cv">
+                            <a data-placement="right" title="Actualiza tu curriculum" href="{{ path('cv-edit', {'idUser':app.user.id}) }}#cv">
                                 <span class="glyphicon glyphicon-file icon-menu" aria-hidden="true">
                                 </span>
                                 <span class="txt">
@@ -297,9 +296,8 @@
                             </section>
                             <hr>
                         </div>
-                        <!--                OK-->
+                        <!-- OK -->
                         <div id="edit" class="tab-pane fade clearfix">
-                    
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
                                 <h2>
                                     Editar perfil
@@ -323,18 +321,6 @@
                             <hr>
                             <section class="info col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="row">
-                      {#               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                        {{ render(controller('AppBundle:Default:snAdd',
-                                                {'idUser': app.user.id}
-                                            ))
-                                        }}
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">                                    
-                                        {{ render(controller('AppBundle:Default:resetPwd',
-                                        { 'idUser': app.user.id }
-                                        ))
-                                        }}
-                                    </div> #}
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -374,7 +360,6 @@
                                           <b>Info:</b> Recibirás los mensajes en tu correo electrónico.
                                     </div>
                                 </div>
-                                
                                 {% if alerts|length == 0 %}
                                 <div class="alert alert-info">
                                     <div class="container-fluid">
@@ -438,7 +423,6 @@
                                               <b>Info:</b> {{notRead}} Alertas sin leer
                                         </div>
                                     </div>
-                                
                                         {% for a in alerts if a.status == 0 %}
                                         <div class="row">
                                             <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12">
@@ -475,7 +459,7 @@
                             </div>
                         </div>
                         
-                        <section id="cv" class="tab-pane fade">
+                        {# <section id="cv" class="tab-pane fade">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h2>Currículum</h2>
@@ -546,13 +530,6 @@
                                                 ))
                                                 }}
                                             </div>
-                                           {#  <ul class="list-inline pull-right">
-                                                <li role="presentation">
-                                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Experiencia laboral" class="next-step">
-                                                        <button type="button" class="btn btn-primary">Siguiente paso </button>
-                                                    </a>
-                                                </li>
-                                            </ul> #}
                                         </div>
                                         <div class="tab-pane clearfix" role="tabpanel" id="step2">
                                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
@@ -578,19 +555,6 @@
                                                     }}
                                                 </ul>
                                             </div>
-                                           {#  <ul class="list-inline pull-right">
-                                                <li role="presentation">
-                                                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" class="prev-step">
-                                                        <button type="button" class="btn btn-primary">Paso anterior</button>
-                                                    </a>
-                                                </li>
-                                                
-                                                <li role="presentation">
-                                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Experiencia laboral" class="next-step">
-                                                        <button type="button" class="btn btn-primary">Siguiente paso</button>
-                                                    </a>
-                                                </li>
-                                            </ul> #}
                                         </div>
                                         <div class="tab-pane clearfix" role="tabpanel" id="step3">
                                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
@@ -621,26 +585,8 @@
                                                 ))
                                                 }}
                                             </div>
-                                           {#  <ul class="list-inline pull-right">
-                                                <li role="presentation">
-                                                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Experiencia laboral" class="prev-step">
-                                                        <button type="button" class="btn btn-primary">Paso anterior</button>
-                                                    </a>
-                                                </li>
-                                                
-                                                <li role="presentation">
-                                                    <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Experiencia laboral" class="next-step">
-                                                        <button type="button" class="btn btn-primary">Siguiente paso</button>
-                                                    </a>
-                                                </li>
-                                            </ul> #}
                                         </div>
                                         <div class="tab-pane text-center" role="tabpanel" id="complete">
-<!--
-                                            <h3 class="text-center">¡Completado!</h3>
-                                            <p class="text-center">Tus datos estan actualizados. </p>
-                                            <img class="doneimg" src="{{ absolute_url(asset('assets/img/jpg/hecho.jpg')) }}" alt="">
--->
                                             <p class="text-center" style="margin-top:50px;">Para crear tu curriculum con Europass, accede al siguiente enlace ! </p>
                                             <p class="text-center"><a href="https://europass.cedefop.europa.eu/editors/es/cv/compose" target="_blank" class="button cta-2">Crear Europass</a></p>
                                             <br>
@@ -649,7 +595,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section> #}
                     </div>
                 </div>
             </section>
