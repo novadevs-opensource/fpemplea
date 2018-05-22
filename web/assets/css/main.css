@@ -154,7 +154,7 @@ input[type=file]{
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #eeeeee;
 }
 
@@ -1013,6 +1013,7 @@ nav .log-actions{
 
 #preloader {
     position: fixed;
+    display: none;
     top:0; left:0;
     right:0; bottom:0;
     background: #fff;

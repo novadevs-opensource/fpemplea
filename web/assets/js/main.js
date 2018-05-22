@@ -148,9 +148,13 @@ $(document).ready(function (){
     $(".chosen-select").chosen();
 
     //LOADER SETUP
-    $('#preloader').fadeOut(600);
-    $('body').css('overflow','visible');
-    
+    var $loading = $('#preloader').hide();
+    $(document).ajaxStart(function () { 
+        $loading.show(); 
+    }).ajaxStop(function () { 
+        $loading.hide(); 
+    });
+
     //DATEPICKER SETUP
     $('.datepicker').datepicker({
       format: 'yyyy-mm-dd',
