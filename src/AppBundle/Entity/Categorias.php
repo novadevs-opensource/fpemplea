@@ -208,6 +208,10 @@ class Categorias
     
     //Metodo MAGICO creado para devolver el nombre de la categoria
     public function __toString() {
-        return $this->nombre;
+        try {
+            return (string) $this->nombre;
+        } catch (Exception $exception) {
+            return '';
+        }
     }
 }
