@@ -288,7 +288,7 @@
       </nav>
     </header>
 
-    {#}START - Register user errors{#}
+    {# START - Register user errors #}
     {% if error is defined and error %}
       <div class="alert alert-danger alert-dismissable">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -309,7 +309,7 @@
     {% endfor %}
     
    
-    {#}START - Education add and delete errors from ApplicantProfile{#}
+    {# START - Education add and delete errors from ApplicantProfile #}
     {% for addMsg in app.session.flashbag.get('educationAdd') %}
       <div class="alert alert-success alert-dismissable">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

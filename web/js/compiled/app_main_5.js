@@ -150,9 +150,9 @@ $(document).ready(function (){
     //LOADER SETUP
     var $loading = $('#preloader').hide();
     $(document).ajaxStart(function () { 
-        $loading.show(); 
+        $loading.fadeIn(); 
     }).ajaxStop(function () { 
-        $loading.hide(); 
+        $loading.fadeOut(); 
     });
 
     //DATEPICKER SETUP
