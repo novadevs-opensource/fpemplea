@@ -228,5 +228,23 @@
                 </div>
         {% endif %}
     {% endif %}
+    {# Modal cambio de imagen #}
+      <div id="change-img" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Selecciona una imagen para tu perfil</h4>
+            </div>
+            <div class="modal-body">
+     
+              {{ render( controller( 'AppBundle:Default:AvatarEdit' ) ) }}
+
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %}
                 

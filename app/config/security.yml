@@ -33,6 +33,9 @@ security:
                 path: /logout
                 target: /
 
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_SCHOOL }
                 
             # activate different ways to authenticate
 
