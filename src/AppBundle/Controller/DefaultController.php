@@ -238,17 +238,6 @@ class DefaultController extends Controller
                 $visitor,
                 $profileUser
             );
-
-            //Sending email
-            if($u->getEmail())
-            {
-              $mailNotification = $this->get('MailNotificationGenerator');
-              $mailNotification->visitorMailAlertAction(
-                $u->getEmail(), 
-                $u->getNombre(), 
-                $visitor
-              );
-            }
             //END SEND ALERT
         }
 
