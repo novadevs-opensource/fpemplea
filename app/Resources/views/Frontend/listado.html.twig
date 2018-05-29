@@ -16,7 +16,6 @@
                         {% if empresa.imagen is not null %}
                             <img class="img-circle" src="{{ url('homepage') }}../uploads/profileavatar/{{ empresa.imagen }}" alt="Avatar perfil candidato">
                         {% else %}
-                            {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
                             <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
                         {% endif %}
                     </div>
@@ -152,15 +151,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 item">
                         <div class="profile-image col-lg-2 col-md-3 col-sm-3 col-xs-12">
                             {% if estudiante.imagen is not null %}
-                                <img class="img-circle" src="{{ url('homepage') }}../uploads/profileavatar/{{ estudiante.imagen }}" alt="Avatar perfil candidato">
+                                <div class="user-img" style="background-image:url({{ url('homepage') }}../uploads/profileavatar/{{ estudiante.imagen }});"></div>
                             {% else %}
-                                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
                                 <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
                             {% endif %}
                         </div>
                         <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
-                            <h3>{{ estudiante.nombre }}</h3>
-                            <p>Fecha de nacimiento: {{estudiante.fechanacimiento|date('Y/m/d')}}</p>
+                            <h3>{{ estudiante.nombre }} {{ estudiante.apellidos }}</h3>
                             <p>
                                 Localidad: {{estudiante.localidad}}
                             </p>

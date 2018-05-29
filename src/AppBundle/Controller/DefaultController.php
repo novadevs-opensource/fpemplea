@@ -733,17 +733,17 @@ class DefaultController extends Controller
             } catch( \Doctrine\DBAL\Exception\UniqueConstraintViolationException $e){
                 $flashMessage = "Ha ocurrido un error, inténtalo de nuevo (Red social duplicada)";
                 $this->session->getFlashBag()->set('snErr', $flashMessage);  
-                return $this -> redirectToRoute('profile', array('idUser' => $senderId));   
+                return $this -> redirectToRoute('homepage');
             }
             $flashMessage = "Has enviado tu mensaje correctamente";
             $this->session->getFlashBag()->set('snSucc', $flashMessage);
-            return $this -> redirectToRoute('profile', array('idUser' => $senderId));
+            return $this -> redirectToRoute('homepage');
         }
         elseif ($form->isSubmitted() == true && $form -> isValid() == false)
         {   
             $flashMessage = "Ha ocurrido un error, inténtalo de nuevo";
             $this->session->getFlashBag()->set('snErr', $flashMessage);
-            return $this -> redirectToRoute('profile', array('idUser' => $senderId));
+            return $this -> redirectToRoute('homepage');
 
         }
         return $this->render('Frontend/profile/crudContact.html.twig', array(

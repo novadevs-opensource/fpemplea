@@ -2,10 +2,20 @@
 {% block title %} FP Emplea - Resultado de la búsqueda{% endblock %}
 {% block body %}
     {% if app.request.get('_route') == 'applicant_search'%}
-        <section id="mod_b4">
+        <section class="applicant-list">
             <div class="contenedor container">
                 <div class="row">
-                    <form action="{{ url('applicant_search') }}" method="get">
+                    {% if is_granted('ROLE_STUDENT') %}
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2>{{res|length}} Aspirantes registrados</h2>
+                        <hr>
+                    </div>
+                    {% elseif is_granted('ROLE_COMPANY') or is_granted('ROLE_SCHOOL') %}
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h2>{{res|length}} Aspirantes registrados</h2>
+                        <hr>
+                    </div>
+                    <form action="{{ url('applicant_search') }}" method="get" class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left">
                             <p>
                                 <label for="fieldOne">Tipo de búsqueda</label>
@@ -20,11 +30,14 @@
                                 <label for="type">Término de búsqueda</label>
                                 <input type="text" name="type" id="typeFilter" value="" class="form-control">
                             </p>
-                            <input type="submit" class="btn btn-primary" value="Buscar">
+                            <button type="submit" class="button cta-2" value="Filtrar">
+                                                <span>buscar</span>
+                                                <i class="fa fa-search"></i>
+                                            </button>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 right">
                             <label for="type">Filtro por formación</label>
-                            <select name="fieldTwo" id="findEducation" class="form-control">
+                            <select name="fieldTwo" id="findEducation" class="form-control chosen-select">
                                 <option value="" selected>Selecciona una opción</option>
                                 {% for e in education %}
                                     <option value="{{e.id}}">{{e.titulo}}</option>
@@ -32,83 +45,98 @@
                             </select>
                         </div>
                     </form>
+                    {% endif %}
                 </div>
                 <hr>
                 <div class="row">
                     {% if res|length > 0 %}
-                        <div class="searchable-container">
+                        <div class="searchable-container applicant-list">
                             <h2>{{res|length}} Aspirantes coinciden con tu busqueda</h2>
                             {% for applicant in res %}
-                                <div class="items col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
-                                    <div class="info-block block-info clearfix">
-                                        <div class="square-box pull-left">
-                                            <img src="{{ url('homepage') }}../uploads/profileavatar/{{ applicant.imagen }}" width="50">
+                                <article class="row">
+                                    <hr>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 item">
+                                        <div class="profile-image col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                                             {% if applicant.imagen is not null %}
+                                                <div class="user-img" style="background-image:url({{ url('homepage') }}../uploads/profileavatar/{{ applicant.imagen }});"></div>
+                                            {% else %}
+                                                <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
+                                            {% endif %}
                                         </div>
-                                        <h5>{{ applicant.nombre }}</h5>
-                                        <p>Fecha de nacimiento: 09/08/1992</p>
-                                        <p>Perfil: Informatico</p>
-                                        <span><i class="fa fa-car fa-2x i-col" aria-hidden="true">   </i>Carnet de conducir</span>
-                                        <span><i class="fa fa-plane fa-2x i-col" aria-hidden="true">  </i> Disponibilidad para viajar</span>
-                                        <a href="{{ path('publicProfile', {'idUser':applicant.idusuario.id, 'idVisitor':app.user.id}) }}">
-                                            <button type="button" class="btn btn-info btn-lg alumnsoffer">Ver perfil completo</button>
-                                        </a>
-                                        <button type="button" class="btn btn-info btn-lg alumnsoffer" data-toggle="modal" data-target="#myModal">
-                                        Contactar
-                                        </button>
-                                        <!-- Modal -->
-                                        <div id="myModal" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title">Contactar</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        
-                                                        <div class="form-group">
-                                                            <div>
-                                                                <label for="asunto_contest">Asunto</label>
-                                                                <br>
-                                                                <input type="text" id="asunto_contest" class="form-control">
-                                                                
-                                                            </div>
-                                                            <div>
-                                                                <label for="mensaje_contest">Mensaje para el estudiante</label>
-                                                                <br>
-                                                                <textarea type="text" id="mensaje_contest" class="form-control"></textarea>
-                                                                
-                                                            </div>
-                                                            
+                                        <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12 pull-right">
+                                            <h3>{{ applicant.nombre }} {{ applicant.apellidos }}</h3>
+                                            <p>
+                                                Localidad: {{applicant.localidad}}
+                                            </p>
+                                            {% if applicant.fexibilidadgeografica == 1 %}
+                                                <p class="common-skills">
+                                                    <span>
+                                                        <i class="fa fa-plane i-col" aria-hidden="true"> </i>
+                                                        Disponibilidad para viajar
+                                                    </span>
+                                                </p>
+                                            {% endif %}
+                                            <div class="contact-area clearfix">
+                                                <div class="buttons">
+                                                    <a href="{{ path('publicProfile', {'idUser':applicant.idusuario.id, 'idVisitor':app.user.id}) }}">
+                                                        <button type="button" class="button cta-1">Visitar perfil</button>
+                                                    </a>
+                                                    <button type="button" class="button cta-2" data-toggle="modal" data-target="#applicantModal{{applicant.idusuario.id}}">
+                                                    Contactar
+                                                    </button>
+                                                </div>
+                                                {% if (app.request.get('_route') == 'listado_empresas') or (app.request.get('_route') == 'listado_estudiantes') or (app.request.get('_route') == 'applicant_search') %} 
+                                                {% else %}
+                                                <div class="social-networks">
+                                                    {{ render(controller('AppBundle:Default:snList',
+                                                        {'idUser': applicant.idusuario}
+                                                        ))
+                                                    }}
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <!-- Modal -->
+                                            <div id="applicantModal{{applicant.idusuario.id}}" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Envía un mensaje a {{applicant.nombre}}</h4>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <div class="modal-body">
+                                                            {{ render(controller('AppBundle:Default:contactMail',
+                                                            {'idUser': applicant.idusuario.id, 'senderId': app.user.id, 'senderMail': app.user.email }
+                                                            ))
+                                                            }}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal -->
-                                        <div id="myModal" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                Modal content
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 class="modal-title">Modal Header</h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Hola
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="{{ path('profile', {'idUser':applicant.id}) }}">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
+                                            <!-- Modal -->
+                                            <div id="" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    Modal content
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Modal Header</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Hola
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="{{ path('profile', {'idUser':applicant.id}) }}">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </article>
                             {% endfor %}
                         </div>
                     {% else %}

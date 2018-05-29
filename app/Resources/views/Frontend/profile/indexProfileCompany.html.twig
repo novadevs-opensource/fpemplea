@@ -40,13 +40,13 @@
                 </button>
                 <aside class="col-lg-3 col-md-4 col-sm-5 col-xs-10">
                     <ul class="menu-alumn">
-                        <li class="image-user">
+                        <li class="image-user profile-image">
                             <a href="" data-toggle="modal" data-target="#change-img">
-                            {% if empresa.imagen is not null %}
-                                <img class="img-circle" src="{{ absolute_url(asset('uploads/profileavatar/' ~  empresa.imagen)) }}" alt="Avatar empresa">
-                            {% else %}
-                                <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="Avatar perfil candidato">
-                            {% endif %}
+                                {% if empresa.imagen is not null %}
+                                    <div class="user-img" style="background-image:url({{ url('homepage') }}../uploads/profileavatar/{{ empresa.imagen }});"></div>
+                                {% else %}
+                                    <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
+                                {% endif %}
                             </a>
                             <h3>
                                 <span>

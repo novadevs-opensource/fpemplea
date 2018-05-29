@@ -39,14 +39,13 @@
             </button>
             <aside class="col-lg-3 col-md-4 col-sm-5 col-xs-10">
                 <ul class="menu-alumn">
-                    <li class="image-user">
+                    <li class="image-user profile-image">
                         <a href="" data-toggle="modal" data-target="#change-img">
-                            {% if centro.imagen is not null %}
-                                <img class="img-circle" src="{{ absolute_url(asset('uploads/profileavatar/' ~  centro.imagen)) }}" alt="Avatar perfil candidato">
-                            {% else %}
-                                {# <img class="img-circle" src="../../../src/AppBundle/Resources/public/img/default-user.png')) }}" alt="Avatar perfil candidato"> #}
-                                <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="Avatar perfil candidato">
-                            {% endif %}
+                                {% if centro.imagen is not null %}
+                                    <div class="user-img" style="background-image:url({{ url('homepage') }}../uploads/profileavatar/{{ centro.imagen }});"></div>
+                                {% else %}
+                                    <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Avatar perfil candidato">
+                                {% endif %}
                         </a>
                         <h3>
                             <span>
