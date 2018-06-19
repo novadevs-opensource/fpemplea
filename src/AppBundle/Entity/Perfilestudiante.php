@@ -116,7 +116,7 @@ class Perfilestudiante
     /**
      * @Assert\NotBlank()
      * @Assert\Range(
-     *      min="-50 years",
+     *      min="-60 years",
      *      minMessage="¿Tu edad es correcta?",
      *      max="-18 years",
      *      maxMessage="applicant.birthdate"
