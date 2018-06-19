@@ -31,6 +31,16 @@ $(document).ready(function (){
         $('#profile-menu-btn i').addClass('fa-close');
     });
 
+    // To hide responsive user profile menu when some item is clicked
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        $('.menu-user').click(function(){
+            $('aside.col-sm-5').toggleClass('show');
+            $('aside.col-sm-5').css('transform: translateX(5%)');
+            $('#profile-menu-btn i').toggleClass('fa-bars');
+            $('#profile-menu-btn i').addClass('fa-close');
+        });
+    }
+
     $('.col-sm-12').click(function(){
         if($('aside.col-sm-5').hasClass('show')){
             $('aside.col-sm-5').removeClass('show');

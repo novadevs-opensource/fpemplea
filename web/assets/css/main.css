@@ -807,7 +807,7 @@ header .navigation-header.visible-xs{
 
 header nav{
     width: 100%;
-    border-bottom: 1px solid #c85720;
+    border-bottom: 1px solid #79909d;
     box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 
                 0 3px 20px 0px rgba(0, 0, 0, 0.12), 
                 0 8px 10px -5px rgba(0, 0, 0, 0.2);
@@ -864,7 +864,6 @@ header nav{
                 color: #FFF;
                 background: #c85720;
                 border-radius: 5px;
-                border:4px solid #ff4701;
             }
 @media screen and (max-width:600px) {
 
@@ -973,12 +972,20 @@ nav .log-actions{
 
         nav .log-actions li a{
             display: block;
-            padding: 11px 20px;
+            padding: 15px 20px;
             text-decoration: none;
             color: #5d5d5d;
             font-size: 2em;
             transition: ease-in-out 0.3s all;
             display: flex;
+        }
+
+        @media all and (min-width:768px) and (max-width:1024px) {
+          nav .log-actions li a{
+            font-size: 1.4em;
+            line-height: 1.4em;
+            padding: 15px 10px;
+          }
         }
 
             .mini-circle{
@@ -997,6 +1004,13 @@ nav .log-actions{
                 line-height: 28px;
                 margin-left: 1em;
             }
+            @media all and (min-width:768px) and (max-width:1024px) {
+              .txto{
+                margin-left: 0.5em;
+              }
+            }
+
+
         nav .log-actions li a:hover{
             color: #FFF;
             background:#c85720;
@@ -1096,6 +1110,7 @@ nav .log-actions{
           box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
           overflow: hidden;
           border-radius: 100%;
+          background-size: cover;
           text-align: center;
           margin: 0 auto !important;
           background: #f5f7f8;
@@ -1118,7 +1133,7 @@ nav .log-actions{
             position: relative;
             height: 100%;
             background-position: center;
-            background-size: 90% auto;
+            background-size: cover;
             background-repeat: no-repeat;
           }
 
@@ -1501,6 +1516,26 @@ ul.pagination {
                         line-height: 3em;
                         text-transform: uppercase;
                         position: relative;
+                        font-size: 1em;
+                    }
+                    @media screen and (max-width:700px) {
+                      #applicant aside .menu-alumn li a, 
+                      #school aside .menu-alumn li a, 
+                      #company aside .menu-alumn li a {
+                        margin: 2px;
+                        font-size: .8em;
+                      }
+
+                      li.image-user.profile-image a {
+                        height: 80px;
+                        width: 80px;
+                      }
+
+                      #applicant aside .menu-alumn .image-user h3,
+                      #school aside .menu-alumn .image-user h3, 
+                      #company aside .menu-alumn .image-user h3 {
+                        font-size: 1em;
+                      }
                     }
 
                         #applicant aside .menu-alumn li a .icon-menu,
@@ -1548,6 +1583,11 @@ ul.pagination {
                             }
 
                         @media screen and (max-width: 1120px){
+                          #applicant aside .menu-alumn li a .icon-menu,
+                          #school aside .menu-alumn li a .icon-menu,
+                          #company aside .menu-alumn li a .icon-menu {
+                              padding: 10px;
+                          }
                             #applicant aside .menu-alumn li a .txt,
                             #school aside .menu-alumn li a .txt,
                             #company aside .menu-alumn li a .txt {
@@ -1570,7 +1610,7 @@ ul.pagination {
             height: 50px;
             width: 50px;
             background: #79919d;
-            z-index: 2;
+            z-index: 3;
             box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 
                         0 3px 1px -2px rgba(0, 0, 0, 0.2), 
                         0 1px 5px 0 rgba(0, 0, 0, 0.12);
@@ -1596,20 +1636,22 @@ ul.pagination {
             transition: ease-in-out 0.4s;
             margin-top: 10px;
             position: fixed;
-            z-index: 1;
+            z-index: 2;
             border-radius: 5px;
         }
 
         #applicant aside.show,
         #school aside.show,
         #company aside.show {
-            transform: translateX(0%);
-            /*transition: cubic-bezier(0, 0.66, 0.41, 1.14) 1s;*/
-            transition: cubic-bezier(0, 0.66, 0.2, 1.2) .5s;
             left: 10px;
+            height: 85%;
+            overflow-y: scroll;
             -webkit-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.5);
             -moz-box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.5);
             box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.5);
+            transform: translateX(0%);
+            transition: cubic-bezier(0, 0.66, 0.2, 1.2) .5s;
+            
         }
 
         #applicant aside.show.responsive,
