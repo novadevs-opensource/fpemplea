@@ -1,6 +1,11 @@
 #Connection settings
 app/config/parameters.yml
 
+#Server settings
+.htaccess
+php.ini
+.user.ini
+
 #VAR DATA 
 var/logs/*
 var/sessions/*
