@@ -19,7 +19,7 @@ class Perfilestudiante
     /**
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *      pattern="(^[A-Za-z ]([ A-Za-zZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ]){3,21}$)",
+     *      pattern="(^[A-Za-z ]([ A-Za-zZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ]){2,35}$)",
      *      message="applicant.name"
      * )
      * @var string
@@ -29,7 +29,7 @@ class Perfilestudiante
     /**
      * @Assert\NotBlank()
      * @Assert\Regex(
-     *      pattern="(^[A-Za-z ]([ A-Za-zZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ]){3,21}$)",
+     *      pattern="(^[A-Za-z ]([ A-Za-zZzäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñ]){2,35}$)",
      *      message="applicant.lastname"
      * )
      * @var string
