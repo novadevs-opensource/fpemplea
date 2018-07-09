@@ -13,43 +13,30 @@ class ExtendedSearchRepository extends \Doctrine\ORM\EntityRepository
         $this->conn = $this->getEntityManager()->getConnection();  
     }
     
-    public function getResultAndCount($type, $entity, $fieldOne, $fieldTwo)
+    public function getResultAndCount($inputValue, $entity, $fieldOne)
     {
-        if($type)
+        if($inputValue != null || $fieldOne != null)
         {
-            if($fieldTwo != null)
-            {
-                $res = $this->getEntityManager()->createQuery(
-                    'SELECT s
-                    FROM AppBundle:'.$entity.' s 
-                    WHERE IDENTITY(s.'.$fieldTwo.') LIKE :type
-                    ORDER BY s.id ASC'
-                )
-                ->setParameter('type', '%'.$type.'%')
-                ->getResult();
-            }
-            elseif($type != null || $fieldOne != null)
-            {
-                $res = $this->getEntityManager()->createQuery(
-                    'SELECT s
-                    FROM AppBundle:'.$entity.' s 
-                    WHERE s.'.$fieldOne.' LIKE :type
-                    ORDER BY s.id ASC'
-                )
-                ->setParameter('type', '%'.$type.'%')
-                ->getResult();
-            }
-            else
-            {
-                $res = $this->getEntityManager()->createQuery(
-                    'SELECT s
-                    FROM AppBundle:'.$entity.' s 
-                    ORDER BY s.id ASC'
-                )
-                ->getResult();
-            }
-            return array('res' => $res);
+            $res = $this->getEntityManager()->createQuery(
+                'SELECT s
+                FROM AppBundle:'.$entity.' s 
+                WHERE IDENTITY(s.'.$fieldOne.') LIKE :inputValue
+                ORDER BY s.id ASC'
+            )
+            ->setParameter('inputValue', '%'.$inputValue.'%')
+            ->getResult();
         }
+        else
+        {
+            $res = $this->getEntityManager()->createQuery(
+                'SELECT s
+                FROM AppBundle:'.$entity.' s 
+                ORDER BY s.id ASC'
+            )
+            ->getResult();
+        }
+        return array('res' => $res);
+
     }
 
     public function offerGetResultAndCount($type, $entity, $fieldOne, $fieldTwo)

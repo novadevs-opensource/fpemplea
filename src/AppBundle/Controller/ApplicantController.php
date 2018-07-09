@@ -99,12 +99,16 @@ class ApplicantController extends Controller{
         $education_rep = $em->getRepository('AppBundle:Formacion');
         $education  = $education_rep->findAll();
 
+        $skill_rep = $em->getRepository('AppBundle:Skill');
+        $skills = $skill_rep->findAll();
+
         return $this -> render('Frontend/listado.html.twig', array(
             'res' => $paginator, 
             "totalItems" => $totalItems,
             "pagesCount" => $pagesCount,
             "current" => $page,
-            'education' => $education
+            'education' => $education,
+            'skills' => $skills
         ));
     }
     
@@ -518,38 +522,23 @@ class ApplicantController extends Controller{
             ));
     }
 
-    public function applicantSearchAction($type, $fieldOne, $fieldTwo)
+    public function applicantSearchAction($fieldOne)
     {
         $em = $this -> getdoctrine() -> getManager();
         $filterRequest = Request::createFromGlobals();
-
-        if( $filterRequest->query->get('type') )
+        
+        if ( $filterRequest->query->get('fieldOne') ) 
         {
-            $fieldOne = strtolower($filterRequest->query->get('fieldOne'));
-            $type = $filterRequest->query->get('type');
-
-            $entity = 'Perfilestudiante';
-
-            // Custom repo class
-            $repo = $em->getRepository('AppBundle:Perfilestudiante');
-            $repoResult = $repo->getResultAndCount($type, $entity, $fieldOne, $fieldTwo);
-            list($res) = array_values($repoResult);
-            // End custom repo class
-        }
-        elseif ( $filterRequest->query->get('fieldTwo') ) 
-        {
-            //The following two statements are needed because education filter hasn't any type text input
-            $type = strtolower($filterRequest->query->get('fieldTwo'));
-            $fieldTwo = "formacion";
-
+            $fieldOne = "formacion";
+            $inputValue = strtolower($filterRequest->query->get('fieldOne'));
             $entity = 'PerfilestudianteHasFormacion';
 
             // Custom repo class
-            //Noob statements to get correct values
             $repo = $em->getRepository('AppBundle:PerfilestudianteHasFormacion');
-            $repoResult = $repo->getResultAndCount($type, $entity, $fieldOne, $fieldTwo);
+            $repoResult = $repo->getResultAndCount($inputValue, $entity, $fieldOne);
             list($res) = array_values($repoResult);
             // End custom repo class
+
             for($i = 0; $i < count($res); $i++){
                 $res[$i] = $res[$i]->getPerfilestudiante();
             }
@@ -558,14 +547,16 @@ class ApplicantController extends Controller{
             $repo = $em->getRepository('AppBundle:Perfilestudiante');
             $res = $repo->findAll();
         }
-
-        //To get fieldTwo(education) select values
+        //To get fieldOne(education) select values
         $education_rep = $em->getRepository('AppBundle:Formacion');
         $education  = $education_rep->findAll();
+
+        // To get fieldTwo(skills) select values
+        // $education_rep = $em->getRepository('AppBundle:Formacion');
+        // $education  = $education_rep->findAll();
         
         return $this -> render('Frontend/searchResult.html.twig', array(
             'res' => $res, 
-            'type'=>$type,
             'education' => $education
         ));
     }

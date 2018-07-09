@@ -114,34 +114,32 @@
                         <hr>
                     </div>
                     <form action="{{ url('applicant_search') }}" method="get" class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left">
-                            <p>
-                                <label for="fieldOne">Tipo de búsqueda</label>
-                                <select name="fieldOne" id="filterBy" class="form-control">
-                                    <option value="" selected>Selecciona una opción</option>
-                                    <option value="Nombre">Nombre</option>
-                                    <option value="Localidad">Localidad</option>
-                                    <option value="email">Email</option>
-                                </select>
-                            </p>
-                            <p>
-                                <label for="type">Término de búsqueda</label>
-                                <input type="text" name="type" id="typeFilter" value="" class="form-control">
-                            </p>
-                            <button type="submit" class="button cta-2" value="Filtrar">
-                                                <span>buscar</span>
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 right">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label for="type">Filtro por formación</label>
-                            <select name="fieldTwo" id="findEducation" class="form-control chosen-select">
+                            <select name="fieldOne" id="findEducation" class="form-control chosen-select">
                                 <option value="" selected>Selecciona una opción</option>
                                 {% for e in education %}
                                     <option value="{{e.id}}">{{e.titulo}}</option>
                                 {% endfor %}
                             </select>
                         </div>
+                        {# <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label for="type">Filtro por competencias</label>
+                            <select name="fieldTwo" id="findSkill" class="form-control chosen-select">
+                                <option value="" selected>Selecciona una opción</option>
+                                {% for e in skills %}
+                                    <option value="{{e.id}}">{{e.skill}}</option>
+                                {% endfor %}
+                            </select>
+                        </div> #}
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <hr>
+                            <button type="submit" class="button cta-2" value="Filtrar">
+                                <span>buscar</span>
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                        
                     </form>
                     {% endif %}
                 </div>
