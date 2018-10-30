@@ -1,22 +1,16 @@
-#Connection settings
+# SETUP
 app/config/parameters.yml
 
-#Server settings
+# MISC
 .htaccess
-php.ini
-.user.ini
-
-#VAR DATA 
-var/logs/*
-var/sessions/*
-var/cache/*
-
-#MISC
-.DS_Store
+*.ini
 composer.phar
 
-#BACKUP DATA
-~database.sql
+# VENDOR
+vendor/*
 
-#USER DATA
-web/uploads/profileavatar/*
+# WEB STORAGE
+web/uploads/*
+
+#VAR     
+var/*
