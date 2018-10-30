@@ -3,7 +3,7 @@ SensioLabs Security Checker
 
 The SensioLabs Security Checker is a command line tool that checks if your
 application uses dependencies with known security vulnerabilities. It uses the
-[SensioLabs Security Check Web service][1] and the [Security Advisories Database][2].
+[Security Check Web service][1] and the [Security Advisories Database][2].
 
 Usage
 -----
@@ -31,8 +31,9 @@ the checker into your own project:
         use SensioLabs\Security\SecurityChecker;
 
         $checker = new SecurityChecker();
-        $alerts = $checker->check('/path/to/composer.lock');
+        $result = $checker->check('/path/to/composer.lock', 'json');
+        $alerts = json_decode((string) $result, true);
 
-[1]: http://security.sensiolabs.org/
+[1]: https://security.symfony.com/
 [2]: https://github.com/FriendsOfPHP/security-advisories
-[3]: http://get.sensiolabs.org/security-checker.phar
+[3]: https://get.sensiolabs.org/security-checker.phar

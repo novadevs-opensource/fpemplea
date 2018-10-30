@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Symfony\Component\Intl\DateFormatter\DateFormat;
 
 use Symfony\Component\Intl\Exception\NotImplementedException;
@@ -102,7 +103,7 @@ class TimezoneTransformer extends Transformer
         if (preg_match('/GMT(?P<signal>[+-])(?P<hours>\d{2}):?(?P<minutes>\d{2})/', $formattedTimeZone, $matches)) {
             $hours = (int) $matches['hours'];
             $minutes = (int) $matches['minutes'];
-            $signal = $matches['signal'] == '-' ? '+' : '-';
+            $signal = '-' == $matches['signal'] ? '+' : '-';
 
             if (0 < $minutes) {
                 throw new NotImplementedException(sprintf(
@@ -111,7 +112,7 @@ class TimezoneTransformer extends Transformer
                 ));
             }
 
-            return 'Etc/GMT'.($hours !== 0 ? $signal.$hours : '');
+            return 'Etc/GMT'.(0 !== $hours ? $signal.$hours : '');
         }
 
         throw new \InvalidArgumentException(sprintf('The GMT time zone "%s" does not match with the supported formats GMT[+-]HH:MM or GMT[+-]HHMM.', $formattedTimeZone));

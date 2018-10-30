@@ -7,7 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
 {
     public static $files = array (
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -40,6 +42,8 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
             'Symfony\\Polyfill\\Php70\\' => 23,
             'Symfony\\Polyfill\\Php56\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Polyfill\\Apcu\\' => 22,
             'Symfony\\Component\\' => 18,
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
@@ -53,6 +57,7 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
+            'SensioLabs\\Security\\' => 20,
         ),
         'P' => 
         array (
@@ -77,6 +82,10 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         'F' => 
         array (
             'Fig\\Link\\' => 9,
+        ),
+        'E' => 
+        array (
+            'EasyCorp\\Bundle\\EasyAdminBundle\\' => 32,
         ),
         'D' => 
         array (
@@ -133,6 +142,14 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Symfony\\Polyfill\\Apcu\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-apcu',
+        ),
         'Symfony\\Component\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component',
@@ -185,6 +202,10 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         array (
             0 => __DIR__ . '/..' . '/sensio/distribution-bundle',
         ),
+        'SensioLabs\\Security\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sensiolabs/security-checker/SensioLabs/Security',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -211,7 +232,7 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         ),
         'JavierEguiluz\\Bundle\\EasyAdminBundle\\' => 
         array (
-            0 => __DIR__ . '/..' . '/javiereguiluz/easyadmin-bundle',
+            0 => __DIR__ . '/..' . '/javiereguiluz/easyadmin-bundle/legacy',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -220,6 +241,10 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
+        ),
+        'EasyCorp\\Bundle\\EasyAdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/javiereguiluz/easyadmin-bundle/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -269,13 +294,6 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
-        'S' => 
-        array (
-            'SensioLabs\\Security' => 
-            array (
-                0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
             ),
         ),
         'P' => 
@@ -797,6 +815,7 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
         'SqlFormatter' => __DIR__ . '/..' . '/jdorn/sql-formatter/lib/SqlFormatter.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'TypeError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/TypeError.php',
