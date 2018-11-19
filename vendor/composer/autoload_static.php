@@ -66,10 +66,6 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
-        'O' => 
-        array (
-            'Omines\\DataTablesBundle\\' => 24,
-        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -230,10 +226,6 @@ class ComposerStaticInitc19c29b7383e702db55c18f5816df1b7
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
-        ),
-        'Omines\\DataTablesBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/omines/datatables-bundle/src',
         ),
         'Monolog\\' => 
         array (
