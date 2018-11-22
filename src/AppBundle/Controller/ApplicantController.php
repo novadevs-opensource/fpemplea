@@ -28,6 +28,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Symfony\Component\Debug\Exception\UndefinedMethodException;
 
 
 class ApplicantController extends Controller{
@@ -88,20 +89,20 @@ class ApplicantController extends Controller{
     public function listadoEstudiantesAction($page, $idUser)
     {
         $em = $this->getdoctrine()->getManager();
-        $pageSize = $this->container->getParameter('records_per_page');
 
         $applicant_rep = $em->getRepository('AppBundle:Perfilestudiante');
-        $paginator = $applicant_rep->getPaginateApplicant($pageSize,$page);
-       
-        $totalItems = count($paginator);
-        $pagesCount = ceil($totalItems / $pageSize);
-
         $education_rep = $em->getRepository('AppBundle:Formacion');
-        $education  = $education_rep->findAll();
-
         $skill_rep = $em->getRepository('AppBundle:Skill');
+        
+        $education  = $education_rep->findAll();        
         $skills = $skill_rep->findAll();
 
+        $pageSize = $this->container->getParameter('records_per_page');
+        $paginator = $applicant_rep->getPaginateApplicant($pageSize,$page);
+        $totalItems = count($paginator);
+        $pagesCount = ceil($totalItems / $pageSize);
+        
+       
         return $this -> render('Frontend/listado.html.twig', array(
             'res' => $paginator, 
             "totalItems" => $totalItems,
@@ -146,20 +147,6 @@ class ApplicantController extends Controller{
 
             $usuario -> setDone(1);
 
-            // /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            // $file = $perfil->getImagen();
-
-            // // Generate a unique name for the file before saving it
-            // $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-            // // Move the file to the directory where imagens are stored
-            // $file->move(
-            //     $this->getParameter('profileavatar_directory'),
-            //     $fileName
-            // );
-
-            // // instead of its contents
-            // $perfil->setImagen($fileName);
             $perfil->setIdusuario($usuario);
             $perfil=$form->getData();
 
@@ -181,8 +168,6 @@ class ApplicantController extends Controller{
         }
         elseif ($form->isSubmitted() == true && $form -> isValid() == false)
         {   
-            // $flashMessage = "Ha ocurrido un error, inténtalo de nuevo";
-            // $this->session->getFlashBag()->set('profileEditErr', $flashMessage);
             $validator = $this->get('validator');
             $errors = $validator->validate($perfil);
             if (count($errors) > 0) {
@@ -202,15 +187,8 @@ class ApplicantController extends Controller{
                 return $response;
             }
         }
-        // if($current = $usertoken)
-        // {
         return $this->render('Frontend/registration/wizardApplicant.html.twig', array(
             'form' => $form->createView()));
-        // }
-        // else{
-        //     echo  "errroooooor pajaro";
-        // }
-        
     }
     
     /**
@@ -348,7 +326,7 @@ class ApplicantController extends Controller{
         return $this -> redirectToRoute('ver_mi_oferta', array('id'=>$offer->getId(),'idUser'=>$idUser));
     }
     
-//    TODO - COLOCAR EN EL LUGAR ADECUADO
+
     /**
      * @Route("/ver-mi-oferta/{id}/{idUser}", name="ver_mi_oferta")
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT')")
@@ -522,41 +500,72 @@ class ApplicantController extends Controller{
             ));
     }
 
-    public function applicantSearchAction($fieldOne)
+/*
+    * Method: applicantSearchAction
+    *
+    *   Generates a paginated list of applicants searched by certain criteria. Interacts with AppBundle\Repository\ExtendedSearchRepository.
+    *
+    * Named parameters:
+    *
+    *   request - request object
+    *   page - current pagination page
+    *   idUser - current user id
+    *   parm1 - submited education id
+    *
+    * Returns:
+    *
+    *   Returns a twig view
+*/
+    public function applicantSearchAction(Request $request, $page=1, $idUser, $parm1='')
     {
-        $em = $this -> getdoctrine() -> getManager();
-        $filterRequest = Request::createFromGlobals();
+        $em = $this->getdoctrine()->getManager();
+
+        $searchParms = $request->request->all();
+
+        // Protecting from SQL injections
+        foreach ($searchParms as $key => $value) {
+            $searchParms[$key] = str_replace("'", "", $value);
+            $searchParms[$key] = str_replace('"', '', $value);
+        }
+        try {
+            $filter = array(
+                'education_id' => $searchParms['education'],
+            );
+        } catch (\Throwable $e) {
+            $filter = array(
+                'education_id' => $parm1,
+            );
+        }
         
-        if ( $filterRequest->query->get('fieldOne') ) 
-        {
-            $fieldOne = "formacion";
-            $inputValue = strtolower($filterRequest->query->get('fieldOne'));
-            $entity = 'PerfilestudianteHasFormacion';
 
-            // Custom repo class
-            $repo = $em->getRepository('AppBundle:PerfilestudianteHasFormacion');
-            $repoResult = $repo->getResultAndCount($inputValue, $entity, $fieldOne);
-            list($res) = array_values($repoResult);
-            // End custom repo class
+        // Custom repo class
+        $ae_rep = $em->getRepository('AppBundle:PerfilestudianteHasFormacion');
+        $pageSize = $this->container->getParameter('records_per_page');
+        $searchResult = $ae_rep->getPaginatedApplicants($filter, 'PerfilestudianteHasFormacion', $pageSize, $page);
 
-            for($i = 0; $i < count($res); $i++){
-                $res[$i] = $res[$i]->getPerfilestudiante();
+        $result = array();
+        foreach ($searchResult as $sr) {
+            // FIXME: Why not?
+            // if ($sr instanceof AppBundle\Entity\PerfilestudianteHasFormacion) {
+            if ($sr instanceof Perfilestudiante) {
+                array_push($result, $sr);
+            } else {
+                array_push($result, $sr->getPerfilestudiante());
             }
         }
-        else{
-            $repo = $em->getRepository('AppBundle:Perfilestudiante');
-            $res = $repo->findAll();
-        }
-        //To get fieldOne(education) select values
+        
+        $totalItems = count($result);
+        $pagesCount = ceil($totalItems / $pageSize);
+
+        // To get "education" select values
         $education_rep = $em->getRepository('AppBundle:Formacion');
         $education  = $education_rep->findAll();
 
-        // To get fieldTwo(skills) select values
-        // $education_rep = $em->getRepository('AppBundle:Formacion');
-        // $education  = $education_rep->findAll();
-        
         return $this -> render('Frontend/searchResult.html.twig', array(
-            'res' => $res, 
+            'res' => $result, 
+            "totalItems" => $totalItems,
+            "pagesCount" => $pagesCount,
+            "current" => $page,
             'education' => $education
         ));
     }

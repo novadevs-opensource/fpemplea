@@ -661,23 +661,4 @@ class Perfilestudiante
     public function __toString() {
         return $this->nombre;
     }
-
-    /**
-     * Get paginatePosts
-     *
-     * @return string
-     */
-    public function getPaginatePosts($pageSize=3,$currentPage){
-        $em=$this->getEntityManager();
-         
-        //Consulta DQL
-        $dql = "SELECT p FROM AppBundle\Entity\Perfilestudiante p ORDER BY p.id DESC";
-        $query = $em->createQuery($dql)
-                               ->setFirstResult($pageSize * ($currentPage - 1))
-                               ->setMaxResults($pageSize);
- 
-        $paginator = new Paginator($query, $fetchJoinCollection = true);
- 
-        return $paginator;
-    }
 }

@@ -90,19 +90,13 @@ listado_ofertas:
 
 ## Search
 applicant_search:
-    path:  /buscar-estudiante/{type}{fieldOne}/{fieldTwo}
-    defaults: { _controller: AppBundle:Applicant:applicantSearch, fieldOne:id, fieldTwo:null, entity:'Perfilestudiante', type:'%'}
+    path:  /buscar-estudiante/{page}/{idUser}/{parm1}
+    defaults: { _controller: AppBundle:Applicant:applicantSearch, page:1, idUser:id, parm1:''}
+    # (Request $request, $page=1, $idUser, $parm1='')
 
 offer_search:
     path:  /buscar-oferta/{type}{fieldOne}/{fieldTwo}
     defaults: { _controller: AppBundle:Offer:offerSearch, fieldOne:categoria, fieldTwo:null, entity:'Ofertas', type:'%'}
-
-
-
-#Here will be placed the other search routes
-#
-#
-#
 
 ## Applicant Actions
 modificar_estudiante:

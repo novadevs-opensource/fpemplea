@@ -12,31 +12,62 @@ class ExtendedSearchRepository extends \Doctrine\ORM\EntityRepository
         parent::__construct($em, $class);  
         $this->conn = $this->getEntityManager()->getConnection();  
     }
-    
-    public function getResultAndCount($inputValue, $entity, $fieldOne)
-    {
-        if($inputValue != null || $fieldOne != null)
-        {
-            $res = $this->getEntityManager()->createQuery(
-                'SELECT s
-                FROM AppBundle:'.$entity.' s 
-                WHERE IDENTITY(s.'.$fieldOne.') LIKE :inputValue
-                ORDER BY s.id ASC'
-            )
-            ->setParameter('inputValue', '%'.$inputValue.'%')
-            ->getResult();
+/*
+    * Method: getPaginatedApplicants
+    *
+    *   Searchs users by filter.
+    *
+    * TODO: When $searchParms array is empty, entity have to be Perfilestudiante, so the code inside 
+    * applicantSearchAction method that handles it needs to be placed here.
+    *
+    * Named parameters:
+    *
+    *   searchParms - array of POST parameters passed by "ApplicantController->applicantSearchAction()" method
+    *   entity - Doctrine entyty passed as string by "ApplicantController->applicantSearchAction()" method
+    *
+    * Returns:
+    *
+    *   Returns an array of entities
+*/
+    public function getPaginatedApplicants($searchParms, $entity, $pageSize, $currentPage) {
+        $em=$this->getEntityManager();
+        if ( strlen($searchParms['education_id']) > 0 ) {
+            $query =  'SELECT s FROM AppBundle:' . $entity . ' s ' . $this->queryWhereBuilder($searchParms) . 'ORDER BY s.id ASC';
+        } else {
+            $query = 'SELECT s FROM AppBundle:Perfilestudiante s ORDER BY s.id ASC';
         }
-        else
-        {
-            $res = $this->getEntityManager()->createQuery(
-                'SELECT s
-                FROM AppBundle:'.$entity.' s 
-                ORDER BY s.id ASC'
-            )
-            ->getResult();
-        }
-        return array('res' => $res);
 
+        $query = $em->createQuery($query)
+                               ->setFirstResult($pageSize * ($currentPage - 1))
+                               ->setMaxResults($pageSize);
+ 
+        $paginator = new Paginator($query, $fetchJoinCollection = true);
+ 
+        return $paginator;
+        
+        // $res = $this->getEntityManager()->createQuery($query)->getResult();
+        // return array('res' => $res);
+    }
+
+/*
+    * Method: queryWhereBuilder
+    *
+    *   Generates custom WHERE conditions.   
+    *
+    * Named parameters:
+    *
+    *   searchParms - array of POST parameters passed by "$this->getPaginatedApplicants()" method
+    *
+    * Returns:
+    *
+    *   Returns an string
+*/
+    public function queryWhereBuilder($searchParms) {
+        $whereClause = '';
+        if ( strlen($searchParms['education_id']) > 0 ){
+            $whereClause .= ' WHERE IDENTITY(s.formacion) = '. $searchParms['education_id'];
+        } 
+        return $whereClause .= " ";
     }
 
     public function offerGetResultAndCount($type, $entity, $fieldOne, $fieldTwo)
@@ -80,7 +111,6 @@ class ExtendedSearchRepository extends \Doctrine\ORM\EntityRepository
             }
         }
     }
-
     
     //TODO: PUT THESE METHODS TO THEIR CORRECT REPOSITORY
     public function getPaginateCompany($pageSize=3,$currentPage)
@@ -124,9 +154,6 @@ class ExtendedSearchRepository extends \Doctrine\ORM\EntityRepository
  
         return $paginator;
     }
-
-
-
 
     //TODO
     public function getFullText($searchterm)
