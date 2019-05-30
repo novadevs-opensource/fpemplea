@@ -4,3 +4,7 @@ web/uploads/profileavatar/
 composer.lock
 phpunit.xml
 php.ini
+var/cache/dev/
+var/logs/
+var/logs/dev.log
+var/sessions/dev/
