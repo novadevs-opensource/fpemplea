@@ -1,0 +1,353 @@
+[22-Nov-2018 19:50:47 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 19:50:50 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 19:50:51 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 19:50:53 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 19:51:21 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:52:32 Europe/Berlin] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=127....', 'root', 'root', Array)
+#1 /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'root', 'root', Array)
+#2 /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'root', 'root', Array)
+#3 /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(389): Doctrine\DBAL\Connection->getDatabasePlat in /home/fpemplea/public_html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[22-Nov-2018 19:59:17 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:01:33 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:01:57 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:02:09 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:02:12 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:11:36 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 22:53:25 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 22:54:57 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 22:55:48 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 23:05:03 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:05:05 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:05:17 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app_dev.php(22): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:05:20 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:22:08 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:35:07 UTC] PHP Warning:  require(/home/fpemplea/public_html/app/../vendor/autoload.php): failed to open stream: No such file or directory in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:35:07 UTC] PHP Fatal error:  require(): Failed opening required '/home/fpemplea/public_html/app/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:45:31 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:45:36 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app_dev.php(22): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:47:20 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:47:26 UTC] PHP Fatal error:  Uncaught TypeError: Return value of Doctrine\Common\Annotations\AnnotationRegistry::registerLoader() must be an instance of Doctrine\Common\Annotations\void, none returned in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php:117
+Stack trace:
+#0 /home/fpemplea/public_html/app/autoload.php(9): Doctrine\Common\Annotations\AnnotationRegistry::registerLoader(Array)
+#1 /home/fpemplea/public_html/web/app.php(6): require('/home/fpemplea/...')
+#2 {main}
+  thrown in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 117
+[22-Nov-2018 23:51:30 UTC] PHP Warning:  require(/home/fpemplea/public_html/app/../vendor/autoload.php): failed to open stream: No such file or directory in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:30 UTC] PHP Fatal error:  require(): Failed opening required '/home/fpemplea/public_html/app/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:34 UTC] PHP Warning:  require(/home/fpemplea/public_html/app/../vendor/autoload.php): failed to open stream: No such file or directory in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:34 UTC] PHP Fatal error:  require(): Failed opening required '/home/fpemplea/public_html/app/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:36 UTC] PHP Warning:  require(/home/fpemplea/public_html/app/../vendor/autoload.php): failed to open stream: No such file or directory in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:36 UTC] PHP Fatal error:  require(): Failed opening required '/home/fpemplea/public_html/app/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:42 UTC] PHP Warning:  require(/home/fpemplea/public_html/app/../vendor/autoload.php): failed to open stream: No such file or directory in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:42 UTC] PHP Fatal error:  require(): Failed opening required '/home/fpemplea/public_html/app/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:44 UTC] PHP Warning:  require(/home/fpemplea/public_html/app/../vendor/autoload.php): failed to open stream: No such file or directory in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:51:44 UTC] PHP Fatal error:  require(): Failed opening required '/home/fpemplea/public_html/app/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/fpemplea/public_html/app/autoload.php on line 7
+[22-Nov-2018 23:52:34 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 23:52:37 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 23:55:51 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 23:55:53 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 23:55:58 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 23:56:00 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[07-Jan-2019 15:26:25 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:26:32 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:26:37 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:26:47 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:26:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:27:02 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:27:10 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:27:15 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:28:35 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:28:39 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:29:02 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:29:22 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:29:45 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 15:29:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:33:55 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:34:10 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:34:17 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:34:49 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:35:20 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:35:55 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:35:58 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:36:00 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:43:23 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:43:26 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:47:12 Europe/Berlin] PHP Parse error:  syntax error, unexpected '}' in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 659
+[07-Jan-2019 18:49:14 Europe/Berlin] PHP Fatal error:  Call to a member function getId() on null in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 502
+[07-Jan-2019 18:49:17 Europe/Berlin] PHP Fatal error:  Call to a member function getId() on null in /home/fpemplea/public_html/src/AppBundle/Controller/OfferController.php on line 502
+[10-Jan-2019 13:07:44 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[10-Jan-2019 13:07:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[10-Jan-2019 13:07:49 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[10-Jan-2019 13:08:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:12:55 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:13:11 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:13:20 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[14-Jan-2019 14:13:57 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:15:07 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:15:14 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:15:39 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[14-Jan-2019 14:15:44 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:15:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:15:50 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:15:59 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[14-Jan-2019 14:16:02 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[14-Jan-2019 14:16:13 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:16:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:16:24 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:16:38 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[14-Jan-2019 14:16:57 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[15-Jan-2019 08:46:17 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[15-Jan-2019 08:46:40 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[15-Jan-2019 08:46:46 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[15-Jan-2019 08:48:12 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[15-Jan-2019 08:48:20 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[15-Jan-2019 08:48:35 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[15-Jan-2019 08:48:51 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:47:29 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:47:36 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:47:41 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:47:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:47:55 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:48:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:48:06 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:48:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[16-Jan-2019 12:48:23 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[16-Jan-2019 12:48:48 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:48:53 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:48:56 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:49:03 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:49:07 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:49:13 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[16-Jan-2019 12:49:25 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[18-Jan-2019 18:35:10 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[18-Jan-2019 18:35:13 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[18-Jan-2019 18:35:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[18-Jan-2019 18:35:30 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[18-Jan-2019 18:36:35 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[18-Jan-2019 18:36:38 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[18-Jan-2019 18:36:45 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[18-Jan-2019 18:36:49 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[18-Jan-2019 18:37:05 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[18-Jan-2019 18:37:10 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[22-Jan-2019 10:24:39 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[22-Jan-2019 10:25:55 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[22-Jan-2019 10:26:01 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[22-Jan-2019 10:26:07 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[22-Jan-2019 10:26:11 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[22-Jan-2019 16:57:11 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 142
+[23-Jan-2019 13:30:04 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 142
+[24-Jan-2019 18:32:17 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[24-Jan-2019 18:32:22 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[24-Jan-2019 18:32:41 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[24-Jan-2019 18:33:37 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[24-Jan-2019 18:34:01 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[24-Jan-2019 18:34:10 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[24-Jan-2019 18:34:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[24-Jan-2019 18:35:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:35:15 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:35:39 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:35:56 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:36:11 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:36:41 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:36:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:36:51 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:36:55 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:36:59 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:38:23 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[24-Jan-2019 18:38:36 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[24-Jan-2019 18:38:42 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[26-Jan-2019 17:30:07 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[26-Jan-2019 17:30:14 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[26-Jan-2019 17:30:48 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[26-Jan-2019 17:30:53 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:48:06 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:48:30 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:49:54 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:51:31 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:52:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:52:10 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:52:22 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:52:48 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:53:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:53:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:53:40 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:54:58 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[07-Feb-2019 09:59:26 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[07-Feb-2019 09:59:35 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[07-Feb-2019 09:59:44 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[07-Feb-2019 09:59:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[07-Feb-2019 09:59:53 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[07-Feb-2019 10:00:26 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[07-Feb-2019 10:00:36 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[07-Feb-2019 10:00:40 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[07-Feb-2019 10:01:51 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:03:19 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:06:39 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:06:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:06:51 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:06:57 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:07 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:12 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:07:16 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:26 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:07:26 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:28 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:30 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:31 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:07:37 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:07:40 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:07:41 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:07:46 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:07:50 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:07:56 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:08:01 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:08:03 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:08:20 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:08:23 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:08:24 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:38:48 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:38:48 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:38:49 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:38:52 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:38:52 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:38:52 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:38:59 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[13-Mar-2019 17:41:32 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:41:36 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:41:37 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:41:41 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:41:45 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:41:52 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:43:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:43:23 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:43:27 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:43:33 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:43:38 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:43:38 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:43:44 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:43:48 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:43:54 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:43:54 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:44:06 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:08 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:29 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:30 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:35 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:39 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:42 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:48 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:49 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:53 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:44:57 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:03 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:05 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:45:10 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:45:16 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:24 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:27 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:30 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:45:31 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:34 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:37 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:45:39 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:48 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:45:53 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:45:55 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:46:01 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:03 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[13-Mar-2019 17:46:06 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:09 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:13 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:15 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:20 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:23 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[13-Mar-2019 17:46:31 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:46:33 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:46:38 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:46:44 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:47:28 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[13-Mar-2019 17:47:53 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:13:54 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:14:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:14:17 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:15:03 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:15:21 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:15:27 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:19:41 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:19:58 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:01 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:04 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:06 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:12 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:18 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:25 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:29 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:37 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:40 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:44 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[21-Mar-2019 16:20:50 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[21-Mar-2019 16:20:54 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[21-Mar-2019 16:20:56 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[21-Mar-2019 16:21:05 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:21:21 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[21-Mar-2019 16:22:00 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[01-Apr-2019 13:10:20 Europe/Berlin] PHP Fatal error:  Call to a member function getNombre() on null in /home/fpemplea/public_html/src/AppBundle/Controller/EducationController.php on line 277
+[01-Apr-2019 13:12:27 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[01-Apr-2019 13:12:30 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[01-Apr-2019 13:12:35 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[01-Apr-2019 13:12:41 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[01-Apr-2019 13:12:43 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[01-Apr-2019 13:12:47 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[01-Apr-2019 13:12:57 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[01-Apr-2019 13:13:45 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[01-Apr-2019 13:13:49 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[01-Apr-2019 13:13:52 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[01-Apr-2019 13:14:35 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74
+[02-Apr-2019 22:09:34 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[02-Apr-2019 22:09:40 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[02-Apr-2019 22:09:50 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 159
+[02-Apr-2019 22:09:54 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 244
+[02-Apr-2019 22:10:43 Europe/Berlin] PHP Fatal error:  Call to a member function getSkillCategory() on null in /home/fpemplea/public_html/src/AppBundle/Controller/SkillController.php on line 74

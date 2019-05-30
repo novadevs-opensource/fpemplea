@@ -1,0 +1,26 @@
+AppBundle\Entity\Threadmetadata:
+    type: entity
+    table: threadmetadata
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        isDeleted:
+            type: boolean
+            nullable: false
+            column: is_deleted
+        lastParticipantMessageDate:
+            type: datetime
+            nullable: true
+            column: last_participant_message_date
+        lastMessageDate:
+            type: datetime
+            nullable: true
+            column: last_message_date
+    lifecycleCallbacks: {  }

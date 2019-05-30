@@ -1,0 +1,4 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 'a:2:{i:0;O:48:"Symfony\\Component\\Validator\\Constraints\\NotBlank":3:{s:7:"message";s:31:"This value should not be blank.";s:7:"payload";N;s:6:"groups";a:1:{i:0;s:7:"Default";}}i:1;O:45:"Symfony\\Component\\Validator\\Constraints\\Range":7:{s:10:"minMessage";s:22:"¿Tu edad es correcta?";s:10:"maxMessage";s:19:"applicant.birthdate";s:14:"invalidMessage";s:36:"This value should be a valid number.";s:3:"min";s:9:"-75 years";s:3:"max";s:9:"-18 years";s:7:"payload";N;s:6:"groups";a:1:{i:0;s:7:"Default";}}}',
+);

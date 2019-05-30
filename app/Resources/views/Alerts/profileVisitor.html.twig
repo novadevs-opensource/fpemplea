@@ -1,0 +1,15 @@
+{# app/Resources/views/Alerts/profileVisitor.html.twig #}
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% if alert is defined and alert.userid.securityToken == app.user.securityToken %}
+		<h2>
+			{{alert.alertBody|raw}}
+		</h2>
+		<p>
+			<a class="button cta-2" href="{{ path('profile', {'idUser':app.user.id})}}#alerts">Volver</a>
+		<p>
+	{% else %}
+		<h1>Permiso denegado</h1>
+		<p><a href="{{ path('profile', {'idUser':app.user.id})}}#alerts">Volver</a><p>
+	{% endif %}
+{% endblock %}

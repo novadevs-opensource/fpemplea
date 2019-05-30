@@ -1,0 +1,3 @@
+{% if alert is defined and alert.userid.securityToken == app.user.securityToken %}
+	{{alert | raw}}
+{% endif %}

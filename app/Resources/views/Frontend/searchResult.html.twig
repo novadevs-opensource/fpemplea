@@ -1,0 +1,357 @@
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea - Resultado de la búsqueda{% endblock %}
+{% block body %}
+    {% if app.request.get('_route') == 'applicant_search'%}
+        <!-- <section class="applicant-list"> -->
+            <div class="container">
+                <div class="row">
+                    {% if is_granted('ROLE_COMPANY') or is_granted('ROLE_SCHOOL') %}
+                    <div id="mod_l1">
+                        <h2>
+                            <strong>{{registeredApplicants}}</strong>
+                            <span>Aspirantes</span> 
+                            registrados
+                        </h2>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" id="mod_l2">
+                        <a class="cta cta-1" role="button" data-toggle="collapse" href="#collapse-search" aria-expanded="false" aria-controls="collapseExample">
+                            <span class="button-content">
+                                Agregar filtro
+                            </span>
+                        </a>
+                        <div class="collapse" id="collapse-search">
+                            <hr>
+                            <!-- <div class="well"> -->
+                                <form action="{{ url('applicant_search') }}" method="post" class="clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label for="type">Filtro por formación</label>
+                                        <select name="education" id="findEducation" class="form-control chosen-select">
+                                            <option value="" selected>Selecciona una opción</option>
+                                            {% for e in education %}
+                                                <option value="{{e.id}}">{{e.titulo}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <hr>
+                                        <button type="submit" class="cta cta-2 search" value="Filtrar">
+                                            <span class="button-content">
+                                                Buscar
+                                                <i class="fa fa-search icon"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" id="mod_s1">
+                        {% if res|length > 0 %}
+                            <!-- <div class="applicant-list container-fluid"> -->
+                                <div class="row">
+                                    <h2>Resultado de la búsqueda:</h2>
+                                    <h3>
+                                        <strong>{{totalItems}}</strong> 
+                                        <span>Aspirantes</span> 
+                                    </h3>
+                                </div>
+                                {% for applicant in res %}
+                                    <article class="row mod_l3">
+                                        <div class="col-lg-1 col-md-1 col-sm-3 col-xs-12 avatar-wrapper">
+                                            {% if applicant.imagen is not null %}
+                                                <!-- <img class="img-responsive avatar" src="{{ url('homepage') }}../uploads/profileavatar/{{ applicant.imagen }}" alt="Avatar perfil candidato"> -->
+                                                <div class="avatar" style="background-image:url({{ url('homepage') }}../uploads/profileavatar/{{ applicant.imagen }});"></div>
+                                            {% else %}
+                                                <img class="img-responsive avatar" src="{{ absolute_url(asset('assets/img/png/default-user.png')) }}" alt="Placeholder perfil candidato">
+                                            {% endif %}
+                                        </div>
+                                       <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 ">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 name-wrapper">
+                                                    <span>{{ applicant.nombre }} {{ applicant.apellidos }}</span>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 location-wrapper">
+                                                    {% if applicant.localidad|length > 0 %}
+                                                        <span> 
+                                                            <i class="fa fa-map-marker"></i> 
+                                                            {{ applicant.localidad }}
+                                                        </span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 action-wrapper">
+                                            <a href="{{ path('publicProfile', {'idUser':applicant.idusuario.id, 'idVisitor':app.user.id}) }}">
+                                                <button type="button" class="cta cta-1">
+                                                    <span class="button-content">
+                                                        Visitar perfil
+                                                    </span>
+                                                </button>
+                                            </a>
+                                            <button type="button" class="cta cta-2" data-toggle="modal" data-target="#applicantModal{{applicant.idusuario.id}}">
+                                                <span class="button-content">
+                                                    Contactar
+                                                </span> 
+                                            </button>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                            <!-- </div> -->
+                            {% if res|length != 0 %}
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        {% if app.request.get("education") is null %}
+                                            <li><a href="{{ path('applicant_search', {'page': 1, 'idUser':app.user.id, 'parm1':app.request.get("parm1")}) }}">&laquo;</a></li>
+                                        {% else %}
+                                            <li><a href="{{ path('applicant_search', {'page': 1, 'idUser':app.user.id, 'parm1':app.request.get("education")}) }}">&laquo;</a></li>
+                                        {% endif %}
+                                        {% for i in 1..pagesCount %}
+                                            {% if i == current %}
+                                                <li>
+                                                {% if app.request.get("education") is null %}
+                                                    <a style="font-weight:600;" href="{{ path('applicant_search', {'page': i, 'idUser':app.user.id, 'parm1':app.request.get("parm1")}) }}">
+                                                        {{ i }}
+                                                    </a>
+                                                {% else %}
+                                                    <a style="font-weight:600;" href="{{ path('applicant_search', {'page': i, 'idUser':app.user.id, 'parm1':app.request.get("education")}) }}">
+                                                        {{ i }}
+                                                    </a>
+                                                {% endif %}
+                                                </li>
+                                            {% else %}
+                                                <li>
+                                                {% if app.request.get("education") is null %}
+                                                    <a href="{{ path('applicant_search', {'page': i, 'idUser':app.user.id, 'parm1':app.request.get("parm1")}) }}">
+                                                        {{ i }}
+                                                    </a>
+                                                {% else %}
+                                                    <a href="{{ path('applicant_search', {'page': i, 'idUser':app.user.id, 'parm1':app.request.get("education")}) }}">
+                                                        {{ i }}
+                                                    </a>
+                                                {% endif %}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <li>
+                                            {% if app.request.get("education") is null %}
+                                            <a href={{ path('applicant_search', {'page': pagesCount, 'idUser':app.user.id, 'parm1':app.request.get("parm1")}) }}>
+                                                &raquo;
+                                            </a>
+                                            {% else %}
+                                            <a href={{ path('applicant_search', {'page': pagesCount, 'idUser':app.user.id, 'parm1':app.request.get("education")}) }}>
+                                                &raquo;
+                                            </a>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        {% else %}
+                            <h2>Resultado de la búsqueda:</h2>
+                            <h3>No existen resultados</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        <!-- </section> -->
+    {% elseif app.request.get('_route') == 'offer_search'%}
+        <section class="container">
+            <div class="row">
+                <div class="" id="mod_l1">
+                    <h2>
+                        <strong>{#{res|length}#}</strong>
+                        <span>Ofertas</span> 
+                        registradas
+                    </h2>
+                </div>
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" id="mod_l2">
+                    <a class="cta cta-1" role="button" data-toggle="collapse" href="#collapse-search" aria-expanded="false" aria-controls="collapseExample">
+                        <span class="button-content">
+                            Agregar filtro
+                        </span>
+                    </a>
+                    <div class="collapse" id="collapse-search">
+                        <hr>
+                        <!-- <div class="well"> -->
+                            <form action="{{ url('offer_search') }}" method="get" class="clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label for="type">Filtro por categorías</label>
+                                    <select name="type" id="findCategory" class="form-control chosen-select">
+                                        <option value="" selected>Selecciona una opción</option>
+                                        {% for e in categories %}
+                                            <option value="{{e.id}}">{{e.nombre}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <hr>
+                                    <button type="submit" class="cta cta-2 search" value="Filtrar">
+                                        <span class="button-content">
+                                            Buscar
+                                            <i class="fa fa-search icon"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        <!-- </div> -->
+                    </div>
+                </div>
+               <!--  <form action="{{ url('offer_search') }}" method="get" class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 left">
+                        <p>
+                            <label for="type">Filtro por categorías</label>
+                            <select name="type" id="findCategory" class="form-control">
+                                <option value="" selected>Selecciona una opción</option>
+                                {% for e in categories %}
+                                    <option value="{{e.id}}">{{e.nombre}}</option>
+                                {% endfor %}
+                            </select>
+                        </p>
+                        <p>
+                                <button type="submit" class="button cta-2" value="Filtrar">
+                                    <span>buscar</span>
+                                    <i class="fa fa-search"></i>
+                                </button>
+                        </p>
+                    </div>
+                </form> -->
+            </div>
+            {% if res|length > 0 %}
+                <div class="row" id="mod_s1">
+                    <h2>Resultado de la búsqueda:</h2>
+                    <h3>
+                        <strong>{#{totalItems}#}</strong> 
+                        <span>Ofertas</span> 
+                    </h3>
+                </div>
+                {% for oferta in res if (oferta.validated == true) and (oferta.active == true) and (oferta.finished == false) %}
+                <article class="row mod_l3">
+                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 name-wrapper">
+                                <span>{{oferta.title}}</span>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 name-wrapper">
+                                {% if oferta.tipo.id == 1 %}
+                                    <span>Prácticas</span>
+                                {% elseif oferta.tipo.id == 0 %}
+                                    <span>Empleo</span>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 location-wrapper">
+                                {% if oferta.idempresa.localidad|length > 0 %}
+                                    <span> 
+                                        <i class="fa fa-map-marker"></i> 
+                                        {{ oferta.idempresa.localidad }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12 action-wrapper">
+                                {% if is_granted('ROLE_STUDENT') %}
+                                    <a href="{{ path('ver_mi_oferta', {'id':oferta.id, 'idUser':app.user.id}) }}">
+                                        <button type="button" class="cta cta-1">
+                                             <span class="button-content">
+                                                Ver oferta
+                                            </span>
+                                        </button>
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('ver_oferta', {'id':oferta.id}) }}">
+                                        <button type="button" class="cta cta-1 offer">
+                                            <span class="button-content">
+                                                Ver oferta
+                                            </span>
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </div>
+                           <!--  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 name-wrapper">
+                                <span>{{oferta.categoria.nombre}}</span>
+                            </div> -->
+                        </div>
+                    </div>
+                   <!--  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 name-wrapper">
+                                {% if oferta.idempresa %}
+                                    <span> 
+                                        <i class="fa fa-building"></i> 
+                                        {{oferta.idempresa}}
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 location-wrapper">
+                                {% if oferta.idempresa.localidad|length > 0 %}
+                                    <span> 
+                                        <i class="fa fa-map-marker"></i> 
+                                        {{ oferta.idempresa.localidad }}
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 action-wrapper">
+                                {% if is_granted('ROLE_STUDENT') %}
+                                    <a href="{{ path('ver_mi_oferta', {'id':oferta.id, 'idUser':app.user.id}) }}">
+                                        <button type="button" class="cta cta-1">
+                                             <span class="button-content">
+                                                Ver oferta
+                                            </span>
+                                        </button>
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('ver_oferta', {'id':oferta.id}) }}">
+                                        <button type="button" class="cta cta-1 offer">
+                                            <span class="button-content">
+                                                Ver oferta
+                                            </span>
+                                        </button>
+                                    </a>
+                                {% endif %}
+                            </div> 
+                        </div>
+                    </div>-->
+                </article>
+                   <!--  <article class="row">
+                        <hr>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 item">
+                            <h3>
+                                {{oferta.title}}
+                            </h3>
+                            <p>
+                                {% if oferta.idempresa %}
+                                    Empresa: {{oferta.idempresa}}
+                                {% endif %}
+                            </p>
+                            <p>
+                                Sector: <span>{{oferta.categoria.nombre}}</span>
+                            </p>
+                            <p>
+                                {% if oferta.tipo.id == 1 %}
+                                    <span>Prácticas</span>
+                                {% elseif oferta.tipo.id == 0 %}
+                                    <span>Empleo</span>
+                                {% endif %}
+                            </p>
+                            <p>
+                                {{ oferta.descripcion }}
+                            </p>
+                            {% if is_granted('ROLE_STUDENT') %}
+                                <a href="{{ path('ver_mi_oferta', {'id':oferta.id, 'idUser':app.user.id}) }}">
+                                    <button type="button" class="button cta-1"> Ver oferta</button>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('ver_oferta', {'id':oferta.id}) }}">
+                                    <button type="button" class="button cta-1"> Ver oferta</button>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </article> -->
+                {% endfor %}
+            {% else %}
+                <h2>0 Ofertas coinciden con tu criterio de búsqueda</h2>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}

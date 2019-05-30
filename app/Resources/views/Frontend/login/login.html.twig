@@ -1,0 +1,70 @@
+{# app/Resources/views/login/login.html.twig #}
+{% extends "base.html.twig" %}
+{% block title %} FP Emplea - Inicia sesión{% endblock %}
+{% block body %}
+<section id="login-screen">
+    {% if (is_granted('ROLE_COMPANY')) or (is_granted('ROLE_STUDENT')) or (is_granted('ROLE_SCHOOL')) or (is_granted('ROLE_ADMIN')) %}
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1 box-login">
+                <h2>Bienvenido {{ app.user.nif }}</h2>
+                <p>
+                {% if is_granted('ROLE_STUDENT') and (app.user.done == 0)%}
+                    <a href="{{ path('crear_estudiante', {'id':app.user.id}) }}" class="button cta-2">
+                        Crear perfil
+                    </a>
+                {% elseif is_granted('ROLE_COMPANY') and (app.user.done == 0)%}
+                    <a href="{{ path('crear_empresa', {'id':app.user.id}) }}" class="button cta-2">
+                        <span class="txto">
+                          Crear perfil
+                        </span>
+                    </a>
+                {% elseif is_granted('ROLE_SCHOOL') and (app.user.done == 0)%}
+                    <a href="{{ path('crear_centro', {'id':app.user.id}) }}" class="button cta-2">
+                        Crear perfil
+                    </a>
+                {% endif %}
+                </p>
+                <p>
+                {% if app.user.done == 1 %}
+                    <span>
+                        <a href="{{ path('profile', {'idUser':app.user.id}) }}" class="button cta-2">Ir a mi cuenta</a>
+                    </span>
+                </p>
+                {% else %}
+                    Haz click en el botón superior <b>"Crear perfil"</b> para empezar a utilizar FP-Emplea
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1 box-login-form">
+                <h2>Inicia sesión</h2>
+                <form action="{{ path('login_check') }}" method="post">
+                    <p>
+                        <label for="_username">DNI/NIF</label>
+                        <input type="text" name="_username" id="username" value="{{ last_username }}" class="form-control">
+                    </p>
+                    <p>
+                        <label for="_password">Contraseña</label>
+                        <input type="password" name="_password" id="password" class="form-control">
+                    </p>
+                    <p>
+                        <input type="submit" class="button cta-1" value="Iniciar sesión">
+                        <input type="hidden" name="_target_path" value="/login">
+                    </p>
+                    
+                </form>
+                <p id="form-forgot">
+                    <a id="forgot-mail" class="color-white"{# href="{{ path('forgot_password') }}" #}>He olvidado la contraseña</a>
+                    <form id="pass-form" action="{{ path('forgot_password') }}" style="display:none;">
+                        <label for="email">Email/NIF</label>
+                        <input type="text" name="email" id="mail-text" class="form-control">
+                        <button class="button cta-1" type="submit">Enviar</button>
+                    </form>
+                </p>
+            </div>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

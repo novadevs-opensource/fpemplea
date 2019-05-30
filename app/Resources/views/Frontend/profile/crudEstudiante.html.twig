@@ -1,0 +1,34 @@
+{{ form_start(form, {'attr': {'id': 'applicant_edit'}}) }}
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.nombre, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.apellidos, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.fechanacimiento, { 'attr': {'class': 'form-control datepicker'} }) }}
+            {# {{ form_row(form.dni, { 'attr': {'class': 'form-control'} }) }} #}
+            {{ form_row(form.email, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.telefonouno, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.direccion, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.cp, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.localidad, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.pais, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.diponibilidad, { 'attr': {'class': 'form-control datepicker'} }) }}
+            {{ form_row(form.telefonodos, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hr>
+        </div>
+        <div class="col-md-12">
+            {{ form_row(form.fexibilidadgeografica, { 'attr': {'class': ''} }) }}
+            {{ form_row(form.intereses, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_row(form.cvtxt, { 'attr': {'class': 'form-control'} }) }}
+            {#{ form_row(form.cvpdf, { 'attr': {'class': 'form-control-file'} }) }#}
+            {# {{ form_row(form.imagen, { 'attr': {'class': 'form-control-file'} }) }} #}
+            <input type="submit" class="button cta-2" value="Guardar"/>
+            {# <input type="submit" class="button cta-3" value="Cancelar"/> #}
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,32 @@
+AppBundle\Entity\Competencias:
+    type: entity
+    table: competencias
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idpadre:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: idPadre
+        nombre:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        tipocompetencia:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: tipoCompetencia
+    lifecycleCallbacks: {  }

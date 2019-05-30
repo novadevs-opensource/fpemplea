@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Formacion" table="formacion">
+    <indexes>
+      <index name="familiaProf" columns="familiaProf"/>
+      <index name="level" columns="level"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titulo" type="string" column="titulo" length="150" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="creditos" type="integer" column="creditos" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="extinto" type="boolean" column="extinto" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="fechacreacion" type="datetime" column="fechaCreacion" nullable="false">
+      <options>
+        <option name="default">CURRENT_TIMESTAMP</option>
+      </options>
+    </field>
+    <field name="fechaborrado" type="string" column="fechaBorrado" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="activo" type="boolean" column="activo" nullable="false">
+      <options>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="familiaprof" target-entity="Categorias" fetch="LAZY">
+      <join-columns>
+        <join-column name="familiaProf" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="level" target-entity="EducationLevel" fetch="LAZY">
+      <join-columns>
+        <join-column name="level" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

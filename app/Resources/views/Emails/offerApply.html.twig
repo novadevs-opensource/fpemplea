@@ -1,0 +1,18 @@
+{# app/Resources/views/Emails/offerApply.html.twig #}
+<h3>
+	Hola {{ company.nombreempresa }},
+</h3>
+<p>
+	{{ applicant.nombre }} ha aplicado a tu oferta {{offer.title}}
+<p>
+<p>
+	<span>
+		Para visitar su perfil, haz click en el siguiente enlace:
+	</span>
+	<a href="{{ path('publicProfile', {'idUser':applicant.idusuario.id, 'idVisitor':company.idusuario.id}) }}">		Enlace
+	</a>
+<p>
+	<a href="{{ path('profile', {'idUser':company.idusuario.id}) }}">
+		Volver
+	</a>
+<p>

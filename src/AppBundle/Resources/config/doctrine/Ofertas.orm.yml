@@ -1,0 +1,147 @@
+AppBundle\Entity\Ofertas:
+    type: entity
+    table: ofertas
+    repositoryClass: AppBundle\Repository\ExtendedSearchRepository
+    indexes:
+        fk_ofertas_perfilempresa1_idx:
+            columns:
+                - idEmpresa
+        categoria:
+            columns:
+                - categoria
+        fk_tipo_idx:
+            columns:
+                - tipo
+    uniqueConstraints:
+        fk_ofertas_categorias:
+            columns:
+                - id
+                - categoria
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechacreacion:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaCreacion
+        fecharevision:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaRevision
+        fechaborrado:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaBorrado
+        fechainicio:
+            type: date
+            nullable: true
+            column: fechaInicio
+        fechafin:
+            type: date
+            nullable: true
+            column: fechaFin
+        inscribed:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+        vacancies:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        descripcion:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+        title:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+        validated:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+        active:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+        finished:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+        closurereason:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: closureReason
+        closureexplanation:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+            column: closureExplanation
+        engagement:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+    manyToOne:
+        idempresa:
+            targetEntity: Perfilempresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEmpresa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipo:
+            targetEntity: Tiposoferta
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        categoria:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categoria:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

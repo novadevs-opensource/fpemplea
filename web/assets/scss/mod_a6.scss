@@ -1,0 +1,16 @@
+#mod_a6 {
+	background-color: $w;
+	padding-top: 5em;
+	padding-bottom: 5em;
+	h2 {
+		font-size:3em;
+	    font-weight: bolder;
+	    color: $b;
+	    margin-bottom: 1.5em;
+	}
+	img {
+		max-height: 95px;
+		display: inline-block;
+		margin: 0 auto;
+	}
+}

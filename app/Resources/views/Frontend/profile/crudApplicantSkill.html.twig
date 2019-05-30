@@ -1,0 +1,14 @@
+
+{{ form_start(form, {'attr': {'id': 'applicant_skill_add'}}) }}
+    <div class="form-group">
+        <p>
+            {{ form_row(form.skill, { 'attr': {'class': 'form-control chosen-select'} }) }}
+        </p>
+        {{ form_row(form._token) }}
+        <div>
+        	<button type="submit" class="button cta-2">
+	        	Guardar
+	        </button>
+        </div>
+    </div>
+{{ form_end(form, {'render_rest': false}) }}

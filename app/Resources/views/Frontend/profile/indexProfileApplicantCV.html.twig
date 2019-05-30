@@ -1,0 +1,250 @@
+{% extends 'base.html.twig' %}
+{% block title %} FP Emplea - Mi perfil {% endblock %}
+{% block body %}
+    {% if is_granted('ROLE_STUDENT') %}
+        {% if app.user.done == 1 %}
+            {% for flashMessage in app.session.flashbag.get('profileEditSucc') %}
+              <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ flashMessage }}
+              </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('profileEditErr') %}
+              <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{ flashMessage }}
+              </div>
+            {% endfor %}
+            <section id="applicant" class="row">
+                <button id="profile-menu-btn">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <aside class="col-lg-3 col-md-4 col-sm-5 col-xs-10">
+                    <ul class="menu-alumn">
+                        <li class="image-user">
+                            <a href="" data-toggle="modal" data-target="#change-img">
+                                {% if estudiante.imagen is not null %}
+                                    <img class="img-circle" src="{{ absolute_url(asset('uploads/profileavatar/' ~  estudiante.imagen)) }}" alt="Avatar perfil candidato">
+                                {% else %}
+                                    <img class="img-circle" src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="Avatar perfil candidato">
+                                {% endif %}
+                            </a>
+                            <h3>
+                                <span>
+                                    {{ estudiante.nombre }} {{ estudiante.apellidos}}
+                                </span>
+                            </h3>
+                        </li>
+                        <hr>
+                        <!-- OK -->
+                        <li class="menu-user">
+                            <a data-placement="right" title="Inicio" href="{{ path('profile', {'idUser':app.user.id}) }}">
+                                <span class="glyphicon glyphicon-home icon-menu" aria-hidden="true">
+                                </span>
+                                
+                                <span class="txt">
+                                    Inicio
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-placement="right" title="Modificar datos" href="{{ path('profile', {'idUser':app.user.id}) }}#edit">
+                                <span class="glyphicon glyphicon-pencil icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Modificar datos
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-placement="right" title="Alertas" href="{{ path('profile', {'idUser':app.user.id}) }}#alerts">
+                                <span class="glyphicon glyphicon-envelope icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Alertas <span class="badge">{{notRead}}</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-placement="right" title="Mis ofertas de empleo" data-target="#offers" href="{{ path('profile', {'idUser':app.user.id}) }}#offers">
+                                <span class="glyphicon glyphicon-briefcase icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Mis ofertas de empleo
+                                </span>
+                            </a>
+                        </li>
+                        <li class="menu-user">
+                            <a data-toggle="tab" data-placement="right" title="Actualiza tu curriculum" href="#cv">
+                                <span class="glyphicon glyphicon-file icon-menu" aria-hidden="true">
+                                </span>
+                                <span class="txt">
+                                    Actualiza tu curriculum
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <div class="tab-content">
+                        <section id="cv" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <h2>Currículum</h2>
+                                    <hr>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <ul class="nav nav-tabs wiz" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Formación">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                </span>
+                                                <span>
+                                                    Formación
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Experiencia laboral">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-briefcase"></i>
+                                                </span>
+                                                <span>
+                                                    Experiencia
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Aptitudes y otros datos">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-folder-open"></i>
+                                                </span>
+                                                <span>
+                                                    Aptitudes
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Finalizado">
+                                                <span class="round-tab">
+                                                    <i class="glyphicon glyphicon-ok"></i>
+                                                </span>
+                                                <span>
+                                                    C.V.
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content container-fluid">
+                                        <div class="tab-pane active clearfix" role="tabpanel" id="step1">
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                <h3>Formación</h3>
+                                                <hr>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                {{ render(controller('AppBundle:Education:applicantEducationAdd',
+                                                {'idApplicant': estudiante.id, 'id': app.user.id}
+                                                ))
+                                                }}
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                <h3>Lista de cursos</h3>
+                                                <hr>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 education-list">
+                                                {{ render(controller('AppBundle:Education:educationApplicantList',
+                                                {'idApplicant': estudiante.id}
+                                                ))
+                                                }}
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane clearfix" role="tabpanel" id="step2">
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                <h3>Experiencia laboral</h3>
+                                                <hr>
+                                            </div>
+                                            
+                                            <div class="col-lg-8 col-sm-12 col-md-12 col-xs-12">
+                                                {{ render(controller('AppBundle:Applicant:applicantWorkAdd',
+                                                {'idApplicant': estudiante.id, 'id': app.user.id}
+                                                ))
+                                                }}
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                <h3>Lista de experiencia</h3>
+                                                <hr>
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                <ul id="workExpList">
+                                                    {{ render(controller('AppBundle:Applicant:applicantWorkList',
+                                                    {'idApplicant': estudiante.id, 'id': app.user.id}
+                                                    ))
+                                                    }}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane clearfix" role="tabpanel" id="step3">
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                <h3>Aptitudes</h3>
+                                                <hr>
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                {{ render(controller('AppBundle:Skill:applicantSkillAdd',
+                                                {'idApplicant': estudiante.id, 'id': app.user.id}
+                                                ))
+                                                }}
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                {{ render(controller('AppBundle:Skill:applicantPersonalSkillAdd',
+                                                {'idApplicant': estudiante.id, 'id': app.user.id}
+                                                ))
+                                                }}
+                                            </div>
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                {{ render(controller('AppBundle:Skill:applicantCommonSkillAdd',
+                                                {'idApplicant': estudiante.id, 'id': app.user.id}
+                                                ))
+                                                }}
+                                            </div>
+                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 skill-list">
+                                                {{ render(controller('AppBundle:Skill:applicantSkillList',
+                                                { 'idApplicant': estudiante.id }
+                                                ))
+                                                }}
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane text-center" role="tabpanel" id="complete">
+                                            <p class="text-center" style="margin-top:50px;">Para crear tu curriculum con Europass, accede al siguiente enlace ! </p>
+                                            <p class="text-center"><a href="https://europass.cedefop.europa.eu/editors/es/cv/compose" target="_blank" class="button cta-2">Crear Europass</a></p>
+                                            <br>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+        {% endif %}
+    {% endif %}
+    {# Modal cambio de imagen #}
+      <div id="change-img" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Selecciona una imagen para tu perfil</h4>
+            </div>
+            <div class="modal-body">
+     
+              {{ render( controller( 'AppBundle:Default:AvatarEdit' ) ) }}
+
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
+                

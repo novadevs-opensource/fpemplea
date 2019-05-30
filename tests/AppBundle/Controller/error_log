@@ -1,0 +1,1 @@
+[23-Nov-2018 19:59:30 UTC] PHP Fatal error:  Class 'Symfony\Bundle\FrameworkBundle\Test\WebTestCase' not found in /home/fpemplea/public_html/tests/AppBundle/Controller/DefaultControllerTest.php on line 8

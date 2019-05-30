@@ -1,0 +1,40 @@
+footer {
+	min-height:350px;
+	h2 {
+		margin-top: 120px;
+		margin-bottom: 1em;
+		font-size:1.6em;
+		color: $w;
+		font-weight: bolder;
+		position:relative;
+		&:after {
+	        content: '';
+		    padding: 3px;
+		    width: 3em;
+		    background-color: $l-orange;
+		    position: absolute;
+		    top:1.2em;
+		    left: 0;
+		    display: inline-block;
+	    }
+	}
+	ul {
+		list-style:none;
+		padding: 0;
+		li {
+			margin: .5em auto;
+			color: $l-orange;
+			a {
+				color: $l-orange;
+				font-weight: bold;
+			}
+		}
+	}
+
+	img.key {
+	    position: absolute;
+	    max-height: 350px;
+	    left: -40px;
+    	bottom: 0;
+	}
+}

@@ -1,0 +1,47 @@
+/*
+ * CSS File for FP Emplea Index page
+ */
+
+
+.cta{
+    padding: 1em 2em;
+    border-radius: 50px;
+    font-weight: bolder;
+    display: inline-block;
+    line-height: 2em;
+    min-width: 220px;
+}
+    .cta span {
+        display: flex;
+        font-weight: bolder;
+    }
+        .cta i.register {
+            background-image: url('../../../assets/img/icons/register-white.png');
+            background-size: cover;
+            display: inline-block;
+            height: 2.2em;
+            width: 2.2em;
+            margin-right: .5em;
+        }
+        .cta i.login {
+            background-image: url('../../../assets/img/icons/home-white.png');
+            background-size: cover;
+            display: inline-block;
+            height: 2.2em;
+            width: 2.2em;
+            margin-right: .5em;
+        }
+
+.cta-0 {
+    background-color: transparent;
+}
+
+.cta-1 {
+    background:linear-gradient(90deg,#ff3d00, #FF9800);
+}
+    .cta-1 span {
+        color: #ffffff;
+    }
+
+
+

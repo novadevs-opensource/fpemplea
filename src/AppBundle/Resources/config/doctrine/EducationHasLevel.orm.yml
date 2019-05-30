@@ -1,0 +1,41 @@
+AppBundle\Entity\EducationHasLevel:
+    type: entity
+    table: education_has_level
+    indexes:
+        fk_education_idx:
+            columns:
+                - education
+        fk_level_idx:
+            columns:
+                - level
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        level:
+            targetEntity: EducationLevel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                level:
+                    referencedColumnName: id
+            orphanRemoval: false
+        education:
+            targetEntity: Formacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                education:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,76 @@
+AppBundle\Entity\Formacion:
+    type: entity
+    table: formacion
+    indexes:
+        familiaProf:
+            columns:
+                - familiaProf
+        level:
+            columns:
+                - level
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titulo:
+            type: string
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+        creditos:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        extinto:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+        fechacreacion:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: fechaCreacion
+        fechaborrado:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaBorrado
+        activo:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+    manyToOne:
+        familiaprof:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                familiaProf:
+                    referencedColumnName: id
+            orphanRemoval: false
+        level:
+            targetEntity: EducationLevel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                level:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

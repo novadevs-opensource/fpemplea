@@ -1,0 +1,48 @@
+AppBundle\Entity\PerfilestudianteHasRrss:
+    type: entity
+    table: perfilestudiante_has_rrss
+    uniqueConstraints:
+        UNIQ_DE37D7A45B5FA51B:
+            columns:
+                - perfilestudianteId
+        UNIQ_DE37D7A4306336B0:
+            columns:
+                - rrssId
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        rrssid:
+            targetEntity: Rrss
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rrssId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        perfilestudianteid:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilestudianteId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

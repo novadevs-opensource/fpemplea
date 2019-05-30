@@ -1,0 +1,86 @@
+{% if sn|length == 0 %}
+    <div class="social-list-edit empty ">
+        <hr class="color-white">
+        <p class="empty">
+            <i class="disabled">
+                Todavía no has agregado ninguna red social    
+            </i>
+        </p>
+    </div>
+{% else %}
+    <div class="social-list-edit">
+    {% for s in sn %}
+        {% if s.sn.nombre == 'facebook' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-facebook socialIcon facebook"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% elseif s.sn.nombre == 'twitter' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-twitter socialIcon twitter"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% elseif s.sn.nombre == 'instagram' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-instagram socialIcon instagram"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% elseif s.sn.nombre == 'vimeo' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-vimeo socialIcon vimeo"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% elseif s.sn.nombre == 'youtube' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-youtube socialIcon youtube"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% elseif s.sn.nombre == 'linkedin' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-linkedin socialIcon linkedin"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% elseif s.sn.nombre == 'google+' %}
+        <span id="{{app.user.id}}{{s.id}}" class="social-item">
+            <a href="{{s.snurl}}" class="socialLink">
+                <i class="fa fa-google socialIcon google"></i>
+                <span class="social-url">{{s.snurl}}</span>
+            </a>
+            <button class="nobutton" onclick="deleteSn({{app.user.id}}, {{s.id}}, '{{ path('sn_del', {'idUser':app.user.id, 'usRelationId': s.id}) }}')">
+                <i class="fa fa-close"></i>
+            </button>
+        </span>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endif %}

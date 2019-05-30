@@ -1,0 +1,41 @@
+AppBundle\Entity\OfertasHasCategorias:
+    type: entity
+    table: ofertas_has_categorias
+    uniqueConstraints:
+        fk_ofertas_categorias:
+            columns:
+                - ofertasId
+        fk_categorias_ofertas:
+            columns:
+                - categoriasId
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        ofertasid:
+            targetEntity: Ofertas
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ofertasId:
+                    referencedColumnName: id
+            orphanRemoval: false
+        categoriasid:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categoriasId:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

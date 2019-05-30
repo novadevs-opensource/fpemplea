@@ -1,0 +1,2 @@
+[22-Nov-2018 19:59:51 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50
+[22-Nov-2018 20:02:25 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ';' or '{' in /home/fpemplea/public_html/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationRegistry.php on line 50

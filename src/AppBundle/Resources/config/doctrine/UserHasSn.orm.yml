@@ -1,0 +1,53 @@
+AppBundle\Entity\UserHasSn:
+    type: entity
+    table: user_has_sn
+    indexes:
+        fk_user_idx:
+            columns:
+                - user
+        fk_sn_idx:
+            columns:
+                - sn
+    uniqueConstraints:
+        snUrl_UN:
+            columns:
+                - snUrl
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        snurl:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: snUrl
+    manyToOne:
+        sn:
+            targetEntity: Rrss
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sn:
+                    referencedColumnName: id
+            orphanRemoval: false
+        user:
+            targetEntity: Usuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="PerfilempresaHasCategorias" table="perfilempresa_has_categorias">
+    <unique-constraints>
+      <unique-constraint name="UNIQ_D81643AF5792B277" columns="categorias_id"/>
+      <unique-constraint name="UNIQ_D81643AFB9D252CE" columns="perfilempresa_id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="categorias" target-entity="Categorias" fetch="LAZY">
+      <join-columns>
+        <join-column name="categorias_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="perfilempresa" target-entity="Perfilempresa" fetch="LAZY">
+      <join-columns>
+        <join-column name="perfilempresa_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

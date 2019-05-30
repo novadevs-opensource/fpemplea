@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+      {% stylesheets
+        'assets/vendor/bootstrap-3.3.7-dist/css/*'
+        'assets/vendor/font-awesome-4.7.0/css/*'
+        'assets/vendor/chosen_v1.8.2/*.css'
+        'assets/css/*.css'
+        'assets/css/*.scss'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+      {% endstylesheets %}
+      {# <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css.map') }}"> #}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  </head>
+  <body {% if app.request.get('_route') == "listado_estudiantes" or app.request.get('_route') == "listado_empresas"  or app.request.get('_route') == "listado_ofertas" or app.request.get('_route') =="offer_search" or app.request.get('_route') =="ver_mi_oferta" %} class="colored" {% endif %}>
+    <div id="preloader">
+      <div id="loader">
+        <p class="text-center">
+          <img src="{{ asset('assets/img/loader.gif') }}" height="200">
+        </p>
+      </div>
+    </div>
+    {# <p>Application Environment: {{ app.environment }}</p> #}
+    <header>
+      <div class="navigation-header visible-xs">
+          {% if alerts is defined and (notRead is null) %}
+            {% if (is_granted('ROLE_STUDENT')) or (is_granted('ROLE_COMPANY')) or (is_granted('ROLE_SCHOOL')) or (is_granted('ROLE_ADMIN')) %}
+              {% for a in alerts %}
+                {% if a.status == 0 %}
+                  {% set notRead = notRead + 1 %}
+                {% endif %}
+              {% endfor %}
+              <a href="{{ path('homepage_logged', {'idUser':app.user.id}) }}">
+                <img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="FP Emplea, la llave a tu futuro">
+              </a>
+            {% else %}
+              <a href="{{ path('homepage') }}">
+                <img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="FP Emplea, la llave a tu futuro">
+              </a>
+            {% endif %}
+          {% else %}
+            <a href="{{ path('homepage') }}">
+              <img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="FP Emplea, la llave a tu futuro">
+            </a>
+          {% endif %}
+          <div class="container-burger">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+        </div>
+      <nav id="mobile-menu" class="mobile-hidden">
+        <div class="navigation-header hidden-xs">
+          {% if alerts is defined and (notRead is null) %}
+            {% if (is_granted('ROLE_STUDENT')) or (is_granted('ROLE_COMPANY')) or (is_granted('ROLE_SCHOOL')) or (is_granted('ROLE_ADMIN')) %}
+              {% for a in alerts %}
+                {% if a.status == 0 %}
+                  {% set notRead = notRead + 1 %}
+                {% endif %}
+              {% endfor %}
+              <a href="{{ path('homepage_logged', {'idUser':app.user.id}) }}">
+                <img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="FP Emplea, la llave a tu futuro">
+              </a>
+            {% else %}
+              <a href="{{ path('homepage') }}">
+                <img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="FP Emplea, la llave a tu futuro">
+              </a>
+            {% endif %}
+          {% else %}
+            <a href="{{ path('homepage') }}">
+              <img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" alt="FP Emplea, la llave a tu futuro">
+            </a>
+          {% endif %}
+          <div class="container-burger">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+        </div>
+        <ul class="navigation-menu">
+          {% if ((is_granted('ROLE_STUDENT')) or (is_granted('ROLE_COMPANY')) or (is_granted('ROLE_SCHOOL'))) and (app.user.done != 1) %}
+          {% elseif (is_granted('ROLE_STUDENT')) or (is_granted('ROLE_COMPANY')) or (is_granted('ROLE_SCHOOL')) %}
+            {% if is_granted('ROLE_COMPANY') == false %}
+            <li {% if app.request.get('_route') == "listado_empresas" %} class="active" {% endif %}>
+                <a href="{{ path('listado_empresas', {'idUser':app.user.id}) }}">Empresas</a>
+            </li>
+            {% endif %}
+            {% if is_granted('ROLE_STUDENT') == false %}
+            <li {% if app.request.get('_route') == "listado_estudiantes" %} class="active" {% endif %}>
+                <a href="{{ path('listado_estudiantes') }}">Estudiantes</a>
+            </li>
+            {% endif %}
+            {% if is_granted('ROLE_COMPANY') == false %}
+            <li {% if app.request.get('_route') == "listado_ofertas" %} class="active" {% endif %}>
+                <a href="{{ path('listado_ofertas') }}">Ofertas</a>
+            </li>
+            {% endif %}
+          {% endif %}
+        </ul>
+        {% if is_granted('ROLE_STUDENT') and (app.user.done == 1)%}
+          {# FIXME¿?}
+          <ul class="navigation-menu visible-xs">
+            <li class="menu-user">
+              <a data-toggle="tab" href="#inicio">
+                <span class="glyphicon glyphicon-home icon-menu" aria-hidden="true">
+                </span>
+                <span class="txt">
+                  Inicio
+                </span>
+              </a>
+            </li>
+            <li class="menu-user">
+              <a data-toggle="tab" data-target="#perfil" href="{{ path('modificar_estudiante', {'id':app.user.id}) }}">
+                <span class="glyphicon glyphicon-pencil icon-menu" aria-hidden="true">
+                </span>
+                <span class="txt">
+                  Modificar datos
+                </span>
+              </a>
+            </li>
+            <li class="menu-user">
+              <a data-toggle="tab" href="#mensajes">
+                <span class="glyphicon glyphicon-envelope icon-menu" aria-hidden="true">
+                </span>
+                <span class="txt">
+                  Alertas(1)
+                </span>
+              </a>
+            </li>
+            <li class="menu-user">
+              <a data-toggle="tab" data-target="#ofertas" href="{{ path('mis_ofertas_candidato', {'idPerf':estudiante.id}) }}">
+                <span class="glyphicon glyphicon-briefcase icon-menu" aria-hidden="true">
+                </span>
+                <span class="txt">
+                  Mis ofertas de empleo
+                </span>
+              </a>
+            </li>
+            <li class="menu-user">
+              <a data-toggle="tab" href="#cv">
+                <span class="glyphicon glyphicon-file icon-menu" aria-hidden="true">
+                </span>
+                <span class="txt">
+                  Actualiza tu curriculum
+                </span>
+              </a>
+            </li>
+            
+          </ul>
+          {#}
+        {% endif %}
+        <ul class="log-actions">
+          <li class="divider"></li>
+          {% if is_granted('ROLE_ADMIN') %}
+            <li>
+              <a href="{{ path('admin') }}" class="fa fa-user-circle-o">
+                <span class="txto">
+                  Ir a BackOffice
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% elseif is_granted('ROLE_STUDENT') and (app.user.done == 1)%}
+            <li>
+              <a href="{{ path('profile', {'idUser':app.user.id}) }}" class="cta cta-0">
+                {#}
+                {% if notRead is defined %}
+                  <span class="mini-circle">{{notRead}}</span>
+                {% endif %}
+                {#}
+                <span class="button-content">
+                  <i class="fa fa-user-circle-o fa-2x icon"></i>
+                  Ir a mi cuenta
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% elseif is_granted('ROLE_STUDENT') and (app.user.done == 0)%}
+            <li>
+              <a href="{{ path('crear_estudiante', {'id':app.user.id}) }}" class="cta cta-0">
+                <span class="txto">
+                  <span class="button-content">
+                    <i class="fa fa-user-circle-o fa-2x icon"></i>
+                    Crear perfil
+                  </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% elseif is_granted('ROLE_COMPANY') and (app.user.done == 1)%}
+            <li>
+              <a href="{{ path('profile', {'idUser':app.user.id}) }}" class="cta cta-0">
+                {#}
+                {% if notRead is defined %}
+                  <span class="mini-circle">{{notRead}}</span>
+                {% endif %}
+                {#}
+                <span class="button-content">
+                  <i class="fa fa-user-circle-o fa-2x icon"></i>
+                  Ir a mi cuenta
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% elseif is_granted('ROLE_COMPANY') and (app.user.done == 0)%}
+            <li>
+              <a href="{{ path('crear_empresa', {'id':app.user.id}) }}" class="fa fa-user-circle-o">
+                <span class="txto">
+                  Crear perfil
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% elseif is_granted('ROLE_SCHOOL') and (app.user.done == 1)%}
+            <li>
+              <a href="{{ path('profile', {'idUser':app.user.id}) }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-user-circle-o fa-2x icon"></i>
+                  Ir a mi cuenta
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% elseif is_granted('ROLE_SCHOOL') and (app.user.done == 0)%}
+            <li>
+              <a href="{{ path('crear_centro', {'id':app.user.id}) }}" class="fa fa-user-circle-o">
+                <span class="txto">
+                  Crear perfil
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ path('logout') }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-sign-out fa-2x icon"></i>
+                  Cerrar sesión
+                </span>
+              </a>
+            </li>
+          {% else %}
+            <li>
+              <a href="{{ path('homepage_login') }}" class="cta cta-0">
+                  <span class="button-content">
+                    <i class="login-gray icon"></i>
+                    Inicio de sesión
+                  </span>
+                </a>
+            </li>
+            <li>
+              <a href="" class="cta cta-0" data-toggle="modal" data-target="#register">
+                  <span class="button-content">
+                    <i class="register-gray icon"></i>
+                  <!-- <i class="fa fa-user-plus fa-circle"></i> -->
+                    Regístrate
+                  </span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    {# START - Register user errors #}
+    {% if error is defined and error %}
+      <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+      </div>
+    {% endif %}
+    {% for message in app.session.flashbag.get('register') %}
+      <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ message }}
+      </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('registerErr') %}
+      <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ flashMessage }}
+      </div>
+    {% endfor %}
+    
+   
+    {# START - Education add and delete errors from ApplicantProfile #}
+    {% for addMsg in app.session.flashbag.get('educationAdd') %}
+      <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ addMsg }}
+      </div>
+    {% endfor %}
+    {% for delMsg in app.session.flashbag.get('educationDel') %}
+      <div class="alert alert-info alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ delMsg }}
+      </div>
+    {% endfor %}
+    {% for failure in app.session.flashbag.get('educationErr') %}
+      <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ failure }}
+      </div>
+    {% endfor %}
+
+    {# START - Social network actions #}
+    {% for flashMessage in app.session.flashbag.get('snSucc') %}
+      <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ flashMessage }}
+      </div>
+    {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('snErr') %}
+      <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ flashMessage }}
+      </div>
+    {% endfor %}
+    
+    {% if app.request.get('_route') == "listado_estudiantes" or app.request.get('_route') == "listado_empresas"  or app.request.get('_route') == "listado_ofertas" or app.request.get('_route') =="offer_search" or app.request.get('_route') =="ver_mi_oferta" or app.request.get('_route') =="offer_admin" or app.request.get('_route') =="ver_oferta"%}
+      <div id="site-content" class="container">
+    {% else %}
+      <div id="site-content" class="container-fluid">
+    {% endif %} 
+      {% block body %}
+
+      {% endblock %}
+    </div>
+
+    {# {% if (app.request.get('_route') == 'homepage') or (app.request.get('_route') == 'homepage_logged') or (app.request.get('_route') == 'homepage_login') %} #}
+      <footer class="container-fluid">
+        <img src="{{ absolute_url(asset('assets/img/png/footer/key.png')) }}" class="key hidden-xs" alt="" >
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+            <h2>Enlaces de interés</h2>
+            <ul>
+              <li><a href="{{ path('terms') }}">Privacidad</a></li>
+              <li><a href="http://todofp.es/inicio.html">Todo FP</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#centros-register">Registro centros</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 col-lg-3 col-sm-2 col-xs-12">
+            <h2>Síguenos</h2>
+            <div>
+              <ul>
+                <li><a href="#"><i class="fa fa-facebook "></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-lg-4 col-sm-3 col-xs-12 contact-block">
+            <h2>Contacto</h2>
+            <ul>
+              <li>
+                <strong> CPIFP Los Enlaces </strong>
+              </li>
+              <li>
+                <strong>Dirección:</strong> Jarque de Moncayo, nº 10. 50012 ZARAGOZA
+              </li>
+              <li>
+                <strong>Teléfono:</strong> 976 300 804
+              </li>
+              <li>
+                <strong>Fax:</strong> 976 314 403
+              </li>
+              <li>
+                <strong>E-mail:</strong> <a href="mailto:formacionempleo@cpilosenlaces.com?Subject=[WEB]FP-Emplea">formacionempleo@cpilosenlaces.com</a>
+              </li>
+            </ul>
+                
+              
+              
+              
+              
+            </p>
+            
+          </div>
+        </div>
+      </footer>
+    {# {% else %} #}
+ <!--      <footer class="container-fluid no-pbottom">
+        <h4 class="text-center color-white">
+          FP Emplea
+        </h4>
+      </footer> -->
+    {# {% endif %} #}
+
+
+      <!--    Modal registro empresas y candidatos-->
+      <div id="register" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Regístrate en FP Emplea</h4>
+            </div>
+            <div class="modal-body">
+              <ul class="nav nav-tabs center">
+                <li class="active col-md-4">
+                  <a id="reg-alumnos" data-toggle="tab" href="#alumnosregs">
+                    Registrar alumnos
+                  </a>
+                </li>
+                <li class="col-md-4">
+                  <a id="reg-empresas" data-toggle="tab" href="#empresas">
+                    Registrar empresas
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content container-fluid">
+                {{ render(controller(
+                'AppBundle:Register:registerApplicant'
+                )) }}
+                {{ render(controller(
+                'AppBundle:Register:registerCompany'
+                )) }}
+              </div>
+            </div>
+            <div class="modal-footer">
+             
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--    Modal registro centros -->
+      <div id="centros-register" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Registra tu centro en FP Emplea</h4>
+            </div>
+            <div class="modal-body">
+              <!-- Modal content-->
+              {{ render(controller(
+              'AppBundle:Register:registerSchool'
+              )) }}
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% block javascripts %}
+        {% javascripts
+            'assets/vendor/jquery-3.2.1.min.js'
+            'assets/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js'
+            'assets/vendor/bootstrap-datepicker.min.js'
+            'assets/vendor/chosen_v1.8.2/chosen.jquery.min.js'
+            'assets/js/main.js'
+            'assets/js/ajax-methods.js'
+            'assets/vendor/jquery-validation-1.17.0/dist/jquery.validate.js'
+            'assets/vendor/jquery-validation-1.17.0/dist/additional-methods.js'
+            output='js/compiled/app.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+      {% endblock %}
+    </body>
+  </html>

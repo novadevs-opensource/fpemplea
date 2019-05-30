@@ -1,0 +1,11 @@
+#mod_l1 {
+	margin-bottom: 2em;
+	h2 {
+		@media (max-width: $screen-xs-max) and (orientation: portrait){
+			font-size: 1.8em;
+		}
+		span {
+			font-weight: normal;
+		}
+	}
+}

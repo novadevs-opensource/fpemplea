@@ -1,0 +1,31 @@
+{{ form_start(form, {'attr': {'id': 'edit_img' } } ) }}
+	{{ form_row(form.imagen) }}
+    {{ form_row(form._token) }}
+	{# {{ form_errors(form) }} #}
+	<div class="text-center row">
+		<p>
+			Previsualización:
+		</p>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="position: relative;">
+			<div alt="Avatar" class="img-responsive" id="image" style="border-radius: 150px;width: 160px;height: 160px;background-position: 50%;background-size: cover; border: 3px dashed gray; margin:0 auto; background-image: url('{{absolute_url(asset('uploads/profileavatar/' ~  currentImg)) }}')"></div>
+		</div>
+	</div>
+	<div class="text-center row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<p>
+				<button type="submit" class="button cta-2">
+					Actualizar
+				</button>
+			</p>
+		</div>
+	</div>	
+{{ form_end(form,{'render_rest':false}) }}
+
+
+
+
+<!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3" style="position: relative;">
+			<div style="position: absolute;background-color: rgba(0,0,0,.5);height: 260px;width: 260px;top: 50px;left: 0;z-index: 2;"></div>
+			</div>
+			<div alt="Avatar" class="img-responsive" id="image" style=" top: 50px;left: 0; width: 160px;height: 160px; background-size:cover; position: absolute;z-index: 1;background-image: url('{{absolute_url(asset('uploads/profileavatar/' ~  currentImg)) }}')"></div>
+		</div> -->

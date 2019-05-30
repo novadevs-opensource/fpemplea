@@ -1,0 +1,21 @@
+#mod_l2 {
+	background-color: $w;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	border-radius: 3px;
+	/*box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.14), 
+				0 1px 0px -1px rgba(0, 0, 0, 0.05), 
+				0 1px 0px 0 rgba(0, 0, 0, 0.12);*/
+	form {
+		box-shadow: none;
+		.chosen-container-single {
+			.chosen-single{
+				border: none;
+			    border-bottom: 4px solid $l-gray;
+			    border-radius: 3px;
+			    background-color: $w !important;
+			}
+		}
+		clear: both;
+	}
+}

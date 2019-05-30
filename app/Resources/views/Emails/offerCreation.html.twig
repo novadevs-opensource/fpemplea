@@ -1,0 +1,27 @@
+{# app/Resources/views/Emails/registration.html.twig #}
+<h3>
+	¡Una nueva oportunidad!
+</h3>
+<p>
+	Hola {{ name }}! Tenemos una nueva oferta pensada para ti
+<p> 
+<p>
+	La empresa {{ company }} necesita candidatos como tu para su nueva oferta:
+<p>
+<h2>
+	{{ offerTitle }}
+</h2>
+<p>
+	{{ offerTitle }}
+</p>
+<p>
+	Para iniciar sesión, haz click en el enlace: 
+	<a href="{{ url('homepage_login') }}">
+		Enlace login
+	</a>
+<p>
+
+<p>
+	¡Gracias!
+</p>
+<img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" width="150">

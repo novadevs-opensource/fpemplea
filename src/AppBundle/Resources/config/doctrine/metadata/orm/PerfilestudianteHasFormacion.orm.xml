@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="PerfilestudianteHasFormacion" table="perfilestudiante_has_formacion">
+    <indexes>
+      <index name="fk_perfilestudiante_idx" columns="perfilestudiante_id"/>
+      <index name="fk_formacion_idx" columns="formacion_id"/>
+      <index name="fk_school_idx" columns="school"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="id_UNIQUE" columns="id"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="start" type="date" column="start" nullable="true"/>
+    <field name="end" type="date" column="end" nullable="true"/>
+    <field name="finished" type="boolean" column="finished" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="formacion" target-entity="Formacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="formacion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="perfilestudiante" target-entity="Perfilestudiante" fetch="LAZY">
+      <join-columns>
+        <join-column name="perfilestudiante_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="school" target-entity="Centroestudios" fetch="LAZY">
+      <join-columns>
+        <join-column name="school" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

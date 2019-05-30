@@ -1,0 +1,41 @@
+AppBundle\Entity\SchoolHasOffer:
+    type: entity
+    table: school_has_offer
+    indexes:
+        fk_offerSchool_idx:
+            columns:
+                - offer
+        fk_school_offer:
+            columns:
+                - school
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        offer:
+            targetEntity: Ofertas
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                offer:
+                    referencedColumnName: id
+            orphanRemoval: false
+        school:
+            targetEntity: Centroestudios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                school:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

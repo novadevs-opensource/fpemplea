@@ -1,0 +1,21 @@
+{% if education|length == 0 %}
+<li class="formationlist empty">
+    <p class="empty-message">
+        <i class="disabled">No has añadido nungún curso todavía</i>
+    </p>  
+</li>  
+{% else %}
+    {% for e in education  %}
+    <li class="formation-list clearfix" id="{{e.id}}{{app.user.id}}">
+        <span>{{ e.formacion.titulo }}</span>
+        <span>{{ e.formacion.familiaprof }}</span>
+        <button class="nobutton" onclick="schoolEducationDelete({{e.id}}, {{app.user.id}}, '{{ path('school_delete_education', {'id':e.id, 'idUser':app.user.id}) }}')">
+            <i class="fa fa-close"></i>
+        </button>
+     {# <a href="{{ path('school_delete_education', {'id':e.id, 'idUser':app.user.id}) }}">
+	       <i class="fa fa-close"></i>
+	    </a> #}
+    </li>
+    {% endfor %}
+{% endif %}
+

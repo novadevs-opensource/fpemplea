@@ -1,0 +1,68 @@
+AppBundle\Entity\ApplicantHasWorkexp:
+    type: entity
+    table: applicant_has_workexp
+    indexes:
+        applicant_fk_idx:
+            columns:
+                - applicant
+        company_fk_idx:
+            columns:
+                - company
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        workexp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        otherCompany:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+                default: '0'
+            column: other_company
+        start:
+            type: date
+            nullable: true
+        end:
+            type: date
+            nullable: true
+        position:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+    manyToOne:
+        applicant:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                applicant:
+                    referencedColumnName: id
+            orphanRemoval: false
+        company:
+            targetEntity: Perfilempresa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                company:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

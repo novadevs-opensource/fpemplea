@@ -1,0 +1,21 @@
+{# app/Resources/views/Emails/registration.html.twig #}
+<h3>
+	Hola {{ name }}, lo sentimos pero...
+</h3>
+<p>
+	La empresa {{ company }} ha rechazado tu candidatura para la oferta:
+<p>
+<h2>
+	{{ offerTitle }}
+</h2>
+<p>
+	Para iniciar sesión, haz click en el enlace: 
+	<a href="{{ absolute_url('homepage_login') }}">
+		Enlace login
+	</a>
+<p>
+
+<p>
+	¡Ánimo, y a seguir intentándolo!
+</p>
+<img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" width="150">

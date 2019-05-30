@@ -1,0 +1,82 @@
+#mod_a1 {
+    background-color: #ffffff;
+    .left-container {
+        height: 80vh;
+        @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) and (orientation: portrait){
+            height: 60vh;
+        }
+        .left-content {
+            border-left: 15px solid $d-orange;
+            padding-left: 1.5em;
+            width: 55%;
+            margin: 0 auto;
+            margin-top: 28%;
+            @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+                margin-top: 38%;
+                width: 70%;
+            }
+            @media (max-width: $screen-sm-max) {
+                border: none;
+                width: 80%;
+            }
+        }
+    }
+    h1 {
+        font-weight: bolder;
+        font-size: 4em;
+        position: relative;
+        &:after {
+            @media (max-width: $screen-sm-max) {
+                content: "";
+                padding: 6px;
+                width: 50%;
+                background-color: #c8571f;
+                position: absolute;
+                bottom: -0.3em;
+                left: 0;
+                display: inline-block;
+            }
+        }
+    }
+    p {
+        font-weight: 100;
+        @media (max-width: $screen-sm-max) {
+            margin-top: 3em;
+        }
+    }
+    .right-container .row {
+        height: 80vh;
+        @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) and (orientation: portrait) {
+            height: 60vh;
+        }
+        div {
+            padding-top: 10%;
+            padding-bottom: 2.5em;
+            height: 50%;
+            &:nth-child(1) {
+                background-color: $d-orange;
+                ;
+            }
+            &:nth-child(2) {
+                background-color: $l-orange;
+            }
+            &:nth-child(3) {
+                background-color: $l-gray;
+            }
+            &:nth-child(4) {
+                background-color: $d-gray;
+            }
+            img {
+                display: block;
+                max-width: 95px;
+                margin: 0 auto;
+            }
+            p {
+                max-width: 85%;
+                margin: 1.5em auto;
+                color: #ffffff;
+                text-align: center;
+            }
+        }
+    }
+}

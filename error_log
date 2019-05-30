@@ -1,0 +1,7 @@
+[22-Nov-2018 19:52:03 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/Pool.php on line 339
+[22-Nov-2018 20:03:13 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/Pool.php on line 339
+[22-Nov-2018 20:05:14 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in phar:///opt/cpanel/composer/bin/composer/src/Composer/DependencyResolver/Rule2Literals.php on line 53
+[22-Nov-2018 20:06:06 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32 bytes) in phar:///opt/cpanel/composer/bin/composer/vendor/composer/semver/src/Constraint/Constraint.php on line 176
+[22-Nov-2018 20:08:20 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32 bytes) in phar:///opt/cpanel/composer/bin/composer/vendor/composer/semver/src/Constraint/Constraint.php on line 176
+[22-Nov-2018 20:10:41 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 32 bytes) in phar:///opt/cpanel/composer/bin/composer/vendor/composer/semver/src/Constraint/Constraint.php on line 176
+[22-Nov-2018 20:12:46 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in phar:///opt/cpanel/composer/bin/composer/vendor/composer/semver/src/Constraint/Constraint.php on line 181

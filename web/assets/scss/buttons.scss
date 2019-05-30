@@ -1,0 +1,109 @@
+.cta {
+    padding: 1em 1.5em;
+    margin: 0.3em 0;
+    border-radius: 50px;
+    border:none;
+    display: inline-block;
+    font-weight: bolder;
+    text-decoration:none !important;
+    line-height: 2em;
+    box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14),
+    0 3px 1px -2px rgba(153, 153, 153, 0.2),
+    0 1px 5px 0 rgba(153, 153, 153, 0.12);
+    transition: ease-in-out 0.3s all;
+    span {
+        &.button-content {
+            display: flex;
+            transition: none;
+            i {
+                &.icon {
+                    background-size: cover;
+                    display: inline-block;
+                    height: 2.2em;
+                    width: 2.2em;
+                    margin-right: .5em;
+                }
+                &.fa {
+                    width: auto;
+                    height: auto;
+                }
+                &.register {
+                    background-image: url('../img/icons/register-white.png');
+
+                }
+                &.register-gray {
+                    background-image: url('../img/icons/register.png');
+                }
+                &.login {
+                    background-image: url('../img/icons/home-white.png');
+                }
+                &.login-gray {
+                    background-image: url('../img/icons/home.png');
+                }
+            }
+        }
+    }
+}
+
+.cta-0 {
+    background-color: transparent;
+    border-radius: inherit;
+    box-shadow: none;
+    font-size: 1em;
+    span {
+        color: $d-gray;
+    }
+    &:hover {
+        span {
+            &.button-content {
+                color: $w;
+                i {
+                    &.icon {
+                        &.register-gray {
+                            background-image: url('../img/icons/register-white.png');
+                        }
+                        &.login-gray {
+                            background-image: url('../img/icons/home-white.png');
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cta-1 {
+    background-color: $d-orange;
+    span {
+        &.button-content {
+            line-height: 1em;
+            color: $w;
+        }
+    }
+    &:hover {
+        background-color: $l-orange;
+    }
+}
+
+.cta-2 {
+    background-color: #55b559;
+    span {
+        &.button-content {
+            line-height: 1em;
+            color: $w;
+        }
+    }
+    &:hover {
+        background-color: #87c78a;
+    }
+}
+
+.cta-4 {
+    background: linear-gradient(90deg, #ff3d00, #FF9800);
+    min-width: 220px;
+    span {
+        &.button-content {
+            color: $w;
+        }
+    }
+}

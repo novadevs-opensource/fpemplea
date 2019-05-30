@@ -1,0 +1,26 @@
+# app/Resources/translations/validators.en.yml
+
+# Applicant validation messages
+applicant.name: Your name must have more than 3 characters and less than 21.
+applicant.lastname: Your lastname must have more than 3 characters and less than 21.
+applicant.nif: Your NIF/NIE seems to be wrong.
+applicant.zipcode: Your zip code seems to be wrong, it must have 5 characters.
+applicant.hobbies: Your hobbies must have up to 250 characters and less than 500.
+applicant.cvtxt: Your CV must has up to 250 characters and less than 1500.
+applicant.birthdate: You need to be older than 18 years old.
+applicant.mainphone: Your main phone number seems to be wrong.
+applicant.mobilephone: Your mobile phone number seems to be wrong.
+applicant.email: The email that have you typed is not a valid email.
+applicant.pais: Your country seems to be wrong. It must contain between 3 and 21 letters.
+
+# School validation messages
+school.name: Your name must has up to 3 characters and less than 40.
+school.cif: Your CIF seems to be wrong.
+school.phone: Your main phone number seems to be wrong.
+school.zip: Your zip code seems to be wrong.
+school.email: The email that have you typed is not a valid email.
+school.web: Your url seems to be wrong.
+
+# Offer validation messages
+offer.title: The title seems to be wrong, it needs to be longer than 3 chars and shorter than 21.
+offer.description: The description seems to be wrong, it needs to be longer than 20 chars and shorter than 200.

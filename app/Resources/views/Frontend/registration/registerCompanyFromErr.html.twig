@@ -1,0 +1,26 @@
+{# Resources/views/registration/registerCompanyFromErr.html.view #}
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Registro de empresa</h3>
+    {{ form_start(form, {'attr': {'id': 'company_reg'}}) }}
+    <div class="form-group">
+        {{ form_row(form.role, { 'attr': {'class': 'hidden', 'value': 'ROLE_COMPANY'} }) }}
+        {{ form_row(form.nif, { 'attr': {'class': 'form-control'} }) }}
+        {# {{ form_row(form.username, { 'attr': {'class': 'form-control'} }) }} #}
+        {{ form_row(form.email, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.fechacreacion) }}
+        {{ form_row(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+        <p>
+            <label>
+                <a href="{{ path('terms') }}" target="_blank">
+                    Ver términos y condiciones
+                </a>
+            </label>
+        </p>
+        {{ form_row(form.termsAccepted, { 'attr': {'class': ''} }) }}
+        {{ form_row(form._token) }}
+        <input type="submit" class="button cta-2" value="Dar de alta "/>
+    </div>
+    {{ form_end(form,{'render_rest':false}) }}
+{% endblock %}

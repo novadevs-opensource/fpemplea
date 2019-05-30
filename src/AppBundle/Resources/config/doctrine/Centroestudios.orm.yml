@@ -1,0 +1,124 @@
+AppBundle\Entity\Centroestudios:
+    type: entity
+    table: centroestudios
+    indexes:
+        fk_centroestudios_usuarios1_idx:
+            columns:
+                - idUsuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 90
+            options:
+                fixed: false
+        cif:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+            column: CIF
+        familiaprof:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: familiaProf
+        telefono:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        cp:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        localidad:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        pais:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: eMail
+        fechacreacion:
+            type: string
+            nullable: false
+            length: 250
+            options:
+                fixed: false
+            column: fechaCreacion
+        fechaborrado:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: fechaBorrado
+        activo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+        web:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+        imagen:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+        subfamiliaprof:
+            type: string
+            nullable: true
+            length: 120
+            options:
+                fixed: false
+            column: subfamiliaProf
+    manyToOne:
+        idusuario:
+            targetEntity: Usuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUsuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,29 @@
+<div class="profile row">
+    {{ form_start(form, {'attr': {'id': 'company_edit'}}) }}
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {#} {{ form_row(form.save, {'label':'Actualizar Perfil'}) }} {#}
+        {{ form_row(form.nombreempresa, { 'attr': {'class': 'form-control'} }) }}
+        {# {{ form_row(form.cif, { 'attr': {'class': 'form-control'} }) }} #}
+        {{ form_row(form.trabajadores, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.sector, { 'attr': {'class': 'form-control'} }) }}
+        {# TODO: Use this value to select with JS the default selected option #}
+        <input type="hidden" name="selected" value="{{cat}}">
+        {{ form_row(form.direccion, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.cp, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.localidad, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.pais, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        {{ form_row(form.emailcontacto, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.horariocontacto, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.personacontacto, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.telefono, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_row(form.web, { 'attr': {'class': 'form-control'} }) }}
+        {# {{ form_row(form.imagen, { 'attr': {'class': 'form-control-file'} }) }} #}
+        {{ form_row(form.description, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <input type="submit" class="button cta-2" value="Guardar"/>
+    </div>
+    {{ form_end(form) }}
+</div>

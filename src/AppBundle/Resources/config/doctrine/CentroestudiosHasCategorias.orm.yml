@@ -1,0 +1,41 @@
+AppBundle\Entity\CentroestudiosHasCategorias:
+    type: entity
+    table: centroestudios_has_categorias
+    uniqueConstraints:
+        UNIQ_FC2A2BFE5792B277:
+            columns:
+                - categorias_id
+        UNIQ_FC2A2BFEA8803ABC:
+            columns:
+                - centroestudios_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        categorias:
+            targetEntity: Categorias
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                categorias_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        centroestudios:
+            targetEntity: Centroestudios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                centroestudios_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

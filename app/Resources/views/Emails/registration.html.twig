@@ -1,0 +1,27 @@
+{# app/Resources/views/Emails/registration.html.twig #}
+<h3>
+	{# ¡Lo has hecho! ¡Te has registrado! #}
+</h3>
+<p>
+ 	Hola {{ name }}! {# Te has registrado satisfactoriamente. #}
+</p>
+<p>
+	<ul>
+		<li>
+ 			Tu usuario es: {{ nif }}
+		</li>
+		<li>
+ 			Tu contraseña es: {{ password }}
+		</li>
+	</ul>
+ <p>
+<p>
+	Para iniciar sesión, haz click en el enlace: 
+	<a href="{{ url('homepage_login') }}">
+		Enlace login
+	</a>
+<p>
+<p>
+¡Gracias!
+</p>
+<img src="{{ absolute_url(asset('assets/img/png/horizontal_cerradura_con_claim.png')) }}" width="150">

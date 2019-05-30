@@ -1,0 +1,46 @@
+AppBundle\Entity\ApplicantHasSkill:
+    type: entity
+    table: applicant_has_skill
+    indexes:
+        fk_applicant_idx:
+            columns:
+                - applicant
+        fk_skill_idx:
+            columns:
+                - skill
+    uniqueConstraints:
+        applicant_skill:
+            columns:
+                - applicant
+                - skill
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        applicant:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                applicant:
+                    referencedColumnName: id
+            orphanRemoval: false
+        skill:
+            targetEntity: Skill
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                skill:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,15 @@
+{# app/Resources/views/Alerts/registerAlert.html.twig #}
+Deprecated in Applicants
+{% if alert is defined and alert.userid.securityToken == app.user.securityToken %}
+	<h3>Hola!</h3>
+	<p>>Te has registrado correctamente!
+	</ul>
+	<p>
+		¡Desde el quipo de FP Emplea deseamos un feliz día!
+	</p>
+	<p><a href="{{ path('profile', {'idUser':app.user.id})}}#alerts">Volver</a><p>
+{% elseif app.user.id is defined %}
+	<h1>Permiso denegado</h1>
+	<p><a href="{{ path('profile', {'idUser':app.user.id})}}#alerts">Volver</a><p>
+{% endif %}
+

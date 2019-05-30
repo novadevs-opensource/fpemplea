@@ -1,0 +1,71 @@
+AppBundle\Entity\PerfilestudianteHasFormacion:
+    type: entity
+    table: perfilestudiante_has_formacion
+    repositoryClass: AppBundle\Repository\ExtendedSearchRepository
+    indexes:
+        fk_perfilestudiante_idx:
+            columns:
+                - perfilestudiante_id
+        fk_formacion_idx:
+            columns:
+                - formacion_id
+        fk_school_idx:
+            columns:
+                - school
+    uniqueConstraints:
+        id_UNIQUE:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        start:
+            type: date
+            nullable: true
+        end:
+            type: date
+            nullable: true
+        finished:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+    manyToOne:
+        formacion:
+            targetEntity: Formacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                formacion_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        perfilestudiante:
+            targetEntity: Perfilestudiante
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                perfilestudiante_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        school:
+            targetEntity: Centroestudios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                school:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

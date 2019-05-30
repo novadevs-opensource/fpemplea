@@ -1,0 +1,28 @@
+AppBundle\Entity\Thread:
+    type: entity
+    table: thread
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        subject:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        isSpam:
+            type: boolean
+            nullable: false
+            column: is_spam
+    lifecycleCallbacks: {  }

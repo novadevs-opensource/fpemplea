@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+<div class="form-group">
+	<div>
+		{{ form_row(form.school, { 'attr': {'class': 'form-control'} }) }}
+		{{ form_row(form._token) }}
+	</div>
+	<input type="submit" class="button cta-1" value="Guardar"/>
+
+</div>
+{{ form_end(form, {'render_rest': false}) }}

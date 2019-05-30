@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /Users/blorente/Sites/fpemplea/app/config/routing_dev.yml
