@@ -7,4 +7,7 @@ php.ini
 var/cache/dev/
 var/logs/
 var/logs/dev.log
+var/logs/prod.log
 var/sessions/dev/
+var/cache/prod/twig
+var/cache/

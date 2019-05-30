@@ -237,8 +237,9 @@
             </li>
           {% elseif is_granted('ROLE_COMPANY') and (app.user.done == 0)%}
             <li>
-              <a href="{{ path('crear_empresa', {'id':app.user.id}) }}" class="fa fa-user-circle-o">
-                <span class="txto">
+              <a href="{{ path('crear_empresa', {'id':app.user.id}) }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-user-circle-o fa-2x icon"></i>
                   Crear perfil
                 </span>
               </a>
@@ -270,8 +271,9 @@
             </li>
           {% elseif is_granted('ROLE_SCHOOL') and (app.user.done == 0)%}
             <li>
-              <a href="{{ path('crear_centro', {'id':app.user.id}) }}" class="fa fa-user-circle-o">
-                <span class="txto">
+              <a href="{{ path('crear_centro', {'id':app.user.id}) }}" class="cta cta-0">
+                <span class="button-content">
+                  <i class="fa fa-user-circle-o fa-2x icon"></i>
                   Crear perfil
                 </span>
               </a>

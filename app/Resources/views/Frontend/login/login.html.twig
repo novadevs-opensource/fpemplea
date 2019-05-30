@@ -20,7 +20,9 @@
                     </a>
                 {% elseif is_granted('ROLE_SCHOOL') and (app.user.done == 0)%}
                     <a href="{{ path('crear_centro', {'id':app.user.id}) }}" class="button cta-2">
-                        Crear perfil
+                        <span class="button-content">
+                            Crear perfil
+                        </span>
                     </a>
                 {% endif %}
                 </p>
