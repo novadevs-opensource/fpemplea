@@ -570,10 +570,10 @@ class OfferController extends Controller{
 
         if(($soRelation->getOffer() == $offer) && ($school == $schoolCheck))
         {
-          $offer->setValidated(1);
-          $offer->setActive(1);
-          $em->persist($offer);
-          $em->flush();
+          // $offer->setValidated(1);
+          // $offer->setActive(1);
+          // $em->persist($offer);
+          // $em->flush();
 
           $success = "Oferta validada con éxito";
           $this->get('session')->getFlashBag()->add("offerValidatedSuccess",$success);
@@ -581,19 +581,17 @@ class OfferController extends Controller{
           // Common category retriever begins
           try {
             $education_repo = $em->getRepository("AppBundle:Formacion");
-            $education = $education_repo->findOneByFamiliaprof($offer->getCategoria());
+            $education = $education_repo->findByFamiliaprof($offer->getCategoria());
+
             $users_repo = $em->getRepository("AppBundle:PerfilestudianteHasFormacion");
             $users =  $users_repo->findByFormacion($education);
             
-            foreach ($users as $u)
+            for ($i = 0; $i < count($users); $i++ )
             {
-              $users = $u->getPerfilestudiante();
+              $users[$i] = $users[$i]->getPerfilestudiante();
             }
-            $categorized_users_repo = $em->getRepository("AppBundle:Perfilestudiante");
-            $categorized_users = $categorized_users_repo->findById($users);
-            // Common category retriever ends
-            
-            foreach ($categorized_users as $u)
+          // Common category retriever ends
+            foreach ($users as $u)
             {
                 if($u->getEmail())
                 {
@@ -631,26 +629,4 @@ class OfferController extends Controller{
           return $this -> redirectToRoute('profile', array('idUser' => $idUser));
         }
     }
-
-/*
-    public function listadoOfertasAction($page)
-    {
-        $em = $this->getdoctrine()->getManager();
-        $pageSize = $this->container->getParameter('records_per_page');
-
-        $offer_rep = $em->getRepository('AppBundle:Ofertas');
-        $paginator = $offer_rep->getPaginateOffer($pageSize,$page);
-       
-        $totalItems = count($paginator);
-        $pagesCount = ceil($totalItems / $pageSize);
-
-        
-        return $this -> render('Frontend/listado.html.twig', array(
-            'res' => $paginator, 
-            "totalItems" => $totalItems,
-            "pagesCount" => $pagesCount,
-            "current" => $page
-        ));
-    }
-*/
 } 
