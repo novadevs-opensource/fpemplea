@@ -139,112 +139,89 @@ class __TwigTemplate_439780b0919aec8485643b7a0913c190ee5286a1a0206f4be318d1be2e6
             echo "                    ";
             if (($context["relacionOE"] ?? $this->getContext($context, "relacionOE"))) {
                 // line 52
-                echo "                      ";
+                echo "                        ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["relacionOE"] ?? $this->getContext($context, "relacionOE")));
                 foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
                     // line 53
-                    echo "                        ";
-                    if ((($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array())) && ($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["estudiante"] ?? $this->getContext($context, "estudiante")), "idusuario", array()), "id", array())))) {
-                        // line 54
-                        echo "                            Estás inscrito a esta oferta
-                            <a class=\"button cta-1\" href=\"";
+                    echo "                            ";
+                    if ((($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array())) && ($this->getAttribute($this->getAttribute($this->getAttribute(                    // line 54
+$context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["estudiante"] ?? $this->getContext($context, "estudiante")), "idusuario", array()), "id", array())))) {
                         // line 55
+                        echo "                                Estás inscrito a esta oferta
+                                <a class=\"button cta-1\" href=\"";
+                        // line 56
                         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? $this->getContext($context, "oferta")), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
                         echo "\">
-                                ";
-                        // line 57
-                        echo "                                    Ver empresa
-                                ";
-                        // line 59
-                        echo "                            </a>
-                          ";
-                    } else {
-                        // line 61
-                        echo "                            <a href=\"";
-                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("postular_oferta", array("id" => $this->getAttribute(($context["oferta"] ?? $this->getContext($context, "oferta")), "id", array()), "idUser" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
-                        echo "\" class=\"button cta-2\">
-                              ";
-                        // line 63
-                        echo "                                Postular
-                              ";
-                        // line 65
-                        echo "                            </a>
-                            <a href=\"";
-                        // line 66
-                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? $this->getContext($context, "oferta")), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
-                        echo "\" class=\"button cta-1\">
-                              ";
-                        // line 68
-                        echo "                                Ver empresa
-                              ";
-                        // line 70
-                        echo "                            </a>
-                        ";
+                                    ";
+                        // line 58
+                        echo "                                        Ver empresa
+                                    ";
+                        // line 60
+                        echo "                                </a>
+                            ";
                     }
-                    // line 72
-                    echo "                      ";
+                    // line 62
+                    echo "                        ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['r'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 73
-                echo "                    ";
-            } else {
-                // line 74
+                // line 63
                 echo "                        <a href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("postular_oferta", array("id" => $this->getAttribute(($context["oferta"] ?? $this->getContext($context, "oferta")), "id", array()), "idUser" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
                 echo "\" class=\"button cta-2\">
                           ";
-                // line 76
+                // line 65
                 echo "                            Postular
                           ";
-                // line 78
+                // line 67
                 echo "                        </a>
                         <a href=\"";
-                // line 79
+                // line 68
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? $this->getContext($context, "oferta")), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
                 echo "\" class=\"button cta-1\">
                           ";
-                // line 81
+                // line 70
                 echo "                            Ver empresa
                           ";
-                // line 83
+                // line 72
                 echo "                        </a>
+                        
                     ";
             }
-            // line 85
+            // line 75
             echo "                        
                 ";
-            // line 87
+            // line 77
             echo "                ";
-            // line 93
+            // line 83
             echo "                ";
         } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_SCHOOL")) {
-            // line 94
+            // line 84
             echo "                    <a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? $this->getContext($context, "oferta")), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
             echo "\" class=\"button cta-1\">
                        ";
-            // line 96
+            // line 86
             echo "                        Ver empresa
                       ";
-            // line 98
+            // line 88
             echo "                    </a>
                 ";
         }
-        // line 100
+        // line 90
         echo "                <a href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("profile", array("idUser" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "id", array()))), "html", null, true);
         echo "#offers\" class=\"button cta-1\">
                     ";
-        // line 102
+        // line 92
         echo "                        Ir a mi perfil
                     ";
-        // line 104
+        // line 94
         echo "                </a>
                 <a href=\"";
-        // line 105
+        // line 95
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("listado_ofertas");
         echo "\" class=\"button cta-1\">
                     Listado de ofertas
@@ -275,7 +252,7 @@ class __TwigTemplate_439780b0919aec8485643b7a0913c190ee5286a1a0206f4be318d1be2e6
 
     public function getDebugInfo()
     {
-        return array (  248 => 105,  245 => 104,  242 => 102,  237 => 100,  233 => 98,  230 => 96,  225 => 94,  222 => 93,  220 => 87,  217 => 85,  213 => 83,  210 => 81,  206 => 79,  203 => 78,  200 => 76,  195 => 74,  192 => 73,  186 => 72,  182 => 70,  179 => 68,  175 => 66,  172 => 65,  169 => 63,  164 => 61,  160 => 59,  157 => 57,  153 => 55,  150 => 54,  147 => 53,  142 => 52,  139 => 51,  137 => 50,  122 => 38,  114 => 33,  107 => 29,  100 => 25,  93 => 21,  82 => 13,  75 => 9,  68 => 4,  59 => 3,  41 => 2,  11 => 1,);
+        return array (  225 => 95,  222 => 94,  219 => 92,  214 => 90,  210 => 88,  207 => 86,  202 => 84,  199 => 83,  197 => 77,  194 => 75,  189 => 72,  186 => 70,  182 => 68,  179 => 67,  176 => 65,  171 => 63,  165 => 62,  161 => 60,  158 => 58,  154 => 56,  151 => 55,  149 => 54,  147 => 53,  142 => 52,  139 => 51,  137 => 50,  122 => 38,  114 => 33,  107 => 29,  100 => 25,  93 => 21,  82 => 13,  75 => 9,  68 => 4,  59 => 3,  41 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -339,28 +316,17 @@ class __TwigTemplate_439780b0919aec8485643b7a0913c190ee5286a1a0206f4be318d1be2e6
             <p>
                 {% if is_granted('ROLE_STUDENT') %}
                     {% if relacionOE %}
-                      {% for r in relacionOE%}
-                        {% if r.perfilestudianteid.idusuario.id == app.user.id and r.perfilestudianteid.idusuario.id == estudiante.idusuario.id %}
-                            Estás inscrito a esta oferta
-                            <a class=\"button cta-1\" href=\"{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}\">
-                                {# <button class=\"button cta-1\"> #}
-                                    Ver empresa
-                                {# </button> #}
-                            </a>
-                          {% else %}
-                            <a href=\"{{ path('postular_oferta', {'id':oferta.id, 'idUser':app.user.id} ) }}\" class=\"button cta-2\">
-                              {# <button class=\"button cta-2\"> #}
-                                Postular
-                              {# </button> #}
-                            </a>
-                            <a href=\"{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}\" class=\"button cta-1\">
-                              {# <button class=\"button cta-1\">  #}
-                                Ver empresa
-                              {# </button> #}
-                            </a>
-                        {% endif %}
-                      {% endfor %}
-                    {% else %}
+                        {% for r in relacionOE%}
+                            {% if r.perfilestudianteid.idusuario.id == app.user.id 
+                                and r.perfilestudianteid.idusuario.id == estudiante.idusuario.id %}
+                                Estás inscrito a esta oferta
+                                <a class=\"button cta-1\" href=\"{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}\">
+                                    {# <button class=\"button cta-1\"> #}
+                                        Ver empresa
+                                    {# </button> #}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
                         <a href=\"{{ path('postular_oferta', {'id':oferta.id, 'idUser':app.user.id} ) }}\" class=\"button cta-2\">
                           {# <button class=\"button cta-2\"> #}
                             Postular
@@ -371,6 +337,7 @@ class __TwigTemplate_439780b0919aec8485643b7a0913c190ee5286a1a0206f4be318d1be2e6
                             Ver empresa
                           {# </button> #}
                         </a>
+                        
                     {% endif %}
                         
                 {# FIXME: Solve offer management controls problems inside offer view #}

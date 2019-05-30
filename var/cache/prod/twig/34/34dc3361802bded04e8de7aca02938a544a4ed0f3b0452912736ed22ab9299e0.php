@@ -109,112 +109,89 @@ class __TwigTemplate_6d608035935cc7fb8908ebbaa930575a33650363d40f50f54941183b34b
             echo "                    ";
             if (($context["relacionOE"] ?? null)) {
                 // line 52
-                echo "                      ";
+                echo "                        ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable(($context["relacionOE"] ?? null));
                 foreach ($context['_seq'] as $context["_key"] => $context["r"]) {
                     // line 53
-                    echo "                        ";
-                    if ((($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array())) && ($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["estudiante"] ?? null), "idusuario", array()), "id", array())))) {
-                        // line 54
-                        echo "                            Estás inscrito a esta oferta
-                            <a class=\"button cta-1\" href=\"";
+                    echo "                            ";
+                    if ((($this->getAttribute($this->getAttribute($this->getAttribute($context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array())) && ($this->getAttribute($this->getAttribute($this->getAttribute(                    // line 54
+$context["r"], "perfilestudianteid", array()), "idusuario", array()), "id", array()) == $this->getAttribute($this->getAttribute(($context["estudiante"] ?? null), "idusuario", array()), "id", array())))) {
                         // line 55
+                        echo "                                Estás inscrito a esta oferta
+                                <a class=\"button cta-1\" href=\"";
+                        // line 56
                         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? null), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
                         echo "\">
-                                ";
-                        // line 57
-                        echo "                                    Ver empresa
-                                ";
-                        // line 59
-                        echo "                            </a>
-                          ";
-                    } else {
-                        // line 61
-                        echo "                            <a href=\"";
-                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("postular_oferta", array("id" => $this->getAttribute(($context["oferta"] ?? null), "id", array()), "idUser" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
-                        echo "\" class=\"button cta-2\">
-                              ";
-                        // line 63
-                        echo "                                Postular
-                              ";
-                        // line 65
-                        echo "                            </a>
-                            <a href=\"";
-                        // line 66
-                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? null), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
-                        echo "\" class=\"button cta-1\">
-                              ";
-                        // line 68
-                        echo "                                Ver empresa
-                              ";
-                        // line 70
-                        echo "                            </a>
-                        ";
+                                    ";
+                        // line 58
+                        echo "                                        Ver empresa
+                                    ";
+                        // line 60
+                        echo "                                </a>
+                            ";
                     }
-                    // line 72
-                    echo "                      ";
+                    // line 62
+                    echo "                        ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['r'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 73
-                echo "                    ";
-            } else {
-                // line 74
+                // line 63
                 echo "                        <a href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("postular_oferta", array("id" => $this->getAttribute(($context["oferta"] ?? null), "id", array()), "idUser" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
                 echo "\" class=\"button cta-2\">
                           ";
-                // line 76
+                // line 65
                 echo "                            Postular
                           ";
-                // line 78
+                // line 67
                 echo "                        </a>
                         <a href=\"";
-                // line 79
+                // line 68
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? null), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
                 echo "\" class=\"button cta-1\">
                           ";
-                // line 81
+                // line 70
                 echo "                            Ver empresa
                           ";
-                // line 83
+                // line 72
                 echo "                        </a>
+                        
                     ";
             }
-            // line 85
+            // line 75
             echo "                        
                 ";
-            // line 87
+            // line 77
             echo "                ";
-            // line 93
+            // line 83
             echo "                ";
         } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_SCHOOL")) {
-            // line 94
+            // line 84
             echo "                    <a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("publicProfile", array("idUser" => $this->getAttribute($this->getAttribute($this->getAttribute(($context["oferta"] ?? null), "idempresa", array()), "idusuario", array()), "id", array()), "idVisitor" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
             echo "\" class=\"button cta-1\">
                        ";
-            // line 96
+            // line 86
             echo "                        Ver empresa
                       ";
-            // line 98
+            // line 88
             echo "                    </a>
                 ";
         }
-        // line 100
+        // line 90
         echo "                <a href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("profile", array("idUser" => $this->getAttribute($this->getAttribute(($context["app"] ?? null), "user", array()), "id", array()))), "html", null, true);
         echo "#offers\" class=\"button cta-1\">
                     ";
-        // line 102
+        // line 92
         echo "                        Ir a mi perfil
                     ";
-        // line 104
+        // line 94
         echo "                </a>
                 <a href=\"";
-        // line 105
+        // line 95
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("listado_ofertas");
         echo "\" class=\"button cta-1\">
                     Listado de ofertas
@@ -239,7 +216,7 @@ class __TwigTemplate_6d608035935cc7fb8908ebbaa930575a33650363d40f50f54941183b34b
 
     public function getDebugInfo()
     {
-        return array (  218 => 105,  215 => 104,  212 => 102,  207 => 100,  203 => 98,  200 => 96,  195 => 94,  192 => 93,  190 => 87,  187 => 85,  183 => 83,  180 => 81,  176 => 79,  173 => 78,  170 => 76,  165 => 74,  162 => 73,  156 => 72,  152 => 70,  149 => 68,  145 => 66,  142 => 65,  139 => 63,  134 => 61,  130 => 59,  127 => 57,  123 => 55,  120 => 54,  117 => 53,  112 => 52,  109 => 51,  107 => 50,  92 => 38,  84 => 33,  77 => 29,  70 => 25,  63 => 21,  52 => 13,  45 => 9,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+        return array (  195 => 95,  192 => 94,  189 => 92,  184 => 90,  180 => 88,  177 => 86,  172 => 84,  169 => 83,  167 => 77,  164 => 75,  159 => 72,  156 => 70,  152 => 68,  149 => 67,  146 => 65,  141 => 63,  135 => 62,  131 => 60,  128 => 58,  124 => 56,  121 => 55,  119 => 54,  117 => 53,  112 => 52,  109 => 51,  107 => 50,  92 => 38,  84 => 33,  77 => 29,  70 => 25,  63 => 21,  52 => 13,  45 => 9,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

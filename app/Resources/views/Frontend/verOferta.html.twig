@@ -49,28 +49,17 @@
             <p>
                 {% if is_granted('ROLE_STUDENT') %}
                     {% if relacionOE %}
-                      {% for r in relacionOE%}
-                        {% if r.perfilestudianteid.idusuario.id == app.user.id and r.perfilestudianteid.idusuario.id == estudiante.idusuario.id %}
-                            Estás inscrito a esta oferta
-                            <a class="button cta-1" href="{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}">
-                                {# <button class="button cta-1"> #}
-                                    Ver empresa
-                                {# </button> #}
-                            </a>
-                          {% else %}
-                            <a href="{{ path('postular_oferta', {'id':oferta.id, 'idUser':app.user.id} ) }}" class="button cta-2">
-                              {# <button class="button cta-2"> #}
-                                Postular
-                              {# </button> #}
-                            </a>
-                            <a href="{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}" class="button cta-1">
-                              {# <button class="button cta-1">  #}
-                                Ver empresa
-                              {# </button> #}
-                            </a>
-                        {% endif %}
-                      {% endfor %}
-                    {% else %}
+                        {% for r in relacionOE%}
+                            {% if r.perfilestudianteid.idusuario.id == app.user.id 
+                                and r.perfilestudianteid.idusuario.id == estudiante.idusuario.id %}
+                                Estás inscrito a esta oferta
+                                <a class="button cta-1" href="{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}">
+                                    {# <button class="button cta-1"> #}
+                                        Ver empresa
+                                    {# </button> #}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
                         <a href="{{ path('postular_oferta', {'id':oferta.id, 'idUser':app.user.id} ) }}" class="button cta-2">
                           {# <button class="button cta-2"> #}
                             Postular
@@ -81,6 +70,7 @@
                             Ver empresa
                           {# </button> #}
                         </a>
+                        
                     {% endif %}
                         
                 {# FIXME: Solve offer management controls problems inside offer view #}
