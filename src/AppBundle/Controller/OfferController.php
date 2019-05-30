@@ -570,10 +570,10 @@ class OfferController extends Controller{
 
         if(($soRelation->getOffer() == $offer) && ($school == $schoolCheck))
         {
-          $offer->setValidated(1);
-          $offer->setActive(1);
-          $em->persist($offer);
-          $em->flush();
+          // $offer->setValidated(1);
+          // $offer->setActive(1);
+          // $em->persist($offer);
+          // $em->flush();
 
           $success = "Oferta validada con éxito";
           $this->get('session')->getFlashBag()->add("offerValidatedSuccess",$success);
