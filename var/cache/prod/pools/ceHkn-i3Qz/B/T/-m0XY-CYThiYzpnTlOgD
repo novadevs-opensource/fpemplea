@@ -1,4 +1,0 @@
-<?php return array (
-  0 => 9223372036854775807,
-  1 => 'a:2:{i:0;O:48:"Symfony\\Component\\Validator\\Constraints\\NotBlank":3:{s:7:"message";s:31:"This value should not be blank.";s:7:"payload";N;s:6:"groups";a:1:{i:0;s:7:"Default";}}i:1;O:45:"Symfony\\Component\\Validator\\Constraints\\Email":6:{s:7:"message";s:15:"applicant.email";s:7:"checkMX";b:1;s:9:"checkHost";b:0;s:6:"strict";N;s:7:"payload";N;s:6:"groups";a:1:{i:0;s:7:"Default";}}}',
-);

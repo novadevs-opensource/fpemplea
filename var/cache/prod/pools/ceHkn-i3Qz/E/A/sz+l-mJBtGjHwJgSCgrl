@@ -1,4 +1,0 @@
-<?php return array (
-  0 => 9223372036854775807,
-  1 => 'a:2:{i:0;O:44:"Symfony\\Component\\Validator\\Constraints\\Type":4:{s:7:"message";s:40:"This value should be of type {{ type }}.";s:4:"type";s:6:"string";s:7:"payload";N;s:6:"groups";a:1:{i:0;s:7:"Default";}}i:1;O:45:"Symfony\\Component\\Validator\\Constraints\\Regex":6:{s:7:"message";s:10:"school.cif";s:7:"pattern";s:12:"([^.]{3,40})";s:11:"htmlPattern";N;s:5:"match";b:1;s:7:"payload";N;s:6:"groups";a:1:{i:0;s:7:"Default";}}}',
-);

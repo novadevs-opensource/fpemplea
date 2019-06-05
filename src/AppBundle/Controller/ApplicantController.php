@@ -343,13 +343,22 @@ class ApplicantController extends Controller{
         
         $relacionOE_rep = $em -> getRepository("AppBundle:PerfilestudianteHasOfertas");
         $relacionOE = $relacionOE_rep -> findByOfertasid($id);
-        
-        
+
+        $status = false;
+
+        foreach ($relacionOE as $r) {
+            if ( $this->get('security.token_storage')->getToken()->getUser()->getId() == $r->getPerfilestudianteid()->getIdusuario()->getId() ) {
+                $status = true;
+            }
+        }
+
         return $this->render('Frontend/verOferta.html.twig', array(
                 "oferta" => $oferta, 
                 "estudiante" => $estudiante, 
-                "relacionOE" => $relacionOE
-            ));
+                "relacionOE" => $relacionOE,
+                "status" => $status,
+            )
+        );
     }
     
 
