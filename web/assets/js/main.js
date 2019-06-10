@@ -11,7 +11,7 @@ $(document).ready(function (){
 
     // FIXME: Done it in UserType.php form model class
     // DONE AT:FES-31
-    document.querySelector('#applicant_reg .form-group #usuarios_role + div label').textContent = 'DNI Alunmo';
+    document.querySelector('#applicant_reg .form-group #usuarios_role + div label').textContent = 'DNI Alumno';
 
     $('#edit_img').submit(function(){
         var fileInput = document.getElementById("form_imagen").files[0];
