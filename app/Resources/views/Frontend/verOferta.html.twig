@@ -82,7 +82,7 @@
                     {% endif %}
                     
                 {% elseif is_granted('ROLE_SCHOOL') %}
-                    <a href="{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}" class="button cta-1"
+                    <a href="{{ path('publicProfile', {'idUser':oferta.idempresa.idusuario.id, 'idVisitor':app.user.id}) }}" class="button cta-1">
                         Ver empresa
                     </a>
                 {% endif %}
