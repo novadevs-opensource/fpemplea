@@ -33,7 +33,7 @@ class CompanyController extends Controller{
         $this->session=new Session();
     }
 
-    /*
+    /**
      * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT') or has_role('ROLE_SCHOOL')")
      */
     public function listadoEmpresasAction($page,$idUser)

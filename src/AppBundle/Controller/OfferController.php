@@ -35,7 +35,7 @@ class OfferController extends Controller{
     }
     
     /**
-     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT') or has_role('ROLE_COMPANY') or has_role('ROLE_SCHOOL')")
+     * @Security("has_role('ROLE_ADMIN') or has_role('ROLE_STUDENT') or has_role('ROLE_SCHOOL')")
      */
     public function listadoOfertasAction($page)
     {
@@ -460,9 +460,9 @@ class OfferController extends Controller{
         $u_rep = $em->getRepository("AppBundle:Perfilestudiante");
         $u = $u_rep->findOneById($u);
 
-        $company = $poRelation->getOfertasid();
+        // $company = $poRelation->getOfertasid();
         $company_rep = $em->getRepository("AppBundle:Perfilempresa");
-        $company = $company_rep->findOneById($company);
+        $company = $company_rep->findOneById($offer->getIdempresa());
         //Creating alert and sendig email
         if($u->getEmail())
         {

@@ -3,9 +3,6 @@
 	<h3>Hola {{ user }}, lo sentimos pero...</h3>
 	<p>La empresa {{ company }} ha rechazado tu candidatura para la oferta:<p>
 	<h2>{{ offer.title }}</h2>
-
-	<p>Para iniciar sesión, haz click en el enlace: <a href="{{ absolute_url('homepage_login') }}">Enlace login</a>.<p>
-
 	<p>¡Ánimo, y a seguir intentándolo!</p>
 	<p><a href="{{ path('profile', {'idUser':app.user.id})}}#alerts">Volver</a><p>
 {% else %}
