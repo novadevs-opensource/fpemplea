@@ -7,3 +7,4 @@ php.ini
 var/logs/
 var/sessions/
 var/cache/
+app/config/parameters.yml
